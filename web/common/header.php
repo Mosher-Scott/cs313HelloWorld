@@ -1,10 +1,3 @@
-<?php
-
-  // @include_once('common/header.php');
-  // @include_once('common/nav.php');
-
-?>
-
 <!DOCTYPE html>
 <html  lang="en">
     <head>
@@ -23,7 +16,3 @@
         </div>
 
     </header>   
-<body>
-
-
-</body>
