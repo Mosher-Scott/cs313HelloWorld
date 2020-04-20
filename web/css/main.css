@@ -1,0 +1,92 @@
+nav ul {
+    text-align: right;
+}
+
+nav li {
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+nav a:link, nav a:visited {
+    color: #07162E;
+    text-decoration: none;
+    border-top: 5px solid transparent;
+    transition: .5s;
+}
+
+nav a:hover {
+border-top: 5px solid #07162E;
+}
+
+nav a:active {
+    border-top: 15px solid #07162E;
+}
+
+nav label, #toggle {
+    display: none;
+}
+
+
+/* MOBILE DESIGN */
+@media screen and (max-width: 980px) {
+    header , nav ul{
+        text-align: center;
+    }
+    
+    nav label {
+        background: white;
+        color: white;
+        width: 100%;
+        text-align: center;
+    }
+    nav ul {
+        padding: 0px;
+    }
+    
+    nav li {
+        display: block;
+        background: white;
+        padding: 5px 0px;
+        margin: 0px;
+    }
+    
+    #toggle {
+        display: none;
+    }
+    
+    #toggle:checked ~ #menu {
+        display: block;
+    }
+    
+    #toggle:not(:checked) ~ #menu{
+        display: none;
+    }
+    
+    nav label {
+        border:2px solid #556F44;
+        color: #556F44;
+        display: block;
+        padding: 10px 0px;
+        font-weight: bold;
+    }
+    
+    nav a:link, nav a:visited {
+        color: #07162E;
+        border-top: 5px solid transparent;
+        transition: .5s;
+    }
+    
+    nav li:hover {
+        background: #556F44;
+        color: white;
+    }
+    
+    nav li:hover a {
+        color: white;
+    }
+    
+    nav li:active a {
+        text-decoration: underline;
+    }
+
+}
