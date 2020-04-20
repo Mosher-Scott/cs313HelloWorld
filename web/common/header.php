@@ -5,7 +5,8 @@
         <meta name="description" content="Home">
         <meta name="author" content="Scott Mosher">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-    
+        <link rel="stylesheet" href="css/main.css">
+
         <title>Home</title>
     </head>
 
