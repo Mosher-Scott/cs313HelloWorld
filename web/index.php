@@ -10,6 +10,17 @@
   <div>
     <h1>About Me</h1>
   </div>
-
+  <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h3>CS 313 - Backend Development</h3>
+                    <p>My name is Scott, and this is my website for CS 313.
+                </div>
+                <div class="col-sm">
+                    <h3>Hobbies</h3>
+                </div>
+            </div>
+            
+        </div>
 
 </body>

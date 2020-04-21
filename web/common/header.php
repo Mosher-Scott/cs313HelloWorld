@@ -12,8 +12,14 @@
 
     
     <header>
-        <div class="leftContent">
-            <h2>CS 313 - Backend Development</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h2>CS 313 - Backend Development</h2>
+                </div>
+
+            </div>
+            
         </div>
 
     </header>   
