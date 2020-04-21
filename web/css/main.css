@@ -190,11 +190,12 @@ table {
     }
     
     nav label {
-        border:2px solid #556F44;
-        color: #556F44;
+        background: #348AA7;
+        color: #FFCF99;
         display: block;
         padding: 10px 0px;
         font-weight: bold;
+        margin: auto;
     }
     
     nav a:link, nav a:visited {
