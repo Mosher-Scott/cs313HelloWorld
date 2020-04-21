@@ -14,10 +14,10 @@
     <header class="rounded-corners">
         <div class="container-fluid">
             <div class="row">
-                <div class="col">
+                <div class="col-md-6">
                     <h2>CS 313 - Backend Development</h2>
                 </div>
-                <div class="col">
+                <div class="col-md-6">
                     <nav>
                         <label for="toggle">Menu</label>
                         <input id="toggle" type="checkbox">
