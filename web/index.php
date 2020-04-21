@@ -30,7 +30,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-            <h3>Hobbies</h3>
+            <h3>Previous Life</h3>
         </div>    
       </div>
       <div class="row">
@@ -38,13 +38,23 @@
           <img class="img-rounded-corner" src="../images/wedding.jpg" alt="Wedding photo by Scott Mosher Photography">
         </div>
         <div class="col">
-          <p>Before I moved to Utah, I professionally photographed weddings and families.  I've been able to photograph over 100 weddings, randing from a small 8 person event to over 300 guests</p>  
+          <p>Before I moved to Utah, I professionally photographed weddings and families.  I've been able to photograph over 100 weddings, randing from a small 8 person event to over 300 guests.</p>  
         </div>
         <div class="col">
           <div class="img-rounded">
             <img class="img-rounded-corner" src="../images/wedding2.jpg" alt="Wedding photo by Scott Mosher Photography">
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="container-fluid no padding">
+      <div class="row">
+        <div class="col">
+            <h3>Hobbies</h3>
+        </div> 
+        <div class="col-md-12">
+          <img src="../images/bikePark.jpg" alt="Mountain biking at a ski resort">
       </div>
     </div>
   </section>
