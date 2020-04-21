@@ -48,6 +48,9 @@
       </div>
     </div>
   </section>
+  <div class="img-rounded">
+            <img class="img-responsive" src="../images/wedding2.jpg" alt="Wedding photo by Scott Mosher Photography">
+          </div>
 </main>
 
 <?php 
