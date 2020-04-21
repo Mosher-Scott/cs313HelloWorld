@@ -4,8 +4,11 @@
   <main>
     <section>
       <div>
+      <div class="bluebar">
+      </div>
         <h1>About Me</h1>
-        <hr>
+        <div class="bluebar">
+        </div>
       </div>
     </section>
 
@@ -39,7 +42,7 @@
 
     </div>
     <div class="bluebar">
-</div>
+    </div>
     </section>
   </main>
 

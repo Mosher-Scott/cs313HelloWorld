@@ -34,6 +34,8 @@ p {
     max-width: 60%;
     border: 6px solid #348AA7;
     border-radius: 55px;
+    margin: auto;
+    margin-top: 8px;
   }
 
 body {
