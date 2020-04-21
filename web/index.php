@@ -38,6 +38,7 @@
       </div>
 
     </div>
+    <hr>
     </section>
   </main>
 
