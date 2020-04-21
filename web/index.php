@@ -32,4 +32,10 @@
             </div>    
         </div>
     </section>
+
+    <div class="row">
+  <div class="col">col</div>
+  <div class="col">col</div>
+  <div class="col">col</div>
+</div>
   </main>
