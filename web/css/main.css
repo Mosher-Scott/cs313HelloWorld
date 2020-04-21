@@ -55,6 +55,7 @@ main {
     max-width: 1400px;
     background:  #FFCF99;
     margin: auto;
+    padding-bottom: 10px;
 }
 
 section {
