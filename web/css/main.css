@@ -29,6 +29,10 @@ body {
     padding: 15px;
 }
 
+header {
+    background:  #FFCF99;
+}
+
 main { 
     max-width: 1400px;
     background:  #FFCF99;
