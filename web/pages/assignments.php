@@ -12,19 +12,7 @@
         <hr>
       </div>
     </section>
-    <section>
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col blue-border">
-                <h3>Week 01</h3>
-                <p><b>Hello World: </b><a href="../pages/hello.html">Link</a>
-            </div>
-            <div class="col">
-                <h3>Week 02</h3>
-            </div>
-        </div> 
-      </div>
-    </section>
+
     <section>
         <table class="table">
             <thead>
