@@ -10,7 +10,7 @@
         <title>CS 313 - Home</title>
     </head>
 
-    
+<body>
     <header>
         <div class="container">
             <div class="row">

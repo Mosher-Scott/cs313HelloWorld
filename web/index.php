@@ -4,12 +4,9 @@
   @include_once('common/nav.php');
 
 ?>
-
-
-<body>
   <main>
     <section>
-      <div>
+      <div class="">
         <h1>About Me</h1>
       </div>
     </section>
@@ -31,4 +28,3 @@
       </div>
     </section>
   </main>
-</body>
