@@ -64,6 +64,7 @@ nav {
 footer {
     background:  #FFCF99;
     text-align: center;
+    border-top: 6px solid #348AA7;
 }
 
 /* Navigation Menu */
