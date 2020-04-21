@@ -11,7 +11,7 @@
     </head>
 
 <body>
-    <header>
+    <header class="rounded-corners">
         <div class="container-fluid">
             <div class="row">
                 <div class="col">

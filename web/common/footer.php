@@ -1,5 +1,5 @@
-        <footer>
-            <
+<footer class="rounded-corners">
+    
     <div class="container-fluid no padding">
       <div class="row">
         <div class="col">
