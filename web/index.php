@@ -23,7 +23,6 @@
             </div>
         </div> 
       </div>
-    </div>
 
     <div class="bluebar">
     </div>
@@ -31,7 +30,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-            h3>Hobbies</h3>
+            <h3>Hobbies</h3>
         </div>    
       </div>
       <div class="row">
