@@ -28,6 +28,7 @@ html {
 body {
     background: #348AA7;
     max-width: 1200px;
+    margin: auto;
 }
 
 main { 
