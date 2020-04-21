@@ -26,13 +26,14 @@ html {
     text-align: center;
 }
 body {
-   
     background: #348AA7;
+    max-width: 1200px;
 }
 
 main { 
     max-width: 1400px;
     background:  #FFCF99;
+    margin: auto;
 }
 
 /* Navigation Menu */
