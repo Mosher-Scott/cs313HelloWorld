@@ -205,11 +205,13 @@ table {
         margin: auto;
     }
     
+    /*
     nav a:link, nav a:visited {
         color: #07162E;
         border-top: 5px solid transparent;
         transition: .5s;
     }
+    */
     
     nav li:hover {
         background: #556F44;
