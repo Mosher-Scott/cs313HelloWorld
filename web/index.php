@@ -4,9 +4,9 @@
 
 ?>
   <main>
-    <hr>
     <section>
-      <div class="">
+    <hr>
+      <div>
         <h1>About Me</h1>
       </div>
     </section>
