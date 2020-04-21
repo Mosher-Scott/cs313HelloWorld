@@ -116,6 +116,10 @@ img {
     max-height: 500px;
 }
 
+.img-rounded-corner {
+    border-radius: 30%;
+}
+
 /* MOBILE DESIGN */
 @media screen and (max-width: 980px) {
     header , nav ul{

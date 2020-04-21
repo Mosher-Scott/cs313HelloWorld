@@ -49,7 +49,7 @@
     </div>
   </section>
   <div class="container">
-    <img class="img-rounded" src="../images/wedding2.jpg" alt="Wedding photo by Scott Mosher Photography">
+    <img class="img-rounded-corner" src="../images/wedding2.jpg" alt="Wedding photo by Scott Mosher Photography">
   </div>
 </main>
 
