@@ -12,7 +12,7 @@
     </section>
 
     <section>
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
             <div class="col">
                 <h3>CS 313 - Backend Development</h3>
@@ -23,7 +23,6 @@
             <div class="col">
                 <img src="../images/me.jpg" alt="Picture of Scott">
             </div>
-
         </div> 
         <div class="row">
             <div class="col">
