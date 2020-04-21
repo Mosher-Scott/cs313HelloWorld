@@ -60,7 +60,7 @@
       
       <div class="row">
         <div class="col">
-          <img class="img-rounded" src="../images/bikePark.jpg" alt="Mountain biking at a ski resort">
+          <img class="img-rounded-corner" src="../images/bikePark.jpg" alt="Mountain biking at a ski resort">
         </div>
         <div class="col">
           <h4>Mountain Biking</h4>
@@ -77,7 +77,7 @@
           <p>I have an Atari 2600 that used to be at my grandmothers house. I've also got the N64 still from high school, and I've also collected a PS2, Xbox 360, Wii, and I've built up a Raspberry Pi with a ton of different games in it.</p>
         </div>
         <div class="col">
-          <img src="../images/atari.jpg" alt="Some old video game systems" class="img-rounded">
+          <img class="img-rounded-corner" src="../images/atari.jpg" alt="Some old video game systems">
         </div>
       </div>
     </div>
