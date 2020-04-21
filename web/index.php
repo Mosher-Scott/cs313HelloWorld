@@ -6,7 +6,6 @@
   <main>
     <section>
       <div>
-        <hr>
         <h1>About Me</h1>
         <hr>
       </div>

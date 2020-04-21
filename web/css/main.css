@@ -24,7 +24,7 @@ p {
 
 hr {
     max-width: 80%;
-    border-top: 8px solid #348AA7;
+    border: 6px solid #348AA7;
     border-radius: 55px;
   }
 
