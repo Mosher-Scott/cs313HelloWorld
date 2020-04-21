@@ -125,6 +125,11 @@ img {
     border-radius: 10%;
 }
 
+/* Tables */
+table {
+    max-width: 500px;
+}
+
 /* MOBILE DESIGN */
 @media screen and (max-width: 980px) {
     header , nav ul{
