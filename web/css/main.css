@@ -57,14 +57,6 @@ nav a:link, nav a:visited {
     transition: .5s;
 }
 
-nav a:hover {
-border-top: 5px solid #07162E;
-}
-
-nav a:active {
-    border-top: 15px solid #07162E;
-}
-
 nav label, #toggle {
     display: none;
 }
@@ -76,10 +68,12 @@ ol, ul {
 /* Buttons */
 .btn-primary {
     background-color: #348AA7 !important;
+    color: #FFCF99;
 }
 
 .btn-primary:hover {
     background: green !important;
+    color: #348AA7;
 }
 
 /* Images */
