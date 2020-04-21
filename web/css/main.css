@@ -52,9 +52,8 @@ nav li {
 }
 
 nav a:link, nav a:visited {
-    color: #07162E;
+    background-color: pink;
     text-decoration: none;
-    border-top: 5px solid transparent;
     transition: .5s;
 }
 
