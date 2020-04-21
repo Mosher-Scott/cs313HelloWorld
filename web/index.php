@@ -38,7 +38,8 @@
           <img class="img-rounded-corner" src="../images/wedding.jpg" alt="Wedding photo by Scott Mosher Photography">
         </div>
         <div class="col">
-          <p>Before I moved to Utah, I professionally photographed weddings and families.  I've been able to photograph over 100 weddings, randing from a small 8 person event to over 300 guests.</p>  
+          <p>Before I moved to Utah, I professionally photographed weddings and families.  I've been able to photograph over 100 weddings, randing from a small 8 person event to over 300 guests.</p>
+          <p>I now photograph weddings and family portraits on the side.  Its something I still love doing, but school, full time work, and a family has decreased the time I have to pursue it.</p>  
         </div>
         <div class="col">
           <div class="img-rounded">

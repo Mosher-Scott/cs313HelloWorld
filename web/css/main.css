@@ -126,6 +126,11 @@ nav label, #toggle {
     width: 100%;
 }
 
+.max-size-500 {
+    max-width: 500px;
+    max-height: 500px;
+}
+
 /* Tables */
 table {
     max-width: 500px;
