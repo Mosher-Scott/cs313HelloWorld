@@ -20,6 +20,12 @@ h2 {
     color: #040404;
 }
 
+h3 {
+    font-family: 'Merriweather', serif;
+    color: #040404;
+    text-align: center;
+}
+
 p {
     font-family: 'Baloo Bhaina 2', cursive;
 }
