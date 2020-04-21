@@ -117,8 +117,8 @@ nav label, #toggle {
 /* Images */
 .img-rounded-corner {
     border-radius: 10%;
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .full-width {

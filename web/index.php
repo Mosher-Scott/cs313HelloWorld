@@ -30,7 +30,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-            <h3>Previous Life</h3>
+            <h3>Photography</h3>
         </div>    
       </div>
       <div class="row">
