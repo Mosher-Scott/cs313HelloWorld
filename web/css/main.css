@@ -220,6 +220,7 @@ table {
     
     nav li:hover a {
         color: white;
+        background: #348AA7;
     }
     
     nav li:active a {
