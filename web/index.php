@@ -24,11 +24,12 @@
                 <img src="../images/me.jpg" alt="Picture of Scott">
             </div>
         </div> 
-        <div class="row">
+
+      </div>
+      <div class="row">
             <div class="col">
               <h3>Hobbies</h3>
             </div>    
         </div>
-      </div>
     </section>
   </main>
