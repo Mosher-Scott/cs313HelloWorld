@@ -16,6 +16,8 @@
         <div class="row">
             <div class="col">
                 <h3>CS 313 - Backend Development</h3>
+            </div>
+            <div class="col">
                 <p>My name is Scott, and this is my website for CS 313.
             </div>
             <div class="col">
