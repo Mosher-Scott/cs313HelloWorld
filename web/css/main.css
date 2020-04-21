@@ -115,14 +115,12 @@ nav label, #toggle {
 }
 
 /* Images */
-img {
-    max-width: 500px;
-    max-height: 500px;
-    width: 100%;
-}
+
 
 .img-rounded-corner {
     border-radius: 10%;
+    max-width: 500px;
+    max-height: 500px;
 }
 
 .full-width {
