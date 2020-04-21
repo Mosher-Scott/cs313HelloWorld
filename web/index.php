@@ -23,15 +23,18 @@
             </div>
         </div> 
       </div>
-      <div class="bluebar">
+    </div>
+
+    <div class="bluebar">
+    </div>
+      
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+            h3>Hobbies</h3>
+        </div>    
       </div>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col">
-            <h3>Hobbies</h3>
-          </div>    
-        </div>
-        <div class="row">
+      <div class="row">
         <div class="col">
           <img class="img-rounded" src="../images/wedding.jpg" alt="Wedding photo by Scott Mosher Photography">
         </div>
@@ -41,11 +44,12 @@
         <div class="col">
           <div class="img-rounded">
             <img class="img-responsive" src="../images/wedding2.jpg" alt="Wedding photo by Scott Mosher Photography">
-</div>
+          </div>
         </div>
+      </div>
     </div>
-    </section>
-  </main>
+  </section>
+</main>
 
 <?php 
   @include_once('common/footer.php');
