@@ -40,9 +40,10 @@
       </div>
 
     </div>
+
+    </section>
     <div class="bluebar">
     </div>
-    </section>
   </main>
 
 <?php 
