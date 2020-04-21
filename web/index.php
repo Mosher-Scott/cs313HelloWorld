@@ -23,6 +23,7 @@
         </div> 
 
       </div>
+      <hr>
       <div class="row">
             <div class="col">
               <h3>Hobbies</h3>

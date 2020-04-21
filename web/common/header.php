@@ -28,7 +28,6 @@
                     </nav>
                 </div>
             </div>
-            <hr>
         </div>
 
     </header>   
