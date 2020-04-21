@@ -22,26 +22,25 @@
                 <img src="../images/me.jpg" alt="Picture of Scott">
             </div>
         </div> 
-
       </div>
       <div class="bluebar">
       </div>
-      <div class="row">
-            <div class="col">
-              <h3>Hobbies</h3>
-            </div>    
-      </div>
-    <div class="row">
-      <div class="col">
-        <img src="../images/wedding.jpg" alt="Wedding photo by Scott Mosher Photography">
-      </div>
-      <div class="col">
-      <p>Before I moved to Utah, I professionally photographed weddings and families.  I've been able to photograph over 100 weddings, randing from a small 8 person event to over 300 guests</p>  
-      </div>
-      <div class="col">
-        <img src="../images/wedding2.jpg" alt="Wedding photo by Scott Mosher Photography">
-      </div>
-
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <h3>Hobbies</h3>
+          </div>    
+        </div>
+        <div class="row">
+        <div class="col">
+          <img src="../images/wedding.jpg" alt="Wedding photo by Scott Mosher Photography">
+        </div>
+        <div class="col">
+          <p>Before I moved to Utah, I professionally photographed weddings and families.  I've been able to photograph over 100 weddings, randing from a small 8 person event to over 300 guests</p>  
+        </div>
+        <div class="col">
+          <img src="../images/wedding2.jpg" alt="Wedding photo by Scott Mosher Photography">
+        </div>
     </div>
     </section>
   </main>
