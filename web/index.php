@@ -63,6 +63,7 @@
           <img src="../images/bikePark.jpg" alt="Mountain biking at a ski resort" class="img-rounded">
         </div>
         <div class="col">
+          <h4>Mountain Biking</h4>
           <p>I also enjoy mountain biking, and I get out as often as I can.  My two oldest boys are now hooked on it also, since we found some beginner downhill trails they love.</p>
           <p>I've ridden on trails throughout the SF Bay Area, the Sierra Mountains, Nevada, Utah, and a little bit in Colorado.<p>
         </div>
