@@ -52,7 +52,7 @@ nav li {
 }
 
 nav a:link, nav a:visited {
-    background-color: pink;
+    color: #07162E;
     text-decoration: none;
     transition: .5s;
 }
@@ -76,6 +76,10 @@ ol, ul {
 /* Buttons */
 .btn-primary {
     background-color: #348AA7 !important;
+}
+
+.btn-primary:hover {
+    background: green;
 }
 
 /* Images */
