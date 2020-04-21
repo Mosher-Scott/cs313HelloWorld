@@ -26,6 +26,8 @@ main {
     background: pink;
 }
 
+/* Navigation Menu */
+
 nav ul {
     text-align: right;
 }
@@ -55,7 +57,11 @@ nav label, #toggle {
     display: none;
 }
 
-
+/* Images */
+img {
+    max-width: 500px;
+    max-height: 500px;
+}
 
 
 /* MOBILE DESIGN */
