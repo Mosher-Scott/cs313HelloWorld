@@ -76,7 +76,7 @@
           <p>Video games is something else I love.  I'm slowly starting a collection of old video games and systems, mainly the ones I grew up playing.</p>
           <p>I have an Atari 2600 that used to be at my grandmothers house. I've also got the N64 still from high school, and I've also collected a PS2, Xbox 360, Wii, and I've built up a Raspberry Pi with a ton of different games in it.</p>
         </div>
-        <div class="col">
+        <div class="col centered">
           <img class="img-rounded-corner" src="../images/atari.jpg" alt="Some old video game systems">
         </div>
       </div>
