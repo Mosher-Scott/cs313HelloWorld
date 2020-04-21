@@ -19,7 +19,7 @@
                 <p>I currently live in Utah with my family and work for a high tech company.</p>
             </div>
             <div class="col">
-                <img src="../images/me.jpg" alt="Picture of Scott">
+                <img class="img-rounded-corner" src="../images/me.jpg" alt="Picture of Scott">
             </div>
         </div> 
       </div>
@@ -35,22 +35,19 @@
       </div>
       <div class="row">
         <div class="col">
-          <img class="img-rounded" src="../images/wedding.jpg" alt="Wedding photo by Scott Mosher Photography">
+          <img class="img-rounded-corner" src="../images/wedding.jpg" alt="Wedding photo by Scott Mosher Photography">
         </div>
         <div class="col">
           <p>Before I moved to Utah, I professionally photographed weddings and families.  I've been able to photograph over 100 weddings, randing from a small 8 person event to over 300 guests</p>  
         </div>
         <div class="col">
           <div class="img-rounded">
-            <img class="img-responsive" src="../images/wedding2.jpg" alt="Wedding photo by Scott Mosher Photography">
+            <img class="img-rounded-corner" src="../images/wedding2.jpg" alt="Wedding photo by Scott Mosher Photography">
           </div>
         </div>
       </div>
     </div>
   </section>
-  <div class="container">
-    <img class="img-rounded-corner" src="../images/wedding2.jpg" alt="Wedding photo by Scott Mosher Photography">
-  </div>
 </main>
 
 <?php 
