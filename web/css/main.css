@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;600&family=Merriweather:wght@400;700&display=swap');
+
+/* Fonts */
+
+h1 {
+    font-family: 'Merriweather', serif;
+}
+
+p {
+    font-family: 'Baloo Bhaina 2', cursive;
+}
+
+main { 
+    background: pink;
+}
+
 nav ul {
     text-align: right;
 }
@@ -5,6 +21,7 @@ nav ul {
 nav li {
     display: inline-block;
     margin: 5px 10px;
+    font-family: 'Merriweather', serif;
 }
 
 nav a:link, nav a:visited {
@@ -25,6 +42,8 @@ nav a:active {
 nav label, #toggle {
     display: none;
 }
+
+
 
 
 /* MOBILE DESIGN */
