@@ -22,6 +22,10 @@ p {
     font-family: 'Baloo Bhaina 2', cursive;
 }
 
+body {
+    max-width: 1400px;
+}
+
 main { 
     background: pink;
 }
