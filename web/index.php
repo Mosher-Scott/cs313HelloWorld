@@ -38,7 +38,8 @@
       </div>
 
     </div>
-    <hr>
+    <div class="bluebar">
+</div>
     </section>
   </main>
 
