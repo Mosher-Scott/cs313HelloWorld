@@ -1,5 +1,4 @@
 <?php
-
   @include_once('common/header.php');
 ?>
   <main>
@@ -30,7 +29,6 @@
         </div>
     </section>
   </main>
-</div>
 
 <?php 
   @include_once('common/footer.php');
