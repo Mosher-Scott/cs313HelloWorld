@@ -4,6 +4,7 @@
 
 ?>
   <main>
+    <hr>
     <section>
       <div>
         <h1>About Me</h1>
