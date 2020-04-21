@@ -79,7 +79,7 @@ ol, ul {
 }
 
 .btn-primary:hover {
-    background: green;
+    background: green !important;
 }
 
 /* Images */
