@@ -134,6 +134,7 @@ table {
 /* Random Classes */
 .centered {
     margin: auto;
+    text-align: center;
 }
 
 /* MOBILE DESIGN */
