@@ -74,6 +74,10 @@ nav a:link, nav a:visited {
     transition: .5s;
 }
 
+nav a:hover {
+    color: #348AA7;
+}
+
 nav label, #toggle {
     display: none;
 }
