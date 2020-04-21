@@ -227,4 +227,8 @@ table {
         text-decoration: underline;
     }
 
+    .btn-primary:hover {
+        background: orange;
+    }
+
 }
