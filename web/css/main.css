@@ -57,6 +57,10 @@ main {
     margin: auto;
 }
 
+section {
+    margin: 10px;
+}
+
 nav {
     background:  #FFCF99;
 }
