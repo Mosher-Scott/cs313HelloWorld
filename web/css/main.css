@@ -161,6 +161,7 @@ table {
         text-align: center;
     }
     
+    
     nav label {
         background: white;
         color: white;
@@ -169,6 +170,7 @@ table {
     }
     nav ul {
         padding: 0px;
+        display: block;
     }
     
     nav li {
@@ -176,6 +178,10 @@ table {
         background: white;
         padding: 5px 0px;
         margin: 0px;
+    }
+
+    .btn-primary {
+        width: 100%;
     }
     
     #toggle {
