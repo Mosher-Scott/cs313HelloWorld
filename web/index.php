@@ -1,7 +1,7 @@
 <?php
   @include_once('common/header.php');
 ?>
-  <main>
+  <main class="rounded-corners">
     <section>
       <div>
         <h1>About Me</h1>

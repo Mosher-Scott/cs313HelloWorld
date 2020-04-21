@@ -142,6 +142,10 @@ table {
     text-align: center;
 }
 
+.rounded-corners {
+    border-radius: 10%;
+}
+
 /* MOBILE DESIGN */
 @media screen and (max-width: 980px) {
     header , nav ul{
