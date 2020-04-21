@@ -4,8 +4,6 @@
   <main>
     <section>
       <div>
-      <div class="bluebar">
-      </div>
         <h1>About Me</h1>
         <div class="bluebar">
         </div>
