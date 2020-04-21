@@ -15,10 +15,7 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <h3>CS 313 - Backend Development</h3>
-            </div>
-            <div class="col">
-                <p>My name is Scott, and this is my website for CS 313.
+                <p>My name is Scott, and this is my website for CS 313.  I am a Senior at BYU Idaho with a major of Web Development, with an emphasis on backend development.<p>
             </div>
             <div class="col">
                 <img src="../images/me.jpg" alt="Picture of Scott">
@@ -32,20 +29,5 @@
             </div>    
         </div>
     </section>
-
-    <div class="row">
-  <div class="col">col</div>
-  <div class="col">col</div>
-  <div class="col">col</div>
-</div>
   </main>
-
-  <div class="container-fluid">
-  <h2>Three Equal Columns</h2>
-  <p>Use the .col class on a specified number of elements and Bootstrap will recognize how many elements there are (and create equal-width columns). In the example below, we use three col elements, which gets a width of 33.33% each.</p>
-  <div class="row">
-    <div class="col bg-success">.col</div>
-    <div class="col bg-warning">.col</div>
-    <div class="col bg-success">.col</div>
-  </div>
 </div>
