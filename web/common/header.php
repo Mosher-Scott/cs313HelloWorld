@@ -18,5 +18,10 @@
                     <h2>CS 313 - Backend Development</h2>
                 </div>
             </div>
+            <div class="col-sm">
+        <?php
+            @include_once('../common/nav.php');
+        ?>
+            </div>
         </div>
     </header>   
