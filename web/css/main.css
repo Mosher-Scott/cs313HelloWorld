@@ -22,13 +22,17 @@ p {
     font-family: 'Baloo Bhaina 2', cursive;
 }
 
+html {
+    text-align: center;
+}
 body {
-    max-width: 1400px;
-    background: #FFCF99;
+   
+    background: #348AA7;
 }
 
 main { 
-    background: pink;
+    max-width: 1400px;
+    background:  #FFCF99;
 }
 
 /* Navigation Menu */
