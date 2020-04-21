@@ -51,8 +51,8 @@ nav li {
     font-family: 'Merriweather', serif;
 }
 
-a:link, nav a:visited {
-    color: #07162E;
+nav a:link, nav a:visited {
+    color: #EAE6E5;
     text-decoration: none;
     transition: .5s;
 }
