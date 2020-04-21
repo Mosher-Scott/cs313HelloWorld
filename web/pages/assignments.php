@@ -17,6 +17,7 @@
         <div class="row">
             <div class="col">
                 <h3>Week 01</h3>
+                <p><b>Hello World: </b><a href="../pages/hello.html">Link</a>
             </div>
             <div class="col">
                 <h3>Week 02</h3>
