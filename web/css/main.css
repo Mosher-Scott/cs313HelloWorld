@@ -125,6 +125,11 @@ img {
     border-radius: 10%;
 }
 
+.full-width {
+    max-height: 150px;
+    width: 100%;
+}
+
 /* Tables */
 table {
     max-width: 500px;

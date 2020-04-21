@@ -54,7 +54,7 @@
             <h3>Hobbies</h3>
         </div> 
         <div class="col-md-12">
-          <img src="../images/bikePark.jpg" alt="Mountain biking at a ski resort" class="img-responsive">
+          <img src="../images/bikePark.jpg" alt="Mountain biking at a ski resort" class="full-width">
       </div>
     </div>
   </section>
