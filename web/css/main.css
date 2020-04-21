@@ -73,9 +73,13 @@ nav label, #toggle {
     display: none;
 }
 
+ol, ul {
+    padding-bottom: 5px;
+}
+
 /* Buttons */
 .btn-primary {
-
+    background-color: #348AA7 !important;
 }
 
 /* Images */
