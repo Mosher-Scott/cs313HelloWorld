@@ -5,8 +5,8 @@
         <meta name="description" content="Home">
         <meta name="author" content="Scott Mosher">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/main.css">
         <title>CS 313 - Home</title>
     </head>
 
