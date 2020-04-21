@@ -6,4 +6,3 @@
         <li><a href="../pages/assignments.php">Assignments</a></li>
     </ul>
 </nav>
-    
