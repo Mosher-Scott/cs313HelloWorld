@@ -48,17 +48,37 @@
       </div>
     </div>
 
+    <div class="bluebar">
+    </div>
+
     <div class="container-fluid no padding">
       <div class="row">
         <div class="col">
             <h3>Hobbies</h3>
-        </div> 
-        <div class="col-md-12">
-          
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <img src="../images/bikePark.jpg" alt="Mountain biking at a ski resort" class="img-rounded">
+        </div>
+        <div class="col">
+          <p>I also enjoy mountain biking, and I get out as often as I can.  My two oldest boys are now hooked on it also, since we found some beginner downhill trails they love.</p>
+          <p>I've ridden on trails throughout the SF Bay Area, the Sierra Mountains, Nevada, Utah, and a little bit in Colorado.<p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <p>Video games is something else I love.  I'm slowly starting a collection of old video games and systems, mainly the ones I grew up playing.</p>
+        </div>
+        <div class="col">
+          <img src="../images/atari.jpg" alt="Some old video game systems" class="img-rounded">
+        </div>
       </div>
     </div>
   </section>
-  <img src="../images/bikePark.jpg" alt="Mountain biking at a ski resort" class="full-width">
+
 </main>
 
 <?php 
