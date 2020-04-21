@@ -1,15 +1,17 @@
 <div class="container-fluid">
+    <div class="row">
     <div class="col">
-    <h2>CS 313 - Backend Development</h2>
+        <h2>CS 313 - Backend Development</h2>
     </div>
     <div class="col">
-    <nav>
-    <label for="toggle">Menu</label>
-    <input id="toggle" type="checkbox">
-    <ul id="menu">
-        <li class=" btn btn-primary"><a href="../index.php">Home</a></li>
-        <li class=" btn btn-primary"><a href="../pages/assignments.php">Assignments</a></li>
-    </ul>
-</nav>
+        <nav>
+            <label for="toggle">Menu</label>
+            <input id="toggle" type="checkbox">
+            <ul id="menu">
+                <li class=" btn btn-primary"><a href="../index.php">Home</a></li>
+                <li class=" btn btn-primary"><a href="../pages/assignments.php">Assignments</a></li>
+            </ul>
+        </nav>
     </div>
+</div>
 </div>
