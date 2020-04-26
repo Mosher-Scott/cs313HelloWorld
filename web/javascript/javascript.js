@@ -18,6 +18,10 @@ function changeDivColor() {
 
 }
 
+function changeDivColorJquery() {
+
+}
+
 // Resets the div color to the original color
 function resetDivColor() {
     document.getElementById("firstDiv").style.backgroundColor = "";

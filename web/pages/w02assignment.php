@@ -67,9 +67,10 @@
 
       <div class="row">
         <div class="col-md-10">
-          <p>Please enter a color and click the button to change the color of the first section of the page.  If the color doesn't change, you may have entered an invalid color</p>
+          <p>Please enter a color and click the button to change the color of the first section of the page.  If the color doesn't change, you may have entered an invalid color.</p>
           <input type="text" id="colorInputBox"></input>
-          <button id="colorChangeButton" onclick="changeDivColor()">Change Color</button>
+          <button class="btn btn-primary" id="colorChangeButton" onclick="changeDivColor()">Change Color</button>
+          <button id="colorChangeButton" onclick="changeDivColorJquery()">Change Color w/jQuery</button>
           <button id="colorChangeButton" onclick="resetDivColor()">Reset Color</button>
         </div>
       </div>
