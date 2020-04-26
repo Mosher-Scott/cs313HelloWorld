@@ -14,10 +14,10 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-               <p>Text</p>
+               <p>Left Text</p>
             </div>
             <div class="col-md-6">
-            <p>Text</p>
+            <p>Right Text</p>
             </div>
         </div> 
       </div>
@@ -33,14 +33,14 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <p>Text</p>
+          <p>Left Text</p>
         </div>
         <div class="col-md-6">
-          <p>Text</p>
+          <p>Middle Text</p>
         </div>
         <div class="col-md-6">
           <div class="img-rounded">
-          <p>Image</p>
+          <p>Right Image</p>
           </div>
         </div>
       </div>
