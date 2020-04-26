@@ -32,6 +32,7 @@
             <h3>TITLE</h3>
         </div>    
       </div>
+
       <div class="row">
         <div class="col-md-6">
           <p>Left Text</p>
@@ -45,11 +46,11 @@
           </div>
         </div>
       </div>
+
     </div>
 
     <div class="bluebar">
     </div>
-
     
   </section>
 
