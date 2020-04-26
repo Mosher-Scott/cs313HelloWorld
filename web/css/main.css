@@ -147,6 +147,13 @@ table {
     border-radius: 50px;
 }
 
+
+/* Ids */
+#boldText:hover {
+    font-weight: bold;
+}
+
+
 /* MOBILE DESIGN */
 @media screen and (max-width: 980px) {
     h2 {

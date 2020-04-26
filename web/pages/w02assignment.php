@@ -4,7 +4,7 @@
 ?>
   <main class="rounded-corners">
     <section>
-      <div>
+      <div id="firstDiv">
         <h1>W02 Assignment</h1>
         <div class="bluebar">
         </div>
@@ -36,10 +36,32 @@
     <div class="bluebar">
     </div>
       
-    <div class="container-fluid">
+    <div class="container-fluid" id="secondDiv">
       <div class="row">
         <div class="col">
-            <h3>TITLE</h3>
+            <h3>Part I</h3>
+        </div>    
+      </div>
+
+      <div class="row">
+        <div class="col-md-6" id="buttonDiv">
+          <p>Click the button to display an alert message:</p>
+          <button id="alertButton" onclick="displayAlertMessage()">Click Me!</button>
+        </div>
+        <div class="col-md-6" id="boldText">
+          <p>This is some text on a page.  Using CSS can do some pretty cool stuff!</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bluebar">
+    </div>
+      
+    <div class="container-fluid" id="secondDiv">
+      <div class="row">
+        <div class="col">
+            <h3>Third Div</h3>
         </div>    
       </div>
 
@@ -47,14 +69,6 @@
         <div class="col-md-6">
           <p>Click the button to display an alert message:</p>
           <button id="alertButton" onclick="displayAlertMessage()">Click Me!</button>
-        </div>
-        <div class="col-md-6">
-          <p>Middle Text</p>
-        </div>
-        <div class="col-md-6">
-          <div class="img-rounded">
-          <p>Right Image</p>
-          </div>
         </div>
       </div>
 
