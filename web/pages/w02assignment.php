@@ -18,7 +18,7 @@
                <p>Left Text</p>
             </div>
             <div class="col-md-6">
-            <p>Right Text</p>
+            <button id="alertButton" onclick="displayAlertMessage()">Click Me!</button>
             </div>
         </div> 
       </div>
