@@ -20,5 +20,5 @@ function changeDivColor() {
 
 // Resets the div color to the original color
 function resetDivColor() {
-    document.getElementById("firstDiv").style.backgroundColor = "pink";
+    document.getElementById("firstDiv").style.backgroundColor = "#FFCF99";
 }
