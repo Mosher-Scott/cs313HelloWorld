@@ -226,9 +226,4 @@ table {
     nav li:active a {
         text-decoration: underline;
     }
-
-    .btn-primary:hover {
-        background: orange;
-    }
-
 }
