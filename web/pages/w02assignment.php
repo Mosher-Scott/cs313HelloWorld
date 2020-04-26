@@ -68,7 +68,8 @@
       <div class="row">
         <div class="col-md-6">
           <p>Please enter a color and click the button to change the color of the first section of the page.  If the color doesn't change, you may have entered an invalid color</p>
-          <button id="colorChangeButton" onclick="changeDivColor()">Click Me!</button>
+          <input type="text" id="colorInputBox"></input>
+          <button id="colorChangeButton" onclick="changeDivColor()">Change Color</button>
         </div>
       </div>
 
