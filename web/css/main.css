@@ -120,6 +120,11 @@ nav label, #toggle {
     color: #EAE6E5 !important;
 }
 
+.btn-sm:hover {
+    background: #EAE6E5 !important;
+    color: #348AA7;
+}
+
 /* Images */
 .img-rounded-corner {
     border-radius: 10%;

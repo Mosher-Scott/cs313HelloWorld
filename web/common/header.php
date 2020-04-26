@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../css/main.css">
 
         <script src="../javascript/javascript.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <title>CS 313 - Home</title>
     </head>
 
