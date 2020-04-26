@@ -1,6 +1,4 @@
-$(document).ready(function() {
-    $('#changeDivColorJquery').click(function() {
-      var term = $('#colorInputBox').val();
-      alert(term);
-    });
-  });
+function changeDivColorJquery() {
+    var term = $('#colorInputBox').val();
+    alert(term);
+  }
