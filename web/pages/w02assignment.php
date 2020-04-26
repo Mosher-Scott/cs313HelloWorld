@@ -46,7 +46,7 @@
       <div class="row">
         <div class="col-md-6" id="buttonDiv">
           <p>Click the button to display an alert message:</p>
-          <button id="alertButton" onclick="displayAlertMessage()">Click Me!</button>
+          <button class="btn btn-sm" id="alertButton" onclick="displayAlertMessage()">Click Me!</button>
         </div>
         <div class="col-md-6" id="boldText">
           <p>This is some text on a page.  Using CSS can do some pretty cool stuff!  Mouse over this text to see it change to bold.</p>
