@@ -15,10 +15,8 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-               <p>Left Text</p>
-            </div>
-            <div class="col-md-6">
-            <button id="alertButton" onclick="displayAlertMessage()">Click Me!</button>
+               <p>Click the button to display an alert message</p>
+               <button id="alertButton" onclick="displayAlertMessage()">Click Me!</button>
             </div>
         </div> 
       </div>
