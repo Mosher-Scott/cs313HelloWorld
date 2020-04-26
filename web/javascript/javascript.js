@@ -10,7 +10,7 @@ function displayAlertMessage() {
 function changeDivColor() {
     // First get the value in the user input box
     var color = document.getElementById("colorInputBox").value;
-    console.log("Color: " . color);
+    alert(color);
 
     // Now change the background color of the element with the ID of firstDiv
 
