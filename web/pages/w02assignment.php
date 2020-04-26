@@ -15,7 +15,7 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-              <p>This assignment has a few parts:</p>
+              <h4>This assignment has a few parts:</h4>
               <ol>
                 <li>Add a button for the user to click to display an alert message</li>
                 <li>Add classes/id tags to divs</li>
@@ -23,7 +23,7 @@
                 <li>Allow user to specify custom colors for the first div in the document</li>
               </ol>
 
-              <p>Optional requirements</p>
+              <h4>Optional requirements</h4>
               <ol>
                 <li>Allow the user to change the background color, but use jQuery instead of Javascript</li>
                 <li>Toggle visbility of the 3rd div, and fade visiblity in/out</li>
