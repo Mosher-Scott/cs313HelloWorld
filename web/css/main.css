@@ -115,6 +115,11 @@ nav label, #toggle {
     color: #348AA7;
 }
 
+.btn-sm {
+    background-color: #348AA7 !important;
+    color: #EAE6E5 !important;
+}
+
 /* Images */
 .img-rounded-corner {
     border-radius: 10%;
