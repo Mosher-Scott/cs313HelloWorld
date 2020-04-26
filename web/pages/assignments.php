@@ -34,6 +34,12 @@
                 <td><a href="#">Link</a></td>
                 <td></td>
                 </tr>
+                <tr>
+                <th scope="row">3</th>
+                <td>W02 Team Activity</td>
+                <td><a href="../pages/w02assignment.php">Link</a></td>
+                <td></td>
+                </tr>
             </tbody>
         </table>
     </section>
