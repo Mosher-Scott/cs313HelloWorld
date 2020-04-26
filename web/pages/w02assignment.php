@@ -1,10 +1,11 @@
 <?php
-  @include_once('common/header.php');
+    @include_once('../common/header.php');
+    @include_once('../common/nav.php');
 ?>
   <main class="rounded-corners">
     <section>
       <div>
-        <h1>TITLE</h1>
+        <h1>W02 Assignment</h1>
         <div class="bluebar">
         </div>
       </div>
