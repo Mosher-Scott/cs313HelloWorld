@@ -4,7 +4,7 @@
 ?>
   <main class="rounded-corners">
     <section>
-      <div id="firstDiv">
+      <div>
         <h1>W02 Assignment</h1>
         <div class="bluebar">
         </div>
@@ -12,7 +12,7 @@
     </section>
 
     <section>
-      <div class="container-fluid">
+      <div class="container-fluid" id ="firstDiv">
         <div class="row">
             <div class="col-md-6">
               <h4>This assignment has a few parts:</h4>
@@ -49,7 +49,7 @@
           <button id="alertButton" onclick="displayAlertMessage()">Click Me!</button>
         </div>
         <div class="col-md-6" id="boldText">
-          <p>This is some text on a page.  Using CSS can do some pretty cool stuff!</p>
+          <p>This is some text on a page.  Using CSS can do some pretty cool stuff!  Mouse over this text to see it change to bold.</p>
         </div>
       </div>
 
@@ -67,8 +67,8 @@
 
       <div class="row">
         <div class="col-md-6">
-          <p>Click the button to display an alert message:</p>
-          <button id="alertButton" onclick="displayAlertMessage()">Click Me!</button>
+          <p>Please enter a color and click the button to change the color of the first section of the page.  If the color doesn't change, you may have entered an invalid color</p>
+          <button id="colorChangeButton" onclick="changeDivColor()">Click Me!</button>
         </div>
       </div>
 
