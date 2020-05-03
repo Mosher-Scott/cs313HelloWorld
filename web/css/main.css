@@ -75,7 +75,8 @@ footer {
 }
 
 .blue-border {
-    border: 20px solid pink;
+    border: 6px solid #348AA7;
+    padding: 10px 0px 10px 0px;
 }
 
 /* Navigation Menu */
