@@ -10,11 +10,12 @@
                 ?> 
             </p>
         </div>
+
         <div class="col">
             <p>Copyright 2020</p>
         </div>
       </div>
-
+    </div>
                 
         </footer>
     </body>
