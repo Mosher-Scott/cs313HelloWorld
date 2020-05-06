@@ -4,8 +4,12 @@
  //initialize sessions
 
 //Define the products and cost
-$products = array("product A", "product B", "product C");
-$amounts = array("19.99", "10.99", "2.99");
+//$products = array("product A", "product B", "product C");
+//$amounts = array("19.99", "10.99", "2.99");
+
+$products = array("XC Fitness", "Cornering Techniques", "Used Bicycles", "Learning Drops");
+$descriptions = array("Be able to climb those hills and ride long distances", "Feel more confident and get faster when turning your bike", "Sometimes an old bike is just as good as a new bike, for less than half the cost", "Want to learn how to safely glide off those rocks and drops?");
+$amounts = array("19.99", "10.99", "2.99", "8.99");
 
 //Load up session
  if ( !isset($_SESSION["total"]) ) {
@@ -22,10 +26,11 @@ $amounts = array("19.99", "10.99", "2.99");
  {
  if ($_GET["reset"] == 'true')
    {
-   unset($_SESSION["qty"]); //The quantity for each product
-   unset($_SESSION["amounts"]); //The amount from each product
-   unset($_SESSION["total"]); //The total cost
-   unset($_SESSION["cart"]); //Which item has been chosen
+     $_SESSION = array();
+  // unset($_SESSION["qty"]); //The quantity for each product
+  // unset($_SESSION["amounts"]); //The amount from each product
+  // unset($_SESSION["total"]); //The total cost
+  // unset($_SESSION["cart"]); //Which item has been chosen
    }
  }
 
@@ -95,6 +100,7 @@ $amounts = array("19.99", "10.99", "2.99");
  ?>
  <br/><br/><br/>
  <h2>Cart</h2>
+ <?php print_r($_SESSION["cart"]); ?>
  <table>
  <tr>
  <th>Product</th>
