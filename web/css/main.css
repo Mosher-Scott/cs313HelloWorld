@@ -26,12 +26,34 @@ h3, h4 {
     text-align: center;
 }
 
+h4 {
+    font-family: 'Merriweather', serif;
+    color: #040404;
+    text-align: center;
+    font-size: .9em;
+    padding-top: 5px;
+}
+
 p {
     font-family: 'Baloo Bhaina 2', cursive;
 }
 
+hr {
+    border: 5px solid #348AA7;
+    border-radius: 5px;
+}
+
 .bluebar {
     max-width: 60%;
+    border: 6px solid #348AA7;
+    border-radius: 55px;
+    margin: auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .bluebar-product-width {
+    max-width: 93%;
     border: 6px solid #348AA7;
     border-radius: 55px;
     margin: auto;
@@ -141,6 +163,12 @@ nav label, #toggle {
 .max-size-500 {
     max-width: 500px;
     max-height: 500px;
+}
+
+.product-thumbnail {
+    max-width: 200px;
+    max-height: 200px;
+    padding-bottom: 5px;
 }
 
 /* Tables */

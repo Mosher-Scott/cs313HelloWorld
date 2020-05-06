@@ -208,7 +208,7 @@
         <h3>Posted Data</h3>
         <div>
             <p><b>Name: </b><span><?php echo $name ?></span></p>
-            <p><b>Email: </b><span><?php echo $email ?></span></p>
+            <p><b>Email: </b><span><a href="mailto:<?php echo $email ?>">Click Here To Email Me</A></span></p>
             <p><b>Blue: </b><span><?php echo $colorBlue ?></span></p>
             <p><b>Pink: </b><span><?php echo $colorPink ?></span></p>
             <p><b>Band: </b><span><?php echo $band ?></span></p>
@@ -233,3 +233,8 @@
 <?php 
   @include_once('../common/footer.php');
 ?>
+
+<p><b>Name: </b><span><?php echo $name ?></span></p>
+<p><b>Email: </b><span><a href='mailto:"<?php echo $name ?>''</span></p>
+
+<p><b>Major: </b><span><?php echo $major ?></span></p>
