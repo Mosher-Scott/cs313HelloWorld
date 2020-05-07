@@ -26,18 +26,24 @@
                 <tr>
                 <th scope="row">1</th>
                 <td>Hello World</td>
-                <td><a href="../pages/hello.html">Link</a></td>
+                <td><a href="<?php echo urlPath('/pages/hello.html'); ?>">Link</a></td>
                 </tr>
                 <tr>
                 <th scope="row">2</th>
                 <td>Assignment Page</td>
-                <td><a href="#">Link</a></td>
+                <td><a href="#">Current Page</a></td>
                 <td></td>
                 </tr>
                 <tr>
                 <th scope="row">3</th>
                 <td>W02 Team Activity</td>
-                <td><a href="../pages/w02assignment.php">Link</a></td>
+                <td><a href="<?php echo urlPath('/pages/w02assignment.php') ?>">Link</a></td>
+                <td></td>
+                </tr>
+                <tr>
+                <th scope="row">4</th>
+                <td>W03 Team Activity</td>
+                <td><a href="<?php echo urlPath('/pages/w03Team-Assignment/teamAssignment.php') ?>">Link</a></td>
                 <td></td>
                 </tr>
             </tbody>

@@ -19,7 +19,7 @@
                 <p>I currently live in Utah with my family and work for a high tech company.</p>
             </div>
             <div class="col-md-6">
-                <img class="img-rounded-corner" src="../images/me.jpg" alt="Picture of Scott">
+                <img class="img-rounded-corner" src="<?php echo urlPath('/images/me.jpg'); ?>" alt="Picture of Scott">
             </div>
         </div> 
       </div>
@@ -34,16 +34,16 @@
         </div>    
       </div>
       <div class="row">
-        <div class="col-md-6">
-          <img class="img-rounded-corner" src="../images/wedding.jpg" alt="Wedding photo by Scott Mosher Photography">
+        <div class="col-md-4">
+          <img class="img-rounded-corner" src="<?php echo urlPath('/images/wedding.jpg'); ?>" alt="Wedding photo by Scott Mosher Photography">
         </div>
         <div class="col-md-6">
           <p>Before I moved to Utah, I professionally photographed weddings and families.  I've been able to photograph over 100 weddings, randing from a small 8 person event to over 300 guests.</p>
           <p>I now photograph weddings and family portraits on the side.  Its something I still love doing, but school, full time work, and a family has decreased the time I have to pursue it.</p>  
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="img-rounded">
-            <img class="img-rounded-corner" src="../images/wedding2.jpg" alt="Wedding photo by Scott Mosher Photography">
+            <img class="img-rounded-corner" src="<?php echo urlPath('/images/wedding2.jpg'); ?>" alt="Wedding photo by Scott Mosher Photography">
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@
       
       <div class="row">
         <div class="col-md-6">
-          <img class="img-rounded-corner" src="../images/bikePark.jpg" alt="Mountain biking at a ski resort">
+          <img class="img-rounded-corner" src="<?php echo urlPath('/images/bikePark.jpg'); ?>" alt="Mountain biking at a ski resort">
         </div>
         <div class="col-md-6">
           <h4>Mountain Biking</h4>
@@ -78,7 +78,7 @@
           <p>I have an Atari 2600 that used to be at my grandmothers house. I've also got the N64 still from high school, and I've also collected a PS2, Xbox 360, Wii, and I've built up a Raspberry Pi with a ton of different games in it.</p>
         </div>
         <div class="col-md-6 centered">
-          <img class="img-rounded-corner" src="../images/atari.jpg" alt="Some old video game systems">
+          <img class="img-rounded-corner" src="<?php echo urlPath('/images/atari.jpg'); ?>" alt="Some old video game systems">
         </div>
       </div>
     </div>
