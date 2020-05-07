@@ -8,7 +8,7 @@
      $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
      define("WWW_ROOT", $doc_root);
 
-    echo $doc_root;
+    //echo $doc_root;
 
     // Create the links automatically
     function urlPath($script_path) {
@@ -20,4 +20,14 @@
             echo $script_path;
        return WWW_ROOT . $script_path;
     }
+
+    // function urlPath($script_path) {
+    //     // Add the leading / if not present
+
+    //     if($script_path[0] != '/') {
+    //         $script_path = '/' . $script_path;
+    //     }
+    //         echo $script_path;
+    //    return WWW_ROOT . $script_path;
+    // }
 ?>
