@@ -8,6 +8,8 @@
      $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
      define("WWW_ROOT", $doc_root);
 
+    echo $doc_root;
+
     // Create the links automatically
     function urlPath($script_path) {
         // Add the leading / if not present
