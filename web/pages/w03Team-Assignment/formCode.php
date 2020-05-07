@@ -34,7 +34,7 @@ $information = array(
     <p><b>Major: </b><span><?php echo $major ?></span></p>
     <p><b>Comments: </b><span><?php echo $comments ?></span></p>
     
-    <?php echo "<p><b>Places: </b><span>";
+    <!-- <?php echo "<p><b>Places: </b><span>";
       if(!empty($places))
       {
           foreach ($places as $visited)
@@ -44,7 +44,7 @@ $information = array(
           }
       }
       echo "</span></p>";
-    ?>
+    ?> -->
 
   <hr>
     <h3>Basic Info on Places You've Visited</h3>
