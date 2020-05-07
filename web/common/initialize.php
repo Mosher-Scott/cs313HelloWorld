@@ -10,7 +10,7 @@
 
     //echo $doc_root;
 
-    // Create the links automatically locally
+    // Create the links automatically when on the local server
     // function urlPath($script_path) {
     //     // Add the leading / if not present
 

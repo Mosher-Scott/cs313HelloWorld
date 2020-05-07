@@ -57,7 +57,10 @@ $information = array(
             $countryNumber++;
         };
     ?>
-    
+  
+  <div>
+      <a href="<?php echo urlPath('/pages/w03Team-Assignment/teamAssignment.php'); ?>">Back to the form</a>
+  </div>
   </section>
 
 </main>
