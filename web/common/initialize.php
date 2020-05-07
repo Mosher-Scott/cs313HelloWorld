@@ -10,24 +10,25 @@
 
     //echo $doc_root;
 
-    // Create the links automatically
-    function urlPath($script_path) {
-        // Add the leading / if not present
-
-        if($script_path[0] != '/') {
-            $script_path = '/' . $script_path;
-        }
-            echo "Script_path: " . $script_path;
-       return WWW_ROOT . $script_path;
-    }
-
+    // Create the links automatically locally
     // function urlPath($script_path) {
     //     // Add the leading / if not present
 
     //     if($script_path[0] != '/') {
     //         $script_path = '/' . $script_path;
     //     }
-    //         echo $script_path;
+        
     //    return WWW_ROOT . $script_path;
     // }
+
+    // For live site
+    function urlPath($script_path) {
+        // Add the leading / if not present
+
+        if($script_path[0] != '/') {
+            $script_path = '/' . $script_path;
+        }
+            // echo $script_path;
+       return $script_path;
+    }
 ?>
