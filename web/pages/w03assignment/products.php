@@ -137,6 +137,7 @@ if ( isset($_GET["add"]) )
         </div>
       </div>
 
+      <hr>
       <div id="rightSideContent" class="col-2">
         <div>
           <h3>Your Cart</h3>
