@@ -155,7 +155,7 @@
           $confirmationPage = urlPath('pages/w03assignment/confirmation.php');
 
           $_SESSION['orderDetails']['orderNo'] = rand(500,1500);
-          $_SESSION['orderDetails']['orderdate'] = date("m/d/Y");
+          $_SESSION['orderDetails']['orderDate'] = date("m/d/Y");
 
          header("location: $confirmationPage");
           
