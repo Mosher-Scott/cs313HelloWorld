@@ -83,9 +83,6 @@ if ( isset($_GET["add"]) )
       $_SESSION["amounts"][$i] = $amounts[$i] * $qty;
     }
   }
-
-
-
 ?>
 
   <main class="rounded-corners">
@@ -136,7 +133,6 @@ if ( isset($_GET["add"]) )
             ?>  
           </div>
         </div>
-
       </div>
 
       <div id="rightSideContent" class="col-2">
@@ -151,7 +147,7 @@ if ( isset($_GET["add"]) )
 
               ?>
 
-        <!-- Shopping Cart table -->
+          <!-- Shopping Cart table -->
           <table>
             <!-- Table Headers -->
             <tr>
@@ -195,7 +191,7 @@ if ( isset($_GET["add"]) )
             </tr>
           </table>
             <?php };?>
-        </div>  
+          
       </div>
     </div>
 
