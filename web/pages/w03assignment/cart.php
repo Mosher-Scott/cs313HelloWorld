@@ -130,7 +130,7 @@
         <a href="products.php" class="btn btn-primary">&#8592; Back to Products</a>
         <?php 
           if ($empty == true) {
-            echo "<a href='' class='btn btn-disabled' disabled>Checkout</a>";
+            echo "<p class='btn btn-disabled' disabled>Checkout</p>";
           } else {
             echo "<a href='checkout.php' class='btn btn-primary'>Checkout</a>";
           }
