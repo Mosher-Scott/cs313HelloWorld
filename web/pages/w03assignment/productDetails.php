@@ -2,7 +2,7 @@
 
 $products = array("Chainrings", "Chains", "Grips", "Handlebars",
   "Cleaning Services", "Tires", "Tubes", "Bike Seats");
-    $descriptions = array("Be able to climb those hills and ride long distances", "Feel more confident and get faster when turning your bike", "Sometimes an old bike is just as good as a new bike, for less than half the cost", "Want to learn how to safely glide off those rocks and drops?");
-    $amounts = array("19.99", "10.99", "2.99", "8.99", "$60", "90", "18.50", "25");
+    $descriptions = array("New chainring for a bike", "New 9sp chain", "Mtn bike grips", "400mm Handlebar", "We'll clean your bike for you", "29\" Mtb tire", "29\" Mtn tube", "Mtn bike seat");
+    $amounts = array("19.99", "10.99", "2.99", "8.99", "60", "90", "18.50", "25");
 
 ?>

@@ -3,10 +3,26 @@
 
     @include_once('../../common/header.php');
     @include_once('../../common/nav.php');
+    @include_once('../../common/phpMethods.php');
     @include_once('productDetails.php');
     
-    // Cart idea from https://www.withinweb.com/info/a-shopping-cart-using-php-sessions-code/
 
+    if(!isset($_SESSION['checkoutComplete'])) {
+      $_SESSION['checkoutComplete'] = 'false';
+    }
+
+
+    // Check to see if the user has completed the checkout process.  If so, remove the items from the cart.  Then set the variable to false
+    if($_SESSION['checkoutComplete'] == 'true') {
+      resetSession();
+      resetCart();
+      
+      $_SESSION['checkoutComplete'] = 'false';
+
+      $_SESSION['cart'] = array();
+    }
+
+    // Cart idea from https://www.withinweb.com/info/a-shopping-cart-using-php-sessions-code/
    
     //Load up session
  if ( !isset($_SESSION["total"]) ) {
@@ -31,7 +47,7 @@ if ( isset($_GET['reset']) )
 }
 
 
-//Add
+//Add items to the cart
 
 // print_r($_GET);
 if ( isset($_GET["add"]) )
@@ -46,27 +62,30 @@ if ( isset($_GET["add"]) )
  //---------------------------
  //Delete
  if ( isset($_GET["delete"]) )
-  {
-  $i = $_GET["delete"];
-  $qty = $_SESSION["qty"][$i];
+    {
+    $i = $_GET["delete"];
+    $qty = $_SESSION["qty"][$i];
 
-  // $qty--;  Decreases qty by 1 each time you click the button
-  // $_SESSION["qty"][$i] = $qty;  // Now it will set the qty to itself - 1
+    // $qty--;  Decreases qty by 1 each time you click the button
+    // $_SESSION["qty"][$i] = $qty;  // Now it will set the qty to itself - 1
 
-  // We want to just straight delete it, so we'll just set the qty to 0
-  $_SESSION["qty"][$i] = 0; 
-  $qty = 0;
+    // We want to just straight delete it, so we'll just set the qty to 0
+    $_SESSION["qty"][$i] = 0; 
+    $qty = 0;
 
-  //remove item if quantity is zero
-  if ($qty == 0) {
-   $_SESSION["amounts"][$i] = 0;
-   unset($_SESSION["cart"][$i]);
- }
-else
- {
-  $_SESSION["amounts"][$i] = $amounts[$i] * $qty;
- }
-}
+    //remove item if quantity is zero
+    if ($qty == 0) {
+    $_SESSION["amounts"][$i] = 0;
+    unset($_SESSION["cart"][$i]);
+    }
+    else
+    {
+      $_SESSION["amounts"][$i] = $amounts[$i] * $qty;
+    }
+  }
+
+
+
 ?>
 
   <main class="rounded-corners">
@@ -75,6 +94,7 @@ else
         <h1>Products & Services</h1>
         <div class="bluebar">
         </div>
+      
       </div>
     </section>
 
@@ -106,7 +126,7 @@ else
 
                   echo "<h4>$item</h4>"; // Title
                   echo "<img class='product-thumbnail' src='images/{$productNumber}.jpg' alt='Mountain Bike Image'>"; // Image
-                  echo "<p>{$amounts[$productNumber]}</p>"; // Price
+                  echo "<p>$ {$amounts[$productNumber]}</p>"; // Price
                   echo "<p><a href='?add={$productNumber}' class='btn btn-primary'>Add to Cart</a></p>"; // Add to cart button
                   
                   echo "</div>"; // Product div end
@@ -121,6 +141,16 @@ else
 
       <div id="rightSideContent" class="col-2">
         <div>
+          <h3>Your Cart</h3>
+
+          <?php
+            // Check if cart is empty or not
+              if (count($_SESSION['cart']) == 0) {
+                echo "<h5>CART IS EMPTY</h5>";
+              } else {
+
+              ?>
+
         <!-- Shopping Cart table -->
           <table>
             <!-- Table Headers -->
@@ -128,7 +158,6 @@ else
               <th>Product</th>
               <th>Qty  </th>
               <th>Price</th>
-              <th>Remove?</th>
             </tr>
 
             <!-- Product Info -->
@@ -144,7 +173,7 @@ else
 
                 <td>$<?php echo( $_SESSION["amounts"][$i] ); ?></td>
 
-                <td><a href="?delete=<?php echo($i); ?>">Yes</a></td>
+                <td><a href="?delete=<?php echo($i); ?>" class="btn-sm btn-primary">Remove</a></td>
               </tr>
 
             <!-- Now update the total with the total for each item -->
@@ -162,9 +191,10 @@ else
             </tr>
             <tr>
               <!-- Product Info -->
-              <td colspan="4"><a href="cart.php">Checkout</td>
+              <td colspan="4"><a href="cart.php" class="btn btn-primary">Checkout</td>
             </tr>
           </table>
+            <?php };?>
         </div>  
       </div>
     </div>

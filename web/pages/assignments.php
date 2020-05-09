@@ -46,6 +46,13 @@
                 <td><a href="<?php echo urlPath('/pages/w03Team-Assignment/teamAssignment.php') ?>">Link</a></td>
                 <td></td>
                 </tr>
+
+                <tr>
+                <th scope="row">5</th>
+                <td>W03 Activity</td>
+                <td><a href="<?php echo urlPath('/pages/w03assignment/products.php') ?>">Link</a></td>
+                <td></td>
+                </tr>
             </tbody>
         </table>
     </section>
