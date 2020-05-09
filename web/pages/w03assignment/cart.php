@@ -68,6 +68,16 @@
     <section>
       <div class="container-fluid">
         <div class="row">
+
+        
+        <?php
+            // Check if cart is empty or not
+              if (count($_SESSION['cart']) == 0) {
+                echo "<h5>CART IS EMPTY</h5>";
+              } else {
+
+              ?>
+
         <table class="cart-table">
             <!-- Table Headers -->
             <tr>
@@ -109,6 +119,7 @@
             </tr>
 
           </table>
+          <?php };?>
         </div> 
       </div>
     <div>

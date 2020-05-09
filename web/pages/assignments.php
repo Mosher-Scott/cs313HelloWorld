@@ -31,7 +31,7 @@
                 <tr>
                 <th scope="row">2</th>
                 <td>Assignment Page</td>
-                <td><a href="#">Current Page</a></td>
+                <td>>Current Page</a></td>
                 <td></td>
                 </tr>
                 <tr>
