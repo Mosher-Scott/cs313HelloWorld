@@ -54,7 +54,11 @@
         $_SESSION["amounts"][$i] = $amounts[$i] * $qty;
         }
 }
-
+  $empty = false;
+  $numItems = count($_SESSION['cart']);
+  if($numItems == 0) {
+    $empty = true;
+  }
 ?>
 <main class="rounded-corners">
     <section>
@@ -72,7 +76,7 @@
         
         <?php
             // Check if cart is empty or not
-              if (count($_SESSION['cart']) == 0) {
+              if ($empty) {
                 echo "<h5>CART IS EMPTY</h5>";
               } else {
 
@@ -125,14 +129,13 @@
     <div>
         <a href="products.php" class="btn btn-primary">&#8592; Back to Products</a>
         <?php 
-          if (count($_SESSION['cart']) == 0) {
-            echo "<a href='checkout.php' class='btn btn-primary' disabled>Checkout</a>";
+          if ($empty == true) {
+            echo "<a href='' class='btn btn-disabled' disabled>Checkout</a>";
           } else {
             echo "<a href='checkout.php' class='btn btn-primary'>Checkout</a>";
           }
-
         ?>
-        <a href="checkout.php" class="btn btn-primary">Checkout</a>
+
     </div>
   </section>
 

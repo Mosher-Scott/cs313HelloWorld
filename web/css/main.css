@@ -142,6 +142,11 @@ nav label, #toggle {
     color: #EAE6E5 !important;
 }
 
+.btn-disabled {
+    background-color: grey  !important;
+    color: #EAE6E5 !important;
+}
+
 .btn-primary:hover {
     background: #EAE6E5 !important;
     color: #348AA7;
