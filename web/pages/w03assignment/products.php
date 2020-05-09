@@ -130,7 +130,9 @@ if ( isset($_GET["add"]) )
                   $productNumber++;
                   $itemsPerRow++;
               }
-            ?>  
+            ?> 
+            </div> 
+            </div>
           </div>
         </div>
       </div>
@@ -191,10 +193,8 @@ if ( isset($_GET["add"]) )
             </tr>
           </table>
             <?php };?>
-          
+        </div>  
       </div>
-    </div>
-
   </section>
 </main>
 
