@@ -157,7 +157,7 @@
           $_SESSION['orderDetails']['orderNo'] = rand(500,1500);
           $_SESSION['orderDetails']['orderdate'] = date("m/d/Y");
 
-         header("location: http:$confirmationPage");
+         header("location: $confirmationPage");
           
           exit();
       }
@@ -254,9 +254,6 @@
 
       </form>           
     </div>
-  </section>
-
-  <section>
     <div>
       <a href="cart.php" class="btn btn-primary">&#8592; Back to Cart</a>
     </div>
