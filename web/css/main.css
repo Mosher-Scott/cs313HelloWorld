@@ -52,7 +52,7 @@ hr {
     margin-bottom: 8px;
   }
 
-  .bluebar-product-width {
+.bluebar-product-width {
     max-width: 93%;
     border: 6px solid #348AA7;
     border-radius: 55px;
@@ -99,6 +99,15 @@ footer {
 .blue-border {
     border: 6px solid #348AA7;
     padding: 10px 0px 10px 0px;
+}
+
+.blue-border-left-side {
+    border-right: 6px solid #348AA7;
+}
+
+
+.blue-border-top {
+    border-top: 6px solid #348AA7;
 }
 
 /* Navigation Menu */
@@ -174,6 +183,10 @@ nav label, #toggle {
 /* Tables */
 table {
     max-width: 500px;
+}
+
+.cart-cell {
+    width: "50%";
 }
 
 /* Random Classes */

@@ -1,6 +1,6 @@
 <?php
-    @include_once('../common/header.php');
-    @include_once('../common/nav.php');
+    @include_once('../../common/header.php');
+    @include_once('../../common/nav.php');
     @include_once('productDetails.php');
    
 
@@ -21,16 +21,15 @@
     <section class="products">
       <div class="container centered">
         <div class="row">
-          <div class="col-sm-3">
-            <div class="col-lg">
+          <div class="col-sm">
               <h4><?php echo $products[0]; ?></h4>
               <img class="product-thumbnail" src="images/01.jpg" alt="Mountain Bike Image">
               <form action="addToCart.php" method="post">
-              <input type="hidden" name="productId" value="0"> 
+                <input type="hidden" name="productId" value="0"> 
                 <input type="submit" class="btn btn-primary" value="Add to Cart">
               </form>
-            </div>
           </div>
+
           <div class="col-sm">
             <h4><?php echo $products[1]; ?></h4>
             <img class="product-thumbnail" src="images/02.jpg" alt="Mountain Bike Image">
