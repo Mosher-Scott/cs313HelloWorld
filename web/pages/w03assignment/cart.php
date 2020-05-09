@@ -124,6 +124,14 @@
       </div>
     <div>
         <a href="products.php" class="btn btn-primary">&#8592; Back to Products</a>
+        <?php 
+          if (count($_SESSION['cart']) == 0) {
+            echo "<a href='checkout.php' class='btn btn-primary' disabled>Checkout</a>";
+          } else {
+            echo "<a href='checkout.php' class='btn btn-primary'>Checkout</a>";
+          }
+
+        ?>
         <a href="checkout.php" class="btn btn-primary">Checkout</a>
     </div>
   </section>
