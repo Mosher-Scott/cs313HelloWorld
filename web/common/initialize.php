@@ -1,7 +1,10 @@
 <?php
-    define("ROOT_PATH", $_SERVER['DOCUMENT_ROOT'] . '/web');
+    
+    define("PRIVATE_PATH", dirname(__FILE__));
     define("PRIVATE_PATH", dirname(__FILE__));
     define("PROJECT_PATH", dirname(PRIVATE_PATH));
+
+    define("ROOT_PATH", $_SERVER['DOCUMENT_ROOT'] . '/web');
 
      // * Can dynamically find everything in URL up to "/acme"
      $public_end = strpos($_SERVER['SCRIPT_NAME'], '/web') + 4; // Decides that is where the document root is  Use 4 for local

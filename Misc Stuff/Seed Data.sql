@@ -60,3 +60,5 @@ INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_
 INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('6','38.99','47899742389','Adam Mosher','0924');
 INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('7','223.94','47899742389','Adam Mosher','0924');
 INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('8','7.98','1275793637','Adam Mosher','1123');
+
+SELECT

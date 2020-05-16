@@ -4,6 +4,7 @@
     @include_once('../../common/header.php');
     @include_once('../../common/nav.php');
     @include_once('../../common/phpMethods.php');
+    @include_once('../../common/phpMethods.php');
     @include_once('productDetails.php');
     
 
@@ -83,6 +84,8 @@ if ( isset($_GET["add"]) )
       $_SESSION["amounts"][$i] = $amounts[$i] * $qty;
     }
   }
+
+  // Just for testing
 ?>
 
   <main class="rounded-corners">
