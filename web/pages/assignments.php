@@ -54,9 +54,9 @@
                 <td></td>
                 </tr>
                 <tr>
-                <th scope="row">6</th>
+                <th scope="row">7</th>
                 <td>W04 Activity</td>
-                <td><a href="<?php echo urlPath('pages/w04assignment/products.php') ?>">Link</a></td>
+                <td><a href="<?php echo urlPath('pages/w04Assignment/products.php') ?>">Link</a></td>
                 <td></td>
                 </tr>
             </tbody>
