@@ -53,6 +53,12 @@
                 <td><a href="<?php echo urlPath('/pages/w03assignment/products.php') ?>">Link</a></td>
                 <td></td>
                 </tr>
+                <tr>
+                <th scope="row">6</th>
+                <td>W04 Activity</td>
+                <td><a href="<?php echo urlPath('/pages/w04assignment/products.php') ?>">Link</a></td>
+                <td></td>
+                </tr>
             </tbody>
         </table>
     </section>
