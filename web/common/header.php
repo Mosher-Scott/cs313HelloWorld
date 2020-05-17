@@ -12,9 +12,9 @@ require_once('initialize.php');
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="<?php echo urlPath('/css/main.css'); ?>">
         
-        <script src="../scripts/javascript.js"></script>
+        <script src="<?php echo urlPath('scripts/javascript.js');?>"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="../scripts/jquery.js"></script>
+        <script src="<?php echo urlPath('/scripts/jquery.js');?>"></script>
         <title>CS 313 - Home</title>
     </head>
 

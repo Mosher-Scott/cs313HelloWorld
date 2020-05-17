@@ -63,7 +63,7 @@ hr {
 
 body {
     background: #348AA7;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: auto;
     padding: 15px;
 }
@@ -75,7 +75,6 @@ header {
 }
 
 main { 
-    max-width: 1400px;
     background:  #FFCF99;
     margin: auto;
     padding-bottom: 10px;
@@ -134,6 +133,10 @@ nav a:hover {
 
 nav label, #toggle {
     display: none;
+}
+
+.col-sm {
+    padding: 1px;
 }
 
 /* Buttons */

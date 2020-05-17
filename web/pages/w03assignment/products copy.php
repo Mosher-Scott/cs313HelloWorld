@@ -1,18 +1,12 @@
 <?php
     session_start();
 
-    // @include_once('../../common/header.php');
-    // @include_once('../../common/nav.php');
-    // @include_once('../../common/phpMethods.php');
-    // @include_once('../../model/products-model.php');
-    // @include_once('productDetails.php');
-
-    @require_once('../../common/initialize.php');
-    @require_once('../../common/header.php');
-    @require_once('../../common/phpMethods.php');
-    @require_once('../../common/dbconnection.php');
-    @require_once('productDetails.php');
-    @require_once('../../model/products-model.php');
+    @include_once('../../common/header.php');
+    @include_once('../../common/nav.php');
+    @include_once('../../common/phpMethods.php');
+    @include_once('../../common/phpMethods.php');
+    @include_once('productDetails.php');
+    
 
     if(!isset($_SESSION['checkoutComplete'])) {
       $_SESSION['checkoutComplete'] = 'false';
@@ -56,7 +50,7 @@ if ( isset($_GET['reset']) )
 
 //Add items to the cart
 
-// print_r($_GET);
+print_r($_GET);
 if ( isset($_GET["add"]) )
   {
   $i = $_GET["add"];
@@ -109,12 +103,37 @@ if ( isset($_GET["add"]) )
         <div class="row">
           <!-- Product listing -->
           <div id="leftSideContent" class="col-9 blue-border-left-side">
-            
             <?php
-              $product = GetAllProducts();
+              $productNumber = 0;
+              $itemsPerRow = 0;
+              foreach($products as $item) {
+                if($itemsPerRow / 3 == 1) {
+                  echo "</div>";
+                  echo "</div>";
+                  $itemsPerRow = 0;
+                }
 
-              buildProductDisplay($product);
-            ?>
+                // Start of a new row of products
+                if ($itemsPerRow == 0) {
+                  echo "<div class='container centered'>";
+                  // Start a new row of 4 products
+                  echo "<div class='row'>";
+                }
+
+                  // Now setup individual products
+                  // Product div start
+                  echo "<div class='col-sm'>";
+
+                  echo "<h4>$item</h4>"; // Title
+                  echo "<img class='product-thumbnail' src='images/{$productNumber}.jpg' alt='Mountain Bike Image'>"; // Image
+                  echo "<p>$ {$amounts[$productNumber]}</p>"; // Price
+                  echo "<p><a href='?add={$productNumber}' class='btn btn-primary'>Add to Cart</a></p>"; // Add to cart button
+                  
+                  echo "</div>"; // Product div end
+                  $productNumber++;
+                  $itemsPerRow++;
+              }
+            ?> 
             </div> 
             </div>
           </div>
@@ -128,11 +147,6 @@ if ( isset($_GET["add"]) )
 
           <?php
             // Check if cart is empty or not
-              if(isset($_SESSION['cart'])) {
-                echo "<h5>CART IS EMPTY</h5>";
-              } else {
-
-              
               if (count($_SESSION['cart']) == 0) {
                 echo "<h5>CART IS EMPTY</h5>";
               } else {
@@ -182,7 +196,7 @@ if ( isset($_GET["add"]) )
               <td colspan="4"><a href="cart.php" class="btn btn-primary">Checkout</td>
             </tr>
           </table>
-            <?php }};?>
+            <?php };?>
         </div>  
       </div>
   </section>
