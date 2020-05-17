@@ -9,34 +9,42 @@
   @require_once('../../common/dbconnection.php');
   @require_once('../../model/products-model.php');
 
-  if(!isset($_SESSION['checkoutComplete'])) {
-    $_SESSION['checkoutComplete'] = 'false';
-    //$_SESSION['cart'] = array();
-  }
+  // if(!isset($_SESSION['checkoutComplete'])) {
+  //   $_SESSION['checkoutComplete'] = 'false';
+  //   //$_SESSION['cart'] = array();
+  // }
 
-  // Check to see if the user has completed the checkout process.  If so, remove the items from the cart.  Then set the variable to false
-  if($_SESSION['checkoutComplete'] == 'true') {
-    resetSession();
+  // // Check to see if the user has completed the checkout process.  If so, remove the items from the cart.  Then set the variable to false
+  // if($_SESSION['checkoutComplete'] == 'true') {
+  //   resetSession();
     
-    $_SESSION['checkoutComplete'] = 'false';
-  }
+  //   $_SESSION['checkoutComplete'] = 'false';
+  // }
 
 // Get a list of all products
 $product = getAllProducts();
 
 //Add items to the cart from main product page
-if(isset($_POST) && isset($_POST['action']) == "addToCart" && isset($_POST['qty'])) {
-// if(isset($_POST) && isset($_POST['action']) == "addToCart" && $_POST['qty'] > 0) {
+if(isset($_POST) && isset($_POST['action']) == "modifyCart" && isset($_POST['qty'])) {
   
-  // For testing
- // print_r($_POST);
-  
-  additemToCart();
+  modifyCart();
 }
 
 // Empty the shopping cart
 if(isset($_POST) && isset($_POST['action']) == "addToCart") {
   emptyCart();
+}
+
+// If the page request is a post and the user is searching for a value
+if(isset($_POST) && isset($_POST['action']) == "productSearch") {
+
+  $nameToFind = $_POST['searchByName'];
+
+  validateInput($nameToFind);
+
+  // Product variable will only contain 
+  $product = searchByPartialProductName($nameToFind);
+
 }
 
 ?>
@@ -47,7 +55,9 @@ if(isset($_POST) && isset($_POST['action']) == "addToCart") {
         <h1>Products & Services</h1>
         <div class="bluebar">
         </div>
-      
+        <div class="search-bar">
+            <?php searchForm(); ?>
+        </div>
       </div>
     </section>
 
@@ -58,8 +68,13 @@ if(isset($_POST) && isset($_POST['action']) == "addToCart") {
           <div id="leftSideContent" class="col-10 blue-border-left-side">
             
             <?php
-
-              buildProductDisplay($product);
+            // Checking search results or anything else
+              if(count($product) == 0) {
+                echo "<h5>Sorry, no results found</h5>";
+                echo "<a href='products.php' class= 'btn btn-primary'>View All Products</a>";
+              } else {
+                buildProductDisplay($product);
+              } 
             ?>
             </div> 
             </div>

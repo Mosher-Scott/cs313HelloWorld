@@ -152,7 +152,7 @@
       
       // Now if there are no page errors, redirect the user to the confirmation page
       if($nameError == null && $emailError == null && $streetError == null && $cityError == null && $stateError == null && $zipcodeError == null && $phoneError == null) {
-          $confirmationPage = urlPath('pages/w03assignment/confirmation.php');
+          $confirmationPage = urlPath('pages/w05assignment/confirmation.php');
 
           $_SESSION['orderDetails']['orderNo'] = rand(500,1500);
           $_SESSION['orderDetails']['orderDate'] = date("m/d/Y");

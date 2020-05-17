@@ -15,6 +15,8 @@
             return $db;
         } catch (PDOException $e){
             echo "Connection to the database failed";
+
+            echo $e;
         }
     }
 ?>

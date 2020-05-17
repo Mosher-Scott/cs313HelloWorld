@@ -4,13 +4,11 @@
 
     @include_once('../../common/header.php');
     @include_once('../../common/nav.php');
-    @include_once('productDetails.php');
     
     $_SESSION['checkoutComplete'] = 'true';
 
     $address1 = $_SESSION['orderDetails']['street'];
     $address2 = "{$_SESSION['orderDetails']['city']}, {$_SESSION['orderDetails']['state']} {$_SESSION['orderDetails']['zipcode']}";
-
 ?>
 
 <main class="rounded-corners">
@@ -42,44 +40,11 @@
       <hr>
     </div>
 
-    <div>
-      <table class="cart-table">
-        <!-- Table Headers -->
-        <tr>
-          <th class="cart-cell">Product</th>
-          <th>Description </th>
-          <th>Qty</th>
-          <th>Price</th>
-        </tr>
+    <div class='w-50 p-3'>
+        <?php 
+          confirmationPageProductDisplay();
 
-        <!-- Product Info -->
-        <?php
-          $total = 0;
-          foreach ( $_SESSION["cart"] as $i ) {
         ?>
-          <!-- Loop through each item in the cart and add data to the column -->
-          <tr>
-            <td><?php echo( $products[$_SESSION["cart"][$i]] ); ?></td>
-            <td><?php echo( $descriptions[$_SESSION["cart"][$i]] ); ?></td>
-
-            <td><?php echo( $_SESSION["qty"][$i] ); ?></td>
-
-            <td><?php echo( $_SESSION["amounts"][$i] ); ?></td>
-          </tr>
-
-        <!-- Now update the total with the total for each item -->
-        <?php
-          $total = $total + $_SESSION["amounts"][$i];
-          }
-          // Update the session variable with the total
-          $_SESSION["total"] = $total;
-        ?>
-        <tr  class="blue-border-top">
-          <!-- Cart Total -->
-          <td><b>Total: </b>$<?php echo($total); ?></td>
-        </tr>
-
-      </table>
     </div>
   </section>
 
@@ -93,5 +58,6 @@
 </main>
 
 <?php 
+  //emptyCart();
   @include_once('../../common/footer.php');
-?>          
+?>              
