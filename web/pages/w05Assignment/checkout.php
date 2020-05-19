@@ -28,8 +28,6 @@
     $phone = null;
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-      
-      print_r($_POST);
 
       // Name field
       if(empty($_POST["name"])) {
@@ -176,8 +174,10 @@
 
   <section id="simpleForm">
     <h2>Shipping & Billing Information</h2>
-    <div>
-      <form action="checkout.php" method="post" class="form-horizontal blue-border col-lg-5">
+    <div class="container">
+      <div class="row">
+      <div class='col-md-6'>
+      <form action="checkout.php" method="post" class="form-horizontal blue-border-left-side">
         <div class="form-group">
           <label for="nameInputBox" class="col-sm-1 control-label">Name:</label>
           <div class="col-sm-6">    
@@ -251,12 +251,17 @@
         <div class="col-lg-2">
                 <input type="submit" class="btn btn-primary" value="Checkout">
             </div>
+      </form>    
+      </div>       
+      <div class='col-md-6'>
+      <?php confirmationPageProductDisplay(); ?>
+      </div>
 
-      </form>           
+      </div>
     </div>
-    <div>
-      <a href="cart.php" class="btn btn-primary">&#8592; Back to Cart</a>
-    </div>
+      <div>
+        <a href="cart.php" class="btn btn-primary">&#8592; Back to Cart</a>
+      </div>
   </section>
 
 </main>
