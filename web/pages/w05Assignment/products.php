@@ -24,6 +24,21 @@
 // Get a list of all products
 $product = getAllProducts();
 
+// For week 5 group asisignment testing
+
+// If the page loads as a POST request, look for this variable, and if it is set
+if(isset($_POST['bookToFind'])) {
+
+  // This is just for testing to make sure we have the correct text
+  echo "<h1>" . $_POST['bookToFind'] . "</h1>";
+
+  // Validate & sanitize the input
+  $searchText = validateInput($_POST['bookToFind']);
+
+  // Now run the query to find the text in the database, and then save the results as a variable
+  $books = week5query($searchText);
+}
+
 //Add items to the cart from main product page
 if(isset($_POST) && isset($_POST['action']) == "modifyCart" && isset($_POST['qty'])) {
   
@@ -89,6 +104,9 @@ if(isset($_POST) && isset($_POST['action']) == "productSearch") {
   </section>
 </main>
 
+
+
 <?php 
+  simpleSearchForm();
   @include_once('../../common/footer.php');
 ?>

@@ -161,6 +161,32 @@
         echo "</form>";
     }
 
+    // For grup assignment, Won't need it
+    function simpleSearchForm() {
+        echo "<form method='post'>";
+        echo "<input type='text' name='bookToFind'>";
+        echo "<button type='submit'>Search</button>";
+        echo "</form>";
+    }
+
+    function week5query($text){
+        $db = DbConnection();
+
+        $sql = 'SELECT * FROM public.product WHERE name ILIKE :text';
+
+        // Add the % % for a wildcard search
+        $text = "%{$text}%";
+
+        $stmt = $db->prepare($sql);
+        $stmt-> bindValue(':text', $text, PDO::PARAM_STR);
+        $stmt-> execute();
+
+        $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt -> closeCursor();
+
+        return $items;
+    }
+
     // Requires an array.  Creates the form for removing 1 item from the cart by reducing qty by 1
     function productFormDisplaysubtractItem($item) {
         echo "<form method='post'>";
