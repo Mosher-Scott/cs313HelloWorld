@@ -32,7 +32,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="main-container">
-              <h2 class="text-center">Scripture Details</h2>
+              <h2 class="text-center">Your Verse</h2>
               <?php
                 if(isset($_GET['id'])) {  
                   foreach ($books as $row)
@@ -42,6 +42,8 @@
                     echo '<br/><br/>';
                   }
               }
+
+              echo "<a class='btn btn-primary' href='mainpage.php'>Back to Main</a>";
               ?>
           </div>
         </div> 
