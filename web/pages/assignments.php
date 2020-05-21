@@ -60,6 +60,12 @@
                 <td><a href="<?php echo urlPath('pages/w04Assignment/products.php') ?>">Link</a></td>
                 <td></td>
                 </tr>
+                <tr>
+                <th scope="row">7</th>
+                <td>W05 Team Activity</td>
+                <td><a href="<?php echo urlPath('pages/w05Team-Assignment/mainpage.php') ?>">Link</a></td>
+                <td></td>
+                </tr>
             </tbody>
         </table>
     </section>
