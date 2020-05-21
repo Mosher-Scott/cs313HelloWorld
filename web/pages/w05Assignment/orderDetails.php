@@ -8,6 +8,9 @@
         validateInput($id);
 
         $orderInfo = getSingleOrderDetails($id);
+        $orderItems = getAllProductsInOrder($id);
+
+        // debugArray($orderItems);
     }
 ?>
   <main class="rounded-corners">
@@ -25,6 +28,7 @@
             <div class="col-md-6">
                <?php 
                if (isset($orderInfo)) {
+                 // TODO: Modify this so instead of details, there is now a link editing the details
                 createOrderDisplayTable($orderInfo);
                } else {
                    echo "<h5>No order information available</h5>";
@@ -42,21 +46,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-            <h3>TITLE</h3>
+            <h3>Products</h3>
         </div>    
       </div>
       <div class="row">
-        <div class="col-md-6">
-          <p>Left Text</p>
-        </div>
-        <div class="col-md-6">
-          <p>Middle Text</p>
-        </div>
-        <div class="col-md-6">
-          <div class="img-rounded">
-          <p>Right Image</p>
-          </div>
-        </div>
+        
+        <?php
+        // TODO: Modify this to add a link to edit order quantities 
+        createOrderDetailDisplay($orderItems); ?>
       </div>
     </div>
 

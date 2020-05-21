@@ -143,6 +143,7 @@ nav label, #toggle {
 .btn-primary {
     background-color: #348AA7 !important;
     color: #EAE6E5 !important;
+    margin: 0 5px 5px 5px !important;
 }
 
 .btn-disabled {
@@ -207,6 +208,10 @@ td {
     border-collapse: collapse; 
 }
 
+label {
+    margin-right: 5px !important;
+}
+
 
 /* Random Classes */
 .centered {
@@ -226,7 +231,7 @@ td {
 
 
 /* MOBILE DESIGN */
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 680px) {
     h2 {
         font-size: 1.5rem;
     }
@@ -260,7 +265,9 @@ td {
 
     .btn-primary {
         width: 100%;
+        max-width: 100px !important;
     }
+    
     
     #toggle {
         display: none;
@@ -281,6 +288,10 @@ td {
         padding: 10px 0px;
         font-weight: bold;
         margin: auto;
+    }
+
+    a {
+        max-width: 100px;
     }
     
     /*
@@ -303,5 +314,19 @@ td {
     
     nav li:active a {
         text-decoration: underline;
+    }
+
+    .blue-border-left-side {
+        border-right: 6px solid #FFCF99;
+    }
+
+    table {
+        max-width: 300px;
+    }
+
+    #rightSideContent {
+        border-top: 6px solid #348AA7;
+        width: 100%;
+        min-width: 350px;
     }
 }

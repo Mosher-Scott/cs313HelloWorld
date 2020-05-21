@@ -10,6 +10,17 @@
     $orders = getAllOrders();
 
     //  debugArray($orders);
+
+    // Post requests for search forms
+    if(isset($_POST['action'])) {
+      if($_POST['action'] == 'searchByFirstName') {
+
+        $name = validateInput($_POST['nameToFind']);
+
+        $orders = findOrdersByFirstName($name);
+      }
+    }
+
 ?>
 
 
@@ -19,13 +30,24 @@
         <h1>Order Admin</h1>
         <div class="bluebar">
         </div>
+        <div id="searches">
+          <h5>Search</h5>
+          <?php searchByFirstName();?>
+          <a href='orderAdmin.php' class='btn btn-primary'>All Orders</a>
+        </div>
       </div>
     </section>
 
     <section>
       <div class="container-fluid">
         <div class="row">
-            <?php  createOrderDisplayTable($orders); ?>
+            <?php  
+            
+            if(empty($orders)) {
+              echo "<h5>Sorry, no orders for that name could be found.  Please try your search again.</h5>";
+            } else {
+              createOrderDisplayTable($orders);
+             } ?>
         </div> 
       </div>
 

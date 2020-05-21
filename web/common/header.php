@@ -6,6 +6,7 @@ require_once('initialize.php');
 <html  lang="en">
     <head>
         <meta charset="utf-8">
+
         <meta name="description" content="Home">
         <meta name="author" content="Scott Mosher">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -15,7 +16,18 @@ require_once('initialize.php');
         <script src="<?php echo urlPath('scripts/javascript.js');?>"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="<?php echo urlPath('/scripts/jquery.js');?>"></script>
-        <title>CS 313 - Home</title>
+        
+        <title><?php
+        // echo $pageTitle;
+            if(isset($pageTitle)) {
+                echo $pageTitle;
+            } else {
+                echo "CS313 Assigment";
+            }
+        ?> </title>
+
+        
+        
     </head>
 
 <body>

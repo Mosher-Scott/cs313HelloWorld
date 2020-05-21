@@ -31,14 +31,16 @@
 
               // Now setup individual products
               // Product div start
-              echo "<div class='col-sm'>";
+              echo "<div class='col-lg'>";
 
               echo "<h4>{$item['name']}</h4>"; // Title
               echo "<img class='product-thumbnail' src='images/{$item['image_name']}' alt='Mountain Bike Image'>"; // Image
               echo "<p>$ {$item['price']}</p>"; // Price
               echo "<div>";
+              echo "<div class='d-inline'>";
               productFormDisplayAddItem($item);
               productFormDisplaysubtractItem($item);
+              echo "</div>";
               echo "</div>";
 
               echo "</div>"; // Product div end
@@ -112,7 +114,37 @@
         }
     }
 
-        // Creates a sidebar version of the shopping cart, listing the item, qty, and price
+    // Creates the page for displaying product items.  Includes product name, qty, price, and thumbnail image
+
+    //TODO: Write this function
+    function createOrderDetailDisplay($orderItems) {
+
+        echo "<table class='table'>";
+        echo "<tr>";
+        echo "<th>Product</th>";
+        echo "<th>Qty</th>";
+        echo "<th>Image</th>";
+        echo "<th>Price</th>";
+        echo "<th>Item Total</th>";
+        echo "</tr>";
+
+        $orderTotal = 0;
+        foreach ($orderItems AS $item) {
+            $itemTotal = $item['quantity'] * $item['price'];
+            echo "<tr>";
+            echo "<td>{$item['name']}</td>";
+            echo "<td>{$item['quantity']}</td>";
+            echo "<td><img class='product-thumbnail' src='images/{$item['image_name']}' alt='Mountain Bike Image'></td>";
+            echo "<td>$ {$item['price']}</td>"; 
+            echo "<td>$ {$itemTotal}";
+            echo "</tr>";
+            $orderTotal += $itemTotal;
+        }
+
+        echo "</table>";
+    }
+
+        // Creates confirmation page version of the shopping cart
         function confirmationPageProductDisplay() {
             echo"<h3>Ordered Items</h3>";
     
@@ -151,51 +183,25 @@
 
     // Requires an array. Creates the form for adding an item to the cart
     function productFormDisplayAddItem($item) {
-        echo "<form method='post'>";
+        echo "<form method='post' class='d-inline'>";
         echo "<input type='hidden' name='action' value='modifyCart'>";
         echo "<input type='hidden' name='id' value='{$item['id']}'>";
         echo "<input type='hidden' name='prodName' value='{$item['name']}'>";
         echo "<input type='hidden' name='price' value='{$item['price']}'>";
         echo "<input type='hidden' name='qty' value='1'>";
-        echo "<button type='submit' class='btn btn-primary'>+1</button>";
+        echo "<button type='submit' class='btn btn-primary'>Add 1</button>";
         echo "</form>";
-    }
-
-    // For grup assignment, Won't need it
-    function simpleSearchForm() {
-        echo "<form method='post'>";
-        echo "<input type='text' name='bookToFind'>";
-        echo "<button type='submit'>Search</button>";
-        echo "</form>";
-    }
-
-    function week5query($text){
-        $db = DbConnection();
-
-        $sql = 'SELECT * FROM public.product WHERE name ILIKE :text';
-
-        // Add the % % for a wildcard search
-        $text = "%{$text}%";
-
-        $stmt = $db->prepare($sql);
-        $stmt-> bindValue(':text', $text, PDO::PARAM_STR);
-        $stmt-> execute();
-
-        $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $stmt -> closeCursor();
-
-        return $items;
     }
 
     // Requires an array.  Creates the form for removing 1 item from the cart by reducing qty by 1
     function productFormDisplaysubtractItem($item) {
-        echo "<form method='post'>";
+        echo "<form method='post' class='d-inline'>";
         echo "<input type='hidden' name='action' value='modifyCart'>";
         echo "<input type='hidden' name='id' value='{$item['id']}'>";
         echo "<input type='hidden' name='prodName' value='{$item['name']}'>";
         echo "<input type='hidden' name='price' value='{$item['price']}'>";
         echo "<input type='hidden' name='qty' value='-1'>";
-        echo "<button type='submit' class='btn btn-primary'>-1</button>";
+        echo "<button type='submit' class='btn btn-primary'>Remove 1</button>";
         echo "</form>";
     }
 
@@ -206,6 +212,16 @@
         echo "<label for='searchByName'>Search For Product </label>";
         echo "<input type='text' name='searchByName'>";
         echo "<input type='hidden' name='action' value='productSearch'>";
+        echo "<button type='submit' class='btn btn-primary btn-sm'>Submit</button>";
+        echo "</form>";
+    }
+
+    // Search for order by username
+    function searchByFirstName(){
+        echo "<form method='post'>";
+        echo "<label for='nameToFind'>First Name</label>";
+        echo "<input type='text' name='nameToFind'>";
+        echo "<input type='hidden' name='action' value='searchByFirstName'>";
         echo "<button type='submit' class='btn btn-primary btn-sm'>Submit</button>";
         echo "</form>";
     }

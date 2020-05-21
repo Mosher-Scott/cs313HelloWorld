@@ -1,6 +1,8 @@
 <?php
   session_start();
 
+  $pageTitle = 'Products & Services';
+
   //session_unset();
 
   @require_once('../../common/initialize.php');
@@ -70,7 +72,7 @@ if(isset($_POST) && isset($_POST['action']) == "productSearch") {
         <h1>Products & Services</h1>
         <div class="bluebar">
         </div>
-        <div class="search-bar">
+        <div class="container">
             <?php searchForm(); ?>
         </div>
       </div>
@@ -80,7 +82,7 @@ if(isset($_POST) && isset($_POST['action']) == "productSearch") {
       <div id="sectionContainer" class="container">
         <div class="row">
           <!-- Product listing -->
-          <div id="leftSideContent" class="col-10 blue-border-left-side">
+          <div id="leftSideContent" class="col-med-10 blue-border-left-side">
             
             <?php
             // Checking search results or anything else
@@ -101,12 +103,12 @@ if(isset($_POST) && isset($_POST['action']) == "productSearch") {
         </div>
       </div>
       <hr>
+      <?php backToAdminPageButton(); ?>
   </section>
 </main>
 
 
 
 <?php 
-  simpleSearchForm();
   @include_once('../../common/footer.php');
 ?>
