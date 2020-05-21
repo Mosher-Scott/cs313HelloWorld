@@ -134,7 +134,7 @@
             echo "<tr>";
             echo "<td>{$item['name']}</td>";
             echo "<td>{$item['quantity']}</td>";
-            echo "<td><img class='product-thumbnail' src='images/{$item['image_name']}' alt='Mountain Bike Image'></td>";
+            echo "<td><img class='product-thumbnail' src='images/{$item['image_name']}' alt='{$item['description']}'></td>";
             echo "<td>$ {$item['price']}</td>"; 
             echo "<td>$ {$itemTotal}";
             echo "</tr>";
