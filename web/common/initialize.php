@@ -29,6 +29,11 @@
         }
     }
 
+    @require_once('../../common/phpMethods.php');
+    @require_once('../../common/dbconnection.php');
+    @require_once('../../model/products-model.php');
+    @require_once('../../model/orders-model.php');
+
     // Create the links automatically when on the local server
     // function urlPath($script_path) {
     //     // Add the leading / if not present

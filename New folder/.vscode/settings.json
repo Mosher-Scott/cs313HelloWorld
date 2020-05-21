@@ -1,0 +1,5 @@
+{
+    "phpserver.port": 8080,
+    "phpserver.phpPath": "G:\\xampp\\php\\php.exe",
+    "php.executablePath": "G:\\xampp\\php\\php.exe"
+}
