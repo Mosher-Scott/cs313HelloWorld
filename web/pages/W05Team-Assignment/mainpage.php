@@ -5,6 +5,9 @@
   @require_once('../../common/teamAssignmentMethods.php');
   @require_once('../../common/dbconnection.php');
   @require_once('../../model/products-model.php');
+
+  $books = getAllBooks();
+
 ?>
   <main class="rounded-corners">
     <section>
@@ -21,6 +24,17 @@
             <div class="col-md-6">
                <p>Please enter in the name of the book of scripture you want to find</p>
                <?php search(); ?>
+            </div>
+            <div>
+            <h5>Part I</h5>
+              <?php
+                foreach ($books as $row)
+                {
+                  echo '<strong>' . $row['book'] .' ' . $row['chapter'] .':' . $row['verse'] . '</strong>';
+                  echo ' - "' . $row['content'] .'"';
+                  echo '<br/><br/>';
+                }
+              ?>
             </div>
         </div> 
       </div>

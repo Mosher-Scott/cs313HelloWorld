@@ -7,11 +7,21 @@
         echo "</form>";
     }
 
+    // Get all books
+    function getAllBooks() {
+        $db=DbConnectionNonMtb();    
+        $stmt = $db->prepare('SELECT * FROM scriptures');
+        // $name= "%{$name}%";
+        $stmt->execute();
+        $book = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $book;
+    }
+
     // Query the DB for all books with that name
     function searchQuery($name) {
-        $db=dbConnection();    
+        $db=DbConnectionNonMtb();    
         $stmt = $db->prepare('SELECT * FROM scriptures WHERE book = :name');
-        //$name= '$name';
+        // $name= "%{$name}%";
         $stmt->bindValue(':name', $name, PDO::PARAM_STR);
         $stmt->execute();
         $book = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -20,7 +30,7 @@
 
     // Query for getting all information for a specified book
     function displayQuery($id) {
-        $db=dbConnection();    
+        $db=DbConnectionNonMtb();    
         $stmt = $db->prepare('SELECT * FROM scriptures WHERE id = :id');
         //$name= '$name';
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
