@@ -29,6 +29,11 @@
         }
     }
 
+    echo (ROOT_PATH . "/common/phpMethods.php");
+    //@require_once(ROOT_PATH . '/common/dbconnection.php');
+    //@require_once(ROOT_PATH . '/model/products-model.php');
+    //@require_once(ROOT_PATH . '/model/orders-model.php');
+
     @require_once(ROOT_PATH . "/common/phpMethods.php");
     //@require_once(ROOT_PATH . '/common/dbconnection.php');
     //@require_once(ROOT_PATH . '/model/products-model.php');
