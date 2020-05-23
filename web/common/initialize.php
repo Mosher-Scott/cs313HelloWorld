@@ -29,7 +29,9 @@
         }
     }
 
-    @require_once(__DIR__ . '/common/phpMethods.php');
+    $basePath =  urlPath("/common/phpMethods.php");
+
+    @require_once($basePath);
     @require_once('dbconnection.php');
     //@require_once(urlPath('common/dbconnection.php'));
     //@require_once('../model/products-model.php');
