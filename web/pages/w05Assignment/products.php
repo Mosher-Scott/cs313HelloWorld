@@ -70,7 +70,7 @@ if(isset($_POST) && isset($_POST['action']) == "productSearch") {
       <div id="sectionContainer" class="container">
         <div class="row">
           <!-- Product listing -->
-          <div id="leftSideContent" class="col-med-10 blue-border-left-side">
+          <div id="leftSideContent" class="col-lg-10 blue-border-left-side">
             
             <?php
             // Checking search results or anything else
@@ -85,7 +85,7 @@ if(isset($_POST) && isset($_POST['action']) == "productSearch") {
             </div>
           </div>
 
-          <div id="rightSideContent" class="col-2">
+          <div id="rightSideContent" class="col-med-1">
               <?php sideBarShoppingCart(); ?>
           </div>
         </div>
