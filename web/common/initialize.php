@@ -4,12 +4,14 @@
     define("PRIVATE_PATH", dirname(__FILE__));
     define("PROJECT_PATH", dirname(PRIVATE_PATH));
 
-    define("ROOT_PATH", $_SERVER['DOCUMENT_ROOT'] . '/web');
+    //define("ROOT_PATH", $_SERVER['DOCUMENT_ROOT'] . '/web');
 
-     // * Can dynamically find everything in URL up to "/acme"
-     $public_end = strpos($_SERVER['SCRIPT_NAME'], '/web') + 4; // Decides that is where the document root is  Use 4 for local
-     $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
-     define("WWW_ROOT", $doc_root);
+    define("ROOT_PATH", $_SERVER['DOCUMENT_ROOT']);
+
+    // * Can dynamically find everything in URL up to "/acme"
+    $public_end = strpos($_SERVER['SCRIPT_NAME'], '/web') + 4; // Decides that is where the document root is  Use 4 for local
+    $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
+    define("WWW_ROOT", $doc_root);
 
     //echo $doc_root;
 
