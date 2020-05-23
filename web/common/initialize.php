@@ -15,7 +15,7 @@
     $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
     define("WWW_ROOT", $doc_root);
 
-    echo ROOT_PATH;
+    // echo ROOT_PATH;
 
     function urlPath($script_path) {
         if (WWW_ROOT == "/web") {
@@ -32,16 +32,26 @@
            return $script_path;
         }
     }
+    
+    if (ROOT_PATH == "G:\Web Coding\CS313\cs313-php") {
+        
+        @require_once(ROOT_PATH . "/web/common/phpMethods.php");
+        @require_once(ROOT_PATH . '/web/common/dbconnection.php');
+        @require_once(ROOT_PATH . '/web/model/products-model.php');
+        @require_once(ROOT_PATH . '/web/model/orders-model.php');
 
+    } else {
+
+        @require_once(ROOT_PATH . "/common/phpMethods.php");
+        @require_once(ROOT_PATH . '/common/dbconnection.php');
+        @require_once(ROOT_PATH . '/model/products-model.php');
+        @require_once(ROOT_PATH . '/model/orders-model.php');
+    }
     // echo (ROOT_PATH . "/common/phpMethods.php");
     //@require_once(ROOT_PATH . '/common/dbconnection.php');
     //@require_once(ROOT_PATH . '/model/products-model.php');
     //@require_once(ROOT_PATH . '/model/orders-model.php');
 
-    @require_once(ROOT_PATH . "/common/phpMethods.php");
-    @require_once(ROOT_PATH . '/common/dbconnection.php');
-    @require_once(ROOT_PATH . '/model/products-model.php');
-    @require_once(ROOT_PATH . '/model/orders-model.php');
 
     // Create the links automatically when on the local server
     // function urlPath($script_path) {
