@@ -34,10 +34,10 @@
     echo $basePath;
 
     @require_once(ROOT_PATH . "/common/phpMethods.php");
-    @require_once('dbconnection.php');
-    //@require_once(urlPath('common/dbconnection.php'));
-    //@require_once('../model/products-model.php');
-    //@require_once('../../model/orders-model.php');
+    @require_once(ROOT_PATH . '/dbconnection.php');
+    @require_once(ROOT_PATH . '/common/dbconnection.php');
+    @require_once(ROOT_PATH . '/products-model.php');
+    @require_once(ROOT_PATH . '/model/orders-model.php');
 
     // Create the links automatically when on the local server
     // function urlPath($script_path) {
