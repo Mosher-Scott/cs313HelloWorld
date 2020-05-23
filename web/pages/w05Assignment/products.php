@@ -11,18 +11,6 @@
   @require_once('../../common/dbconnection.php');
   @require_once('../../model/products-model.php');
 
-  // if(!isset($_SESSION['checkoutComplete'])) {
-  //   $_SESSION['checkoutComplete'] = 'false';
-  //   //$_SESSION['cart'] = array();
-  // }
-
-  // // Check to see if the user has completed the checkout process.  If so, remove the items from the cart.  Then set the variable to false
-  // if($_SESSION['checkoutComplete'] == 'true') {
-  //   resetSession();
-    
-  //   $_SESSION['checkoutComplete'] = 'false';
-  // }
-
 // Get a list of all products
 $product = getAllProducts();
 
