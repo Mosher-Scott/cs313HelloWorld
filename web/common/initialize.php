@@ -30,8 +30,8 @@
     }
 
     @require_once('phpMethods.php');
-    @require_once('dbconnection.php');
-    //@require_once(urlPath('common/dbconnection.php'));
+    //@require_once('dbconnection.php');
+    @require_once(urlPath('common/dbconnection.php'));
     @require_once('../model/products-model.php');
     //@require_once('../../model/orders-model.php');
 
