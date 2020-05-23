@@ -31,7 +31,9 @@
 
     $basePath =  urlPath("/common/phpMethods.php");
 
-    @require_once($basePath);
+    echo $basePath;
+
+    @require_once(ROOT_PATH . "/common/phpMethods.php");
     @require_once('dbconnection.php');
     //@require_once(urlPath('common/dbconnection.php'));
     //@require_once('../model/products-model.php');
