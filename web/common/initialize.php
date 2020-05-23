@@ -30,9 +30,9 @@
     }
 
     @require_once(ROOT_PATH . "/common/phpMethods.php");
-    @require_once(ROOT_PATH . '/common/dbconnection.php');
-    @require_once(ROOT_PATH . '/model/products-model.php');
-    @require_once(ROOT_PATH . '/model/orders-model.php');
+    //@require_once(ROOT_PATH . '/common/dbconnection.php');
+    //@require_once(ROOT_PATH . '/model/products-model.php');
+    //@require_once(ROOT_PATH . '/model/orders-model.php');
 
     // Create the links automatically when on the local server
     // function urlPath($script_path) {
