@@ -90,7 +90,7 @@ if(isset($_POST) && isset($_POST['action']) == "productSearch") {
         </div>
       </div>
       <hr>
-      <?php adminPageButton(); ?>
+      <?php adminPageButton(); // Link to Admin page?> 
   </section>
 </main>
 

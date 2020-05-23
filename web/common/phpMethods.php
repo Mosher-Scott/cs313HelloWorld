@@ -247,7 +247,7 @@
         echo "<a href='orderAdmin.php' class='btn btn-primary btn-sm'>Back to Admin Page</a>";
     }
 
-    // Button to click to go back to the admin page
+    // Button to click to go back to the admin page.
     function adminPageButton() {
         echo "<a href='orderAdmin.php' class='btn btn-primary btn-sm'>Admin Page</a>";
     }
