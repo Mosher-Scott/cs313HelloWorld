@@ -34,6 +34,7 @@
           <h5>Search</h5>
           <?php searchByFirstName();?>
           <a href='orderAdmin.php' class='btn btn-primary'>All Orders</a>
+          <?php productsPageLink(); ?>
         </div>
       </div>
     </section>

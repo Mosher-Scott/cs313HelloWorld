@@ -1,7 +1,7 @@
 <?php
     
     define("PRIVATE_PATH", dirname(__FILE__));
-    define("PRIVATE_PATH", dirname(__FILE__));
+//define("PRIVATE_PATH", dirname(__FILE__));
     define("PROJECT_PATH", dirname(PRIVATE_PATH));
 
     // Local path for now
@@ -15,7 +15,7 @@
     $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
     define("WWW_ROOT", $doc_root);
 
-    //echo $doc_root;
+    echo ROOT_PATH;
 
     function urlPath($script_path) {
         if (WWW_ROOT == "/web") {

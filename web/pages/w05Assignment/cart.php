@@ -53,7 +53,7 @@
       </div>
     </div>
     <br>
-        <a href="products.php" class="btn btn-primary">&#8592; Back</a>
+        <?php productsPageLink(); ?>
     </div>
   </section>
 

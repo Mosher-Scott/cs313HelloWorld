@@ -53,7 +53,6 @@ if(isset($_POST) && isset($_POST['action']) == "productSearch") {
 }
 
 ?>
-
   <main class="rounded-corners">
     <section>
       <div>
@@ -81,9 +80,9 @@ if(isset($_POST) && isset($_POST['action']) == "productSearch") {
                 buildProductDisplay($product);
               } 
             ?>
-            </div> 
-            </div>
-          </div>
+          </div> 
+        </div>
+      </div>
 
           <div id="rightSideContent" class="col-med-1">
               <?php sideBarShoppingCart(); ?>
@@ -91,7 +90,7 @@ if(isset($_POST) && isset($_POST['action']) == "productSearch") {
         </div>
       </div>
       <hr>
-      <?php backToAdminPageButton(); ?>
+      <?php adminPageButton(); ?>
   </section>
 </main>
 

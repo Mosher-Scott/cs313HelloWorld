@@ -226,7 +226,13 @@
         echo "</form>";
     }
 
-/****** Buttons *******/  
+/****** Buttons *******/ 
+
+    // Products Link Button
+    function productsPageLink() {
+        echo "<a href='products.php' class='btn btn-primary'>&#8592; Back</a>";
+    }
+
     // The checkout button.  If cart is empty, the button click will be disabled
     function checkoutButton() {
         if (!isset($_SESSION["cart_items"])) {
@@ -239,6 +245,11 @@
     // Button to click to go back to the admin page
     function backToAdminPageButton() {
         echo "<a href='orderAdmin.php' class='btn btn-primary btn-sm'>Back to Admin Page</a>";
+    }
+
+    // Button to click to go back to the admin page
+    function adminPageButton() {
+        echo "<a href='orderAdmin.php' class='btn btn-primary btn-sm'>Admin Page</a>";
     }
 
     // Button for emptying all contents from the shopping cart
