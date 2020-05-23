@@ -4,8 +4,10 @@
     define("PRIVATE_PATH", dirname(__FILE__));
     define("PROJECT_PATH", dirname(PRIVATE_PATH));
 
+    // Local path for now
     //define("ROOT_PATH", $_SERVER['DOCUMENT_ROOT'] . '/web');
 
+    // Web path
     define("ROOT_PATH", $_SERVER['DOCUMENT_ROOT']);
 
     // * Can dynamically find everything in URL up to "/acme"
@@ -31,15 +33,15 @@
         }
     }
 
-    echo (ROOT_PATH . "/common/phpMethods.php");
+    // echo (ROOT_PATH . "/common/phpMethods.php");
     //@require_once(ROOT_PATH . '/common/dbconnection.php');
     //@require_once(ROOT_PATH . '/model/products-model.php');
     //@require_once(ROOT_PATH . '/model/orders-model.php');
 
     @require_once(ROOT_PATH . "/common/phpMethods.php");
-    //@require_once(ROOT_PATH . '/common/dbconnection.php');
-    //@require_once(ROOT_PATH . '/model/products-model.php');
-    //@require_once(ROOT_PATH . '/model/orders-model.php');
+    @require_once(ROOT_PATH . '/common/dbconnection.php');
+    @require_once(ROOT_PATH . '/model/products-model.php');
+    @require_once(ROOT_PATH . '/model/orders-model.php');
 
     // Create the links automatically when on the local server
     // function urlPath($script_path) {
