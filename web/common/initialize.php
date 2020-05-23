@@ -29,7 +29,7 @@
         }
     }
 
-    @require_once('/commom/phpMethods.php');
+    @require_once(__DIR__ . '/commom/phpMethods.php');
     @require_once('dbconnection.php');
     //@require_once(urlPath('common/dbconnection.php'));
     //@require_once('../model/products-model.php');
