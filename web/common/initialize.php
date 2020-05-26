@@ -15,8 +15,6 @@
     $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
     define("WWW_ROOT", $doc_root);
 
-    // echo ROOT_PATH;
-
     function urlPath($script_path) {
         if (WWW_ROOT == "/web") {
             if($script_path[0] != '/') {
@@ -39,6 +37,7 @@
         @require_once(ROOT_PATH . '/web/common/dbconnection.php');
         @require_once(ROOT_PATH . '/web/model/products-model.php');
         @require_once(ROOT_PATH . '/web/model/orders-model.php');
+        @require_once(ROOT_PATH . '/web/model/misc-model.php');
 
     } else {
 
@@ -46,32 +45,6 @@
         @require_once(ROOT_PATH . '/common/dbconnection.php');
         @require_once(ROOT_PATH . '/model/products-model.php');
         @require_once(ROOT_PATH . '/model/orders-model.php');
+        @require_once(ROOT_PATH . '/model/misc-model.php');
     }
-    // echo (ROOT_PATH . "/common/phpMethods.php");
-    //@require_once(ROOT_PATH . '/common/dbconnection.php');
-    //@require_once(ROOT_PATH . '/model/products-model.php');
-    //@require_once(ROOT_PATH . '/model/orders-model.php');
-
-
-    // Create the links automatically when on the local server
-    // function urlPath($script_path) {
-    //     // Add the leading / if not present
-
-    //     if($script_path[0] != '/') {
-    //         $script_path = '/' . $script_path;
-    //     }
-        
-    //    return WWW_ROOT . $script_path;
-    // }
-
-    // For live site
-    // function urlPath($script_path) {
-    //     // Add the leading / if not present
-
-    //     if($script_path[0] != '/') {
-    //         $script_path = '/' . $script_path;
-    //     }
-    //         // echo $script_path;
-    //    return $script_path;
-    // }
 ?>

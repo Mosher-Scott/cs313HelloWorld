@@ -9,6 +9,20 @@
         return $data;
     }
 
+    // Validate email entry
+    function checkEmail($clientEmail) {
+        $valEmail = filter_var($clientEmail, FILTER_VALIDATE_EMAIL);
+        return $valEmail;
+    }
+
+    // Check if the password is valid form
+    function checkPassword($clientPassword) {
+        $pattern = '/^(?=.*[[:digit:]])(?=.*[[:punct:]])(?=.*[A-Z])(?=.*[a-z])([^\s]){8,}$/';
+        return preg_match($pattern, $clientPassword);
+    }
+
+    // TODO: Write method to check if username & password match.  Returns true or false
+
 /****** Page Building Functions *******/
     // Builds the webpage used for displaying products on the page
     function buildProductDisplay($products) {
@@ -144,42 +158,42 @@
         echo "</table>";
     }
 
-        // Creates confirmation page version of the shopping cart
-        function confirmationPageProductDisplay() {
-            echo"<h3>Ordered Items</h3>";
-    
-            if(!isset($_SESSION["cart_items"])) {
-                echo "<h5>Your cart is empty</h5>";
-            }
-            if(isset($_SESSION["cart_items"]) && count($_SESSION["cart_items"]) > 0) {
-                $total = 0;
-                echo "<table class='table table-striped'>";
-                echo "<tr>";
-                echo "<th>Product</th>";
-                //echo "<th></th>";
-                echo "<th>Qty</th>";
-                echo "<th>Price</th>";
-                echo "<th>Item Total</th>";
-                echo "</tr>";
-    
-                foreach ($_SESSION["cart_items"] AS $item) {
+    // Creates confirmation page version of the shopping cart
+    function confirmationPageProductDisplay() {
+        echo"<h3>Ordered Items</h3>";
 
-                    $itemTotal = $item['qty'] * $item['price'];
-                    $total += $total + $itemTotal;
-                    echo "<tr>";
-                    echo "<td>{$item['name']}</td>";
-                    //echo "<td><img class='product-thumbnail' src='images/{$item['image']}' alt='Mountain Bike Image'></td>";
-                    echo "<td>{$item['qty']}</td>";
-                    echo "<td>$ {$item['price']}</td>"; 
-                    echo "<td>$ {$itemTotal}</td>"; 
-                    echo "</tr>";
-                }
-                echo "<tr>";
-                echo "<td><b>Total:      <span>$ {$total}</span></b></td>";
-                echo "</table>";
-
-            }
+        if(!isset($_SESSION["cart_items"])) {
+            echo "<h5>Your cart is empty</h5>";
         }
+        if(isset($_SESSION["cart_items"]) && count($_SESSION["cart_items"]) > 0) {
+            $total = 0;
+            echo "<table class='table table-striped'>";
+            echo "<tr>";
+            echo "<th>Product</th>";
+            //echo "<th></th>";
+            echo "<th>Qty</th>";
+            echo "<th>Price</th>";
+            echo "<th>Item Total</th>";
+            echo "</tr>";
+
+            foreach ($_SESSION["cart_items"] AS $item) {
+
+                $itemTotal = $item['qty'] * $item['price'];
+                $total += $total + $itemTotal;
+                echo "<tr>";
+                echo "<td>{$item['name']}</td>";
+                //echo "<td><img class='product-thumbnail' src='images/{$item['image']}' alt='Mountain Bike Image'></td>";
+                echo "<td>{$item['qty']}</td>";
+                echo "<td>$ {$item['price']}</td>"; 
+                echo "<td>$ {$itemTotal}</td>"; 
+                echo "</tr>";
+            }
+            echo "<tr>";
+            echo "<td><b>Total:      <span>$ {$total}</span></b></td>";
+            echo "</table>";
+
+        }
+    }
 
     // Requires an array. Creates the form for adding an item to the cart
     function productFormDisplayAddItem($item) {
@@ -202,6 +216,141 @@
         echo "<input type='hidden' name='price' value='{$item['price']}'>";
         echo "<input type='hidden' name='qty' value='-1'>";
         echo "<button type='submit' class='btn btn-primary'>Remove 1</button>";
+        echo "</form>";
+    }
+
+    // Checkout form
+    function checkoutForm() {
+
+        // TODO: Add in payment info
+        $name = '';
+        $email = '';
+        $street = '';
+        $city = '';
+        $state = '';
+        $zipcode = '';
+        $phone = '';
+        $shipSame ='';
+        $comments = '';
+
+        // Error message variables
+        $nameError = null;
+        $emailError = null;
+        $streetError = null;
+        $cityError = null;
+        $stateError = null;
+        $phoneError = null;
+        $zipcodeError = null;
+        $phone = null;
+
+        // Get all the shipping methods available
+        $shipMethods = getShipMethods();
+
+        // Form creation
+        echo "<form action='checkout.php' method='post' class='form-horizontal blue-border-left-side'>";
+        echo "<div class='form-group'>";
+        echo "<label for='nameInputBox' class='col-sm-1 control-label'>Name:</label>";
+        echo "<div class='col-sm-6'>    ";
+        echo "<input type='text' name='name' id='nameInputBox' class='form-control' placeholder='Enter name' value='{$name}'>";
+        echo "<span class='text-danger'>{$nameError}</span>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+        echo "<label for='emailInputBox' class='col-sm-2 control-label'>Email:</label>";
+        echo "<div class='col-sm-7'>    ";
+        echo "<input type='text' name='email' id='emailInputBox' class='form-control' placeholder='Enter email' value='{$email}'>";
+        echo "<span class='text-danger'>$emailError</span>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+        echo "<label for='phoneInputBox' class='col-sm-1 control-label'>Phone:</label>";
+        echo "<div class='col-sm-6'>    ";
+        echo "<input type='text' name='phone' id='phoneInputBox' class='form-control' placeholder='Enter Phone' value='{$phone}'>";
+        echo "<span class='text-danger'>$phoneError</span>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+        echo "<label for='streetInputBox' class='col-sm-1 control-label'>Street:</label>";
+        echo "<div class='col-sm-6'>    ";
+        echo "<input type='text' name='street' id='streetInputBox' class='form-control' placeholder='Enter Street' value='{$street}'>";
+        echo "<span class='text-danger'>$streetError</span>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+        echo "<label for='cityInputBox' class='col-sm-1 control-label'>City:</label>";
+        echo "<div class='col-sm-6'>    ";
+        echo "<input type='text' name='city' id='cityInputBox' class='form-control' placeholder='Enter City' value='{$city}'>";
+        echo "<span class='text-danger'>$cityError</span>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+        echo "<label for='stateInputBox' class='col-sm-1 control-label'>State:</label>";
+        echo "<div class='col-sm-6'>    ";
+        echo "<input type='text' name='state' id='stateInputBox' class='form-control' placeholder='Enter State' value='{$state}'>";
+        echo "<span class='text-danger'>$stateError</span>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+        echo "<label for='zipInputBox' class='col-sm-1 control-label'>Zipcode:</label>";
+        echo "<div class='col-sm-6'>    ";
+        echo "<input type='text' name='zipcode' id='zipInputBox' class='form-control' placeholder='Enter Zipcode' value='{$zipcode}'>";
+        echo "<span class='text-danger'>$zipcodeError</span>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+        echo "<div class='col-sm-7 checkbox-inline'>";
+        echo "<p><b>Shipping the same as Billing?</b></p>";
+        echo "<label class='checkbox-inline'><input type='checkbox' name='shipSame' value='1' <?php if(isset($shipSame)) echo 'checked'}> Yes</label>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+        echo "<label for='commentInputBox' class='col-sm-2 control-label'>Comments:</label>";
+        echo "<div class='col-sm-7'>";
+        echo "<textarea name='comments' id='commentInputBox' class='form-control' placeholder='Comments?'></textarea>";
+        echo "</div>";
+        echo "</div>";
+
+        echo "<div class='col-lg-2'>";
+        echo "<input type='submit' class='btn btn-primary' value='Place Order'></button>";
+        echo "</div>";
+        echo "</form>";
+        
+    }
+
+    // Login page method
+    function loginForm($email = '') {
+        echo "<form class='form-horizontal' method='post'>";
+
+        echo "<div class='form-inline'>";
+        echo "<label for='userEmail' class='col-sm-1 control-label'>Email:</label>";
+        echo "<div class='col-sm-6'>";
+        echo "<input type='text' class='form-control' placeholder='Enter Email' id='userEmail' name='userEmail' required value='{$email}'>";
+        echo "</div>";
+        echo "</div>";
+
+
+        echo "<div class='form-inline'>";
+        echo "<label for='password' class='col-sm-1 control-label'>Password:</label>";
+        echo "<div class='col-med-6'>";
+        echo "<input type='text' name='password' id='passwordInputBox' class='form-control' placeholder='Enter password' required pattern=(?=echo '.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$>";
+        echo "</div>";
+        echo "</div>";
+
+
+        echo "<p class='text-danger'>Passwords must be a minimum of 8 characters, and contain at least 1 of the following: Number, Capital letter, special character</p>";
+
+        echo "<p>Forgot password? <a href=''>Send Reset Email</a>";
+        echo "<br>";
+        echo "<input type='hidden' name='login' value='loginRequest'>";
+        echo "<input type='submit' class='submitButton' value='Sign In'>";
         echo "</form>";
     }
 
@@ -308,6 +457,166 @@
             $_SESSION["cart_items"][$addedProduct['id']] = $addedProduct;
         }
     }
+
+/*********  User Display Functions ***************/
+
+// Creates a table showing the details from the user table
+function createUserTable($users) {
+    echo "<table class='table table-striped'>";
+   
+    // Setup table headers
+    echo "<tr>";
+    echo "<th scope='col'>ID</th>";
+    echo "<th scope='col'>First Name</th>";
+    echo "<th scope='col'>Last Name</th>";
+    echo "<th scope='col'>Address</th>";
+    echo "<th scope='col'>City</th>";
+    echo "<th scope='col'>State</th>";
+    echo "<th scope='col'>Zip</th>";
+    echo "<th scope='col'>Phone</th>";
+    echo "<th scope='col'>Email</th>";
+    echo "<th scope='col'>Display Name</th>";
+    echo "<th scope='col'>Options</th>";
+    echo "</tr>";
+
+    // Now populate it with data
+    foreach ($users as $user) {
+
+        echo "<tr>";
+        echo "<td>{$user['id']}</td>";
+        echo "<td>{$user['first_name']}</td>";
+        echo "<td>{$user['last_name']}</td>";
+        echo "<td>{$user['billing_address']}</td>";
+        echo "<td>{$user['billing_city']}</td>";
+        echo "<td>{$user['billing_state']}</td>";
+        echo "<td>{$user['billing_zip']}</td>";
+        echo "<td>{$user['billing_phone']}</td>";
+        echo "<td>{$user['email']}</td>";
+        echo "<td>{$user['display_name']}</td>";
+
+        echo "<td><a href='editUser.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Edit</a>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+}
+
+// Display the form needed to edit a user
+function editUserForm($id) {
+
+   $userId = $id[0]['id'];
+   $firstName = $id[0]['first_name'];
+   $lastName = $id[0]['last_name'];
+   $email = $id[0]['email'];
+   $address = $id[0]['billing_address'];
+   $city = $id[0]['billing_city'];
+   $state = $id[0]['billing_state'];
+   $zipcode = $id[0]['billing_zip'];
+   $phone = $id[0]['billing_phone'];
+   $displayName = $id[0]['display_name'];
+
+   // Get all the shipping methods available
+   $shipMethods = getShipMethods();
+    
+
+    // Form creation
+
+    echo "<form action='editUser.php' method='post' class='form-horizontal'>";
+
+    echo "<div class='form-inline'>";
+        echo "<label for='firstNameInputBox' class='control-label col-sm-1'>First Name:</label>";
+        echo "<div class='col-med-6'>";
+            echo "<input type='text' name='firstName' id='firstNameInputBox' class='form-control' placeholder='Enter name' value='{$firstName}'>";
+        echo "</div>";
+    echo "</div>";
+
+    echo "<div class='form-inline'>";
+    echo "<label for='lastNameInputBox' class='col-sm-1 control-label'>Last Name:</label>";
+    echo "<div class='col-med-6'>";
+    echo "<input type='text' name='lastName' id='lastNameInputBox' class='form-control' placeholder='Enter name' value='{$lastName}'>";
+    echo "</div>";
+    echo "</div>";
+
+    echo "<div class='form-inline'>";
+    echo "<label for='emailInputBox' class='col-sm-1 control-label'>Email:</label>";
+    echo "<div class='col-med-6'>    ";
+    echo "<input type='text' name='email' id='emailInputBox' class='form-control' placeholder='Enter email' value='{$email}'>";
+    echo "</div>";
+    echo "</div>";
+
+    echo "<div class='form-inline'>";
+    echo "<label for='phoneInputBox' class='col-sm-1 control-label'>Phone:</label>";
+    echo "<div class='col-med-6'>    ";
+    echo "<input type='text' name='phone' id='phoneInputBox' class='form-control' placeholder='Enter Phone' value='{$phone}'>";
+    echo "</div>";
+    echo "</div>";
+
+    echo "<div class='form-inline'>";
+    echo "<label for='addressInputBox' class='col-sm-1 control-label'>Address:</label>";
+    echo "<div class='col-med-6'>    ";
+    echo "<input type='text' name='street' id='addressInputBox' class='form-control' placeholder='Enter address' value='{$address}'>";
+    echo "</div>";
+    echo "</div>";
+
+    echo "<div class='form-inline'>";
+    echo "<label for='cityInputBox' class='col-sm-1 control-label'>City:</label>";
+    echo "<div class='col-med-6'>    ";
+    echo "<input type='text' name='city' id='cityInputBox' class='form-control' placeholder='Enter City' value='{$city}'>";
+    echo "</div>";
+    echo "</div>";
+
+    echo "<div class='form-inline'>";
+    echo "<label for='stateInputBox' class='col-sm-1 control-label'>State:</label>";
+    echo "<div class='col-med-6'>    ";
+    echo "<input type='text' name='state' id='stateInputBox' class='form-control' placeholder='Enter State' value='{$state}'>";
+    echo "</div>";
+    echo "</div>";
+
+    echo "<div class='form-inline'>";
+    echo "<label for='zipInputBox' class='col-sm-1 control-label'>Zipcode:</label>";
+    echo "<div class='col-med-6'>    ";
+    echo "<input type='text' name='zipcode' id='zipInputBox' class='form-control' placeholder='Enter Zipcode' value='{$zipcode}'>";
+    echo "</div>";
+    echo "</div>";
+
+    echo "<div class='form-inline'>";
+    echo "<label for='displayNameInputBox' class='col-sm-1 control-label'>UserName:</label>";
+    echo "<div class='col-med-6'>    ";
+    echo "<input type='text' name='displayName' id='displayNameInputBox' class='form-control' placeholder='displayName' value='{$displayName}'>";
+    echo "</div>";
+    echo "</div>";
+
+    echo "<div class='form-inline'>";
+    echo "<div class='col-med-6'>    ";
+    echo "<input type='hidden' name='action' class='form-control' value='editUser'>";
+    echo "</div>";
+    echo "</div>";
+
+    echo "<div class='form-inline'>";
+    echo "<div class='col-med-6'>    ";
+    echo "<input type='hidden' name='id' class='form-control' value='{$userId}'>";
+    echo "</div>";
+    echo "</div>";
+
+    echo "<div class='col-med-6'>";
+    echo "<br>";
+    echo "<input type='submit' class='btn btn-primary' value='Save Changes'>";
+    echo "</div>";
+    echo "</form>";
+
+    echo "<form action='userAdmin.php' method='post' class='form-horizontal col-lg-4'>";
+    echo "<div class='form-group'>";
+    echo "<div class='col-med-6'>    ";
+    echo "<input type='hidden' name='action' class='form-control' value='cancelChanges'>";
+    echo "</div>";
+    echo "</div>";
+    echo "<input type='submit' class='btn btn-danger' value='Cancel Changes'>";
+    echo "</form>";
+
+    //echo "</div>";
+
+}
+
 
 /*********  Order Display Functions ***************/
 

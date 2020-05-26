@@ -152,6 +152,9 @@
       if($nameError == null && $emailError == null && $streetError == null && $cityError == null && $stateError == null && $zipcodeError == null && $phoneError == null) {
           $confirmationPage = urlPath('pages/w05assignment/confirmation.php');
 
+          // TODO: Insert order into the database
+          // TODO: Get latest ID from the order table
+ 
           $_SESSION['orderDetails']['orderNo'] = rand(500,1500);
           $_SESSION['orderDetails']['orderDate'] = date("m/d/Y");
 
@@ -177,7 +180,18 @@
     <div class="container">
       <div class="row">
       <div class='col-md-6'>
-      <form action="checkout.php" method="post" class="form-horizontal blue-border-left-side">
+
+      <?php
+        if($_SERVER["REQUEST_METHOD"] == "GET") {
+        } else {
+          checkoutForm();
+        } 
+
+        checkoutForm();
+         
+      ?>
+
+      <!-- <form action="checkout.php" method="post" class="form-horizontal blue-border-left-side">
         <div class="form-group">
           <label for="nameInputBox" class="col-sm-1 control-label">Name:</label>
           <div class="col-sm-6">    
@@ -251,7 +265,7 @@
         <div class="col-lg-2">
                 <input type="submit" class="btn btn-primary" value="Checkout">
             </div>
-      </form>    
+      </form>     -->
       </div>       
       <div class='col-md-6'>
       <?php confirmationPageProductDisplay(); ?>

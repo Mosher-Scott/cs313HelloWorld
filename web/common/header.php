@@ -20,7 +20,7 @@ require_once('initialize.php');
         <title><?php
         // echo $pageTitle;
             if(isset($pageTitle)) {
-                echo $pageTitle;
+                echo "CS313 - {$pageTitle}";
             } else {
                 echo "CS313 Assigment";
             }
