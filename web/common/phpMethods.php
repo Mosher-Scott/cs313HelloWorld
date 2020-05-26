@@ -340,7 +340,9 @@
         echo "<div class='form-inline'>";
         echo "<label for='password' class='col-sm-1 control-label'>Password:</label>";
         echo "<div class='col-med-6'>";
-        echo "<input type='text' name='password' id='passwordInputBox' class='form-control' placeholder='Enter password' required pattern=(?=echo '.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$>";
+        echo "<input type='text' name='password' id='passwordInputBox' class='form-control' placeholder='Enter password' required>";
+        // Original
+        // echo "<input type='text' name='password' id='passwordInputBox' class='form-control' placeholder='Enter password' required pattern=(?=echo '.{4,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$>";
         echo "</div>";
         echo "</div>";
 
@@ -349,9 +351,46 @@
 
         echo "<p>Forgot password? <a href=''>Send Reset Email</a>";
         echo "<br>";
-        echo "<input type='hidden' name='login' value='loginRequest'>";
+        echo "<input type='hidden' name='action' value='loginRequest'>";
         echo "<input type='submit' class='submitButton' value='Sign In'>";
         echo "</form>";
+    }
+
+    // "Site" nav bar for customers
+    function customerMtbMenu() {
+        echo "<div class='container'>";
+        echo "<label for='toggle'>Menu</label>";
+        echo "<input id='toggle' type='checkbox'>";
+        echo "<ul id='menu'>";
+        echo "<li class=' btn btn-primary'><a href='products.php'>Products</a></li>";
+        echo "<li class=' btn btn-primary'><a href='cart.php'>Cart</a></li>";
+        if($_SESSION['loggedIn']) {
+            logOutButton();
+            
+        } else {
+            echo "<li class=' btn btn-primary'><a href='login.php'>Login</a></li>";
+        }
+        echo "</ul>";
+        echo "</div>";
+    }
+
+    // "Site" nav bar for admins
+    function adminMtbMenu() {
+        echo "<div class='container'>";
+        echo "<label for='toggle'>Menu</label>";
+        echo "<input id='toggle' type='checkbox'>";
+        echo "<ul id='menu'>";
+        echo "<li class=' btn btn-primary'><a href='products.php'>Products</a></li>";
+        echo "<li class=' btn btn-primary'><a href='cart.php'>Cart</a></li>";
+        echo "<li class=' btn btn-primary'><a href='orderAdmin.php'>Manage Orders</a></li>";
+        if($_SESSION['loggedIn']) {
+            logOutButton();
+            
+        } else {
+            echo "<li class=' btn btn-primary'><a href='login.php'>Login</a></li>";
+        }
+        echo "</ul>";
+        echo "</div>";
     }
 
 /****** Search Forms *******/
@@ -373,6 +412,13 @@
         echo "<input type='hidden' name='action' value='searchByFirstName'>";
         echo "<button type='submit' class='btn btn-primary btn-sm'>Submit</button>";
         echo "</form>";
+    }
+
+    // Logout message 
+    function logUserOut() {
+        session_destroy();
+        $_SESSION['loggedIn'] = false;
+        
     }
 
 /****** Buttons *******/ 
@@ -403,10 +449,15 @@
 
     // Button for emptying all contents from the shopping cart
     function resetCartDisplay() {
-        echo"<form method='post'>";
+        echo "<form method='post'>";
         echo "<input type='hidden' name='action' value='emptyCart'>";
         echo "<button type='submit' class='btn btn-danger '>Empty Cart</button>";
         echo "</form>";
+    }
+
+    // Button for logging a user out
+    function logOutButton() {
+        echo "<a href='login.php?action=logOut' class='btn btn-danger'>Log Out</a>";
     }
 
 /****** Cart Functions *******/

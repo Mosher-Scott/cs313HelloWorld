@@ -1,35 +1,59 @@
 <?php
+  session_start();
+
   $pageTitle = "Login";
   @require_once('../../common/header.php');
   @require_once('../../model/user-model.php');
 
   $missingFields = false;
 
-  // What to do if the user is trying to login
+  // First check if it is a post request
   if($_SERVER["REQUEST_METHOD"] == "POST") {
-    debugArray($_POST);
 
-    $userEmail = filter_input(INPUT_POST, 'userEmail', FILTER_SANITIZE_EMAIL);
-    $userEmail = checkEmail($userEmail);
-    $password = $clientPassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    // Check to see if the 'action' variable is set, and if it is a login Request, do the following
+    if( isset($_POST['action']) && $_POST['action'] == 'loginRequest') {
+      $userEmail = filter_input(INPUT_POST, 'userEmail', FILTER_SANITIZE_EMAIL);
+      $userEmail = checkEmail($userEmail);
+      $password = $clientPassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-    // Check if email or password is empty.  They shouldn't be though.
-    if(empty($userEmail) || empty($password)) {
-        $missingFields = true;
+      // Check if email or password is empty.  They shouldn't be though.
+      if(empty($userEmail) || empty($password)) {
+          $missingFields = true;
+      }
+
+      // TODO: Find user in the DB
+      $passwordFromDb = getPasswordWithEmail($userEmail);
+      
+      // Now check if their passwords match
+      if ($password == $passwordFromDb[0]['password']) {
+        // This flag will 
+        $_SESSION['loggedIn'] = true;
+
+        $userInfo = getSingleUserDetailsByEmail($userEmail);
+
+        //debugArray($userInfo);
+
+        // Store user data to be used in the future
+        $_SESSION['userInfo'] = $userInfo;
+        
+       // debugArray($_SESSION);
+
+        // Now send the user to the Admin page
+        header('Location: orderAdmin.php');
+      }
     }
-
-    // TODO: Check if user credentials are valid
-
-    // TODO: Create session variable & set logged in = true
-
-    // TODO: Route user to admin page if applicable
-
-    // TODO:  Or route user to products page
+  }
+  if(isset($_GET['action']) && $_GET['action'] == 'logOut') {
+    echo "You are logged out";
+    logUserOut();
+    header('Location: login.php');
+    //debugArray($_SESSION);
   }
 ?>
 
 <main class="rounded-corners">
     <section>
+    
       <div>
         <h1>Login</h1>
         <div class="bluebar">
@@ -40,12 +64,23 @@
     <section>
       <div class="container-fluid text-left">
         <?php  
+        //debugArray($_SESSION);
         
-        if($missingFields == true) {
+        // If the user is logged in, display a logout button
+        if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+          logOutButton();
+        } else {
+          
+          if($missingFields == true) {
             echo "<h4>Sorry, you forgot to fill out a field or two.</h4>";
             loginForm($userEmail);
+            
+          } else {
+            loginForm();
+          }
         }
-        loginForm(); ?>
+        
+         ?>
       </div>
     
   </section>

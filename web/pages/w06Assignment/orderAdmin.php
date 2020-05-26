@@ -1,4 +1,6 @@
 <?php
+  session_start();
+
     @require_once('../../common/initialize.php');
     @require_once('../../common/header.php');
     @require_once('../../common/phpMethods.php');
@@ -6,23 +8,34 @@
     @require_once('../../model/products-model.php');
     @require_once('../../model/orders-model.php');
 
-    // Get all the orders
-    $orders = getAllOrders();
+    // If the user isn't logged in, then send them back to the login page.
+    if(!$_SESSION['loggedIn']) {
 
-    //  debugArray($orders);
-
-    // Post requests for search forms
-    if(isset($_POST['action'])) {
-      if($_POST['action'] == 'searchByFirstName') {
-
-        $name = validateInput($_POST['nameToFind']);
-
-        $orders = findOrdersByFirstName($name);
-      }
     }
 
-?>
+    // If they are logged in, continue 
+    if($_SESSION['loggedIn']) {
+      // Get all the orders
+      $orders = getAllOrders();
 
+      //  debugArray($orders);
+  
+      // Post requests for search forms
+      if(isset($_POST['action'])) {
+        if($_POST['action'] == 'searchByFirstName') {
+  
+          $name = validateInput($_POST['nameToFind']);
+  
+          $orders = findOrdersByFirstName($name);
+        }
+      }
+    }
+    
+
+?>
+<nav class='rounded-corners'>
+<?php require_once(ROOT_PATH . '/common/nav.php'); ?>
+</nav>
 
 <main class="rounded-corners">
     <section>

@@ -20,7 +20,7 @@ function getAllUsers() {
     }
 }
 
-// Get details for a single user
+// Get details for a single user by ID
 function getSingleUserDetails($id) {
 
     try {
@@ -30,6 +30,44 @@ function getSingleUserDetails($id) {
         $sql = 'SELECT id, first_name, last_name, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name FROM public.user WHERE id = :id';
         $stmt = $db -> prepare($sql);
         $stmt-> bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt -> execute();
+        $users = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        $stmt -> closeCursor();
+    
+        return $users;
+    } catch (Exception $ex) {
+        return "error";
+    }
+}
+
+// Get details for a single user
+function getSingleUserDetailsByEmail($email) {
+
+    try {
+
+        $db = DbConnection();
+
+        $sql = 'SELECT id, first_name, last_name, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name FROM public.user WHERE email = :email';
+        $stmt = $db -> prepare($sql);
+        $stmt-> bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt -> execute();
+        $users = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        $stmt -> closeCursor();
+    
+        return $users;
+    } catch (Exception $ex) {
+        return "error";
+    }
+}
+
+function getPasswordWithEmail($email) {
+    try {
+
+        $db = DbConnection();
+
+        $sql = 'SELECT password FROM public.user WHERE email = :email';
+        $stmt = $db -> prepare($sql);
+        $stmt-> bindValue(':email', $email, PDO::PARAM_STR);
         $stmt -> execute();
         $users = $stmt -> fetchAll(PDO::FETCH_ASSOC);
         $stmt -> closeCursor();
