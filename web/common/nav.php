@@ -2,8 +2,10 @@
     // Check if the user role is a customer or if they are not logged in
     if(!$_SESSION['loggedIn'] || $_SESSION['userInfo'][0]['user_role'] == 'customer') {
         customerMtbMenu();
-    } else {
+    } if( $_SESSION['userInfo'][0]['user_role'] == 'admin') {
         adminMtbMenu();
+    } else {
+        customerMtbMenu();
     }
     if(isset($_SESSION['userInfo'][0]['display_name'])) {
         echo "<div class='container'>";
@@ -11,5 +13,3 @@
         echo "</div>";
     }
 ?>
-
-ALTER TABLE public.user ADD COLUMN user_role varchar(30) DEFAULT 'customer';

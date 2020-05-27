@@ -2,6 +2,10 @@
     @require_once('../../common/initialize.php');
     @require_once('../../common/header.php');
  
+    // If the user is not an admin, don't let them see the page
+    // if(!$_SESSION['userInfo'][0]['user_role'] == 'admin') {
+    //   header('Location: login.php');
+    // }
 
     if(isset($_GET['orderId'])){
         $id = $_GET['orderId'];

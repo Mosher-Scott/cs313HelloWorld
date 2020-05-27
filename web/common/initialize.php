@@ -1,5 +1,5 @@
 <?php
-    
+    session_start();
     define("PRIVATE_PATH", dirname(__FILE__));
 //define("PRIVATE_PATH", dirname(__FILE__));
     define("PROJECT_PATH", dirname(PRIVATE_PATH));

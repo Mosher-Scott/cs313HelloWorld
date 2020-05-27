@@ -1,6 +1,6 @@
 <?php
 
-  $pageTitle = "Edit User";
+  $pageTitle = "Create User";
   @require_once('../../common/header.php');
   @require_once('../../model/user-model.php');
 

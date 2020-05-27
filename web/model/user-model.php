@@ -7,7 +7,7 @@ function getAllUsers() {
 
         $db = DbConnection();
 
-        $sql = 'SELECT id, first_name, last_name, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name FROM public.user';
+        $sql = 'SELECT id, first_name, last_name, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name, user_role FROM public.user';
         $stmt = $db -> prepare($sql);
         $stmt -> execute();
     
@@ -27,7 +27,7 @@ function getSingleUserDetails($id) {
 
         $db = DbConnection();
 
-        $sql = 'SELECT id, first_name, last_name, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name FROM public.user WHERE id = :id';
+        $sql = 'SELECT id, first_name, last_name, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name, user_role FROM public.user WHERE id = :id';
         $stmt = $db -> prepare($sql);
         $stmt-> bindValue(':id', $id, PDO::PARAM_INT);
         $stmt -> execute();
@@ -47,7 +47,7 @@ function getSingleUserDetailsByEmail($email) {
 
         $db = DbConnection();
 
-        $sql = 'SELECT id, first_name, last_name, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name FROM public.user WHERE email = :email';
+        $sql = 'SELECT id, first_name, last_name, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name, user_role FROM public.user WHERE email = :email';
         $stmt = $db -> prepare($sql);
         $stmt-> bindValue(':email', $email, PDO::PARAM_STR);
         $stmt -> execute();
@@ -79,11 +79,11 @@ function getPasswordWithEmail($email) {
 }
 
 // Update user details
-function updateUserDetails($id, $firstName, $lastName, $email, $phone, $street, $city, $stateInfo, $zipcode, $displayName) {
+function updateUserDetails($id, $firstName, $lastName, $email, $phone, $street, $city, $stateInfo, $zipcode, $displayName, $user_role) {
     try {
         $db = DbConnection();
 
-        $sql = 'UPDATE public.user SET first_name = :firstName, last_name = :lastName, billing_address = :street, billing_city = :city, billing_state = :stateInfo, billing_zip = :zipcode, billing_phone = :phone, email = :email, display_name = :displayName WHERE id = :id';
+        $sql = 'UPDATE public.user SET first_name = :firstName, last_name = :lastName, billing_address = :street, billing_city = :city, billing_state = :stateInfo, billing_zip = :zipcode, billing_phone = :phone, email = :email, display_name = :displayName, user_role = :user_role WHERE id = :id';
 
         $stmt = $db->prepare($sql);
 
@@ -96,6 +96,7 @@ function updateUserDetails($id, $firstName, $lastName, $email, $phone, $street, 
         $stmt->bindValue(':phone', $phone, PDO::PARAM_STR);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':displayName', $displayName, PDO::PARAM_STR);
+        $stmt->bindValue(':user_role', $user_role, PDO::PARAM_STR);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
         $stmt -> execute();
@@ -111,4 +112,5 @@ function updateUserDetails($id, $firstName, $lastName, $email, $phone, $street, 
         return "error";
     }
 }
+
 ?>

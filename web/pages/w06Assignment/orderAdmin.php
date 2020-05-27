@@ -1,5 +1,4 @@
 <?php
-  session_start();
 
     @require_once('../../common/initialize.php');
     @require_once('../../common/header.php');
@@ -9,9 +8,9 @@
     @require_once('../../model/orders-model.php');
 
     // If the user isn't logged in, then send them back to the login page.
-    if(!$_SESSION['loggedIn']) {
+    // if(!$_SESSION['loggedIn']) {
 
-    }
+    // }
 
     // If they are logged in, continue 
     if($_SESSION['loggedIn']) {
@@ -34,7 +33,7 @@
 
 ?>
 <nav class='rounded-corners'>
-<?php require_once(ROOT_PATH . '/common/nav.php'); ?>
+<?php require_once('../../common/nav.php'); ?>
 </nav>
 
 <main class="rounded-corners">

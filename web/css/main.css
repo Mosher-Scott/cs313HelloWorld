@@ -146,6 +146,10 @@ nav label, #toggle {
     margin: 0 5px 5px 5px !important;
 }
 
+.btn-danger {
+    margin: 0 5px 5px 5px !important;
+}
+
 .btn-disabled {
     background-color: grey  !important;
     color: #EAE6E5 !important;

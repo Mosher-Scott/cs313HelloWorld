@@ -383,6 +383,7 @@
         echo "<li class=' btn btn-primary'><a href='products.php'>Products</a></li>";
         echo "<li class=' btn btn-primary'><a href='cart.php'>Cart</a></li>";
         echo "<li class=' btn btn-primary'><a href='orderAdmin.php'>Manage Orders</a></li>";
+        echo "<li class=' btn btn-primary'><a href='userAdmin.php'>Manage Users</a></li>";
         if($_SESSION['loggedIn']) {
             logOutButton();
             
@@ -439,7 +440,7 @@
 
     // Button to click to go back to the admin page
     function backToAdminPageButton() {
-        echo "<a href='orderAdmin.php' class='btn btn-primary btn-sm'>Back to Admin Page</a>";
+        echo "<a href='orderAdmin.php' class='btn btn-primary btn-sm'>Back to Orders Page</a>";
     }
 
     // Button to click to go back to the admin page.
@@ -459,6 +460,12 @@
     function logOutButton() {
         echo "<a href='login.php?action=logOut' class='btn btn-danger'>Log Out</a>";
     }
+
+    // Button for going to the user admin page
+    function userAdminPageButton() {
+        echo "<a href='userAdmin.php' class='btn btn-primary btn-sm'>User Admin Page</a>";
+    }
+
 
 /****** Cart Functions *******/
 
@@ -527,6 +534,7 @@ function createUserTable($users) {
     echo "<th scope='col'>Phone</th>";
     echo "<th scope='col'>Email</th>";
     echo "<th scope='col'>Display Name</th>";
+    echo "<th scope='col'>Role</th>";
     echo "<th scope='col'>Options</th>";
     echo "</tr>";
 
@@ -544,13 +552,57 @@ function createUserTable($users) {
         echo "<td>{$user['billing_phone']}</td>";
         echo "<td>{$user['email']}</td>";
         echo "<td>{$user['display_name']}</td>";
+        echo "<td>{$user['user_role']}</td>";
 
         echo "<td><a href='editUser.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Edit</a>";
+        echo "<td><a href='deleteUser.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Delete</a>";
         echo "</tr>";
     }
 
     echo "</table>";
 }
+
+// Delete Users Table
+// Creates a table showing the details from the user table
+function deleteUserTable($users) {
+    echo "<table class='table table-striped'>";
+   
+    // Setup table headers
+    echo "<tr>";
+    echo "<th scope='col'>ID</th>";
+    echo "<th scope='col'>First Name</th>";
+    echo "<th scope='col'>Last Name</th>";
+    echo "<th scope='col'>Address</th>";
+    echo "<th scope='col'>City</th>";
+    echo "<th scope='col'>State</th>";
+    echo "<th scope='col'>Zip</th>";
+    echo "<th scope='col'>Phone</th>";
+    echo "<th scope='col'>Email</th>";
+    echo "<th scope='col'>Display Name</th>";
+    echo "<th scope='col'>Role</th>";
+    echo "</tr>";
+
+    // Now populate it with data
+    foreach ($users as $user) {
+
+        echo "<tr>";
+        echo "<td>{$user['id']}</td>";
+        echo "<td>{$user['first_name']}</td>";
+        echo "<td>{$user['last_name']}</td>";
+        echo "<td>{$user['billing_address']}</td>";
+        echo "<td>{$user['billing_city']}</td>";
+        echo "<td>{$user['billing_state']}</td>";
+        echo "<td>{$user['billing_zip']}</td>";
+        echo "<td>{$user['billing_phone']}</td>";
+        echo "<td>{$user['email']}</td>";
+        echo "<td>{$user['display_name']}</td>";
+        echo "<td>{$user['user_role']}</td>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+}
+
 
 // Display the form needed to edit a user
 function editUserForm($id) {
@@ -565,6 +617,7 @@ function editUserForm($id) {
    $zipcode = $id[0]['billing_zip'];
    $phone = $id[0]['billing_phone'];
    $displayName = $id[0]['display_name'];
+   $user_role = $id[0]['user_role'];
 
    // Get all the shipping methods available
    $shipMethods = getShipMethods();
@@ -649,6 +702,22 @@ function editUserForm($id) {
     echo "</div>";
     echo "</div>";
 
+    echo "<div class='form-inline'>";
+    echo "<label for='user_role' class='col-sm-1 control-label'>Role:</label>";
+    echo "<div class='col-med-6'>";
+    echo "<select name='user_role' class='form-control'>";
+    if($user_role == 'admin') {
+        echo "<option value='admin' selected>Admin</option>";
+        echo "<option value='customer'>Customer</option>";
+    } else {
+        echo "<option value='admin'>Admin</option>";
+        echo "<option value='customer' selected>Customer</option>";
+    }
+
+    echo "</select>";
+    echo "</div>";
+    echo "</div>";
+
     echo "<div class='col-med-6'>";
     echo "<br>";
     echo "<input type='submit' class='btn btn-primary' value='Save Changes'>";
@@ -664,8 +733,136 @@ function editUserForm($id) {
     echo "<input type='submit' class='btn btn-danger' value='Cancel Changes'>";
     echo "</form>";
 
-    //echo "</div>";
+}
 
+// Form for creating a new user.  Also will be used for the registration page
+function createNewUser() {
+    // TODO: Create this.  Will want all the parameters send to this function individually, not as an array. Then can use if statements to set the value if the user messed something up
+    $userId = $id[0]['id'];
+    $firstName = $id[0]['first_name'];
+    $lastName = $id[0]['last_name'];
+    $email = $id[0]['email'];
+    $address = $id[0]['billing_address'];
+    $city = $id[0]['billing_city'];
+    $state = $id[0]['billing_state'];
+    $zipcode = $id[0]['billing_zip'];
+    $phone = $id[0]['billing_phone'];
+    $displayName = $id[0]['display_name'];
+    $user_role = $id[0]['user_role'];
+    
+    // Get all the shipping methods available
+    $shipMethods = getShipMethods();
+        
+    
+        // Form creation
+    
+        echo "<form action='editUser.php' method='post' class='form-horizontal'>";
+    
+        echo "<div class='form-inline'>";
+            echo "<label for='firstNameInputBox' class='control-label col-sm-1'>First Name:</label>";
+            echo "<div class='col-med-6'>";
+                echo "<input type='text' name='firstName' id='firstNameInputBox' class='form-control' placeholder='Enter name' value='{$firstName}'>";
+            echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='form-inline'>";
+        echo "<label for='lastNameInputBox' class='col-sm-1 control-label'>Last Name:</label>";
+        echo "<div class='col-med-6'>";
+        echo "<input type='text' name='lastName' id='lastNameInputBox' class='form-control' placeholder='Enter name' value='{$lastName}'>";
+        echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='form-inline'>";
+        echo "<label for='emailInputBox' class='col-sm-1 control-label'>Email:</label>";
+        echo "<div class='col-med-6'>    ";
+        echo "<input type='text' name='email' id='emailInputBox' class='form-control' placeholder='Enter email' value='{$email}'>";
+        echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='form-inline'>";
+        echo "<label for='phoneInputBox' class='col-sm-1 control-label'>Phone:</label>";
+        echo "<div class='col-med-6'>    ";
+        echo "<input type='text' name='phone' id='phoneInputBox' class='form-control' placeholder='Enter Phone' value='{$phone}'>";
+        echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='form-inline'>";
+        echo "<label for='addressInputBox' class='col-sm-1 control-label'>Address:</label>";
+        echo "<div class='col-med-6'>    ";
+        echo "<input type='text' name='street' id='addressInputBox' class='form-control' placeholder='Enter address' value='{$address}'>";
+        echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='form-inline'>";
+        echo "<label for='cityInputBox' class='col-sm-1 control-label'>City:</label>";
+        echo "<div class='col-med-6'>    ";
+        echo "<input type='text' name='city' id='cityInputBox' class='form-control' placeholder='Enter City' value='{$city}'>";
+        echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='form-inline'>";
+        echo "<label for='stateInputBox' class='col-sm-1 control-label'>State:</label>";
+        echo "<div class='col-med-6'>    ";
+        echo "<input type='text' name='state' id='stateInputBox' class='form-control' placeholder='Enter State' value='{$state}'>";
+        echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='form-inline'>";
+        echo "<label for='zipInputBox' class='col-sm-1 control-label'>Zipcode:</label>";
+        echo "<div class='col-med-6'>    ";
+        echo "<input type='text' name='zipcode' id='zipInputBox' class='form-control' placeholder='Enter Zipcode' value='{$zipcode}'>";
+        echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='form-inline'>";
+        echo "<label for='displayNameInputBox' class='col-sm-1 control-label'>UserName:</label>";
+        echo "<div class='col-med-6'>    ";
+        echo "<input type='text' name='displayName' id='displayNameInputBox' class='form-control' placeholder='displayName' value='{$displayName}'>";
+        echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='form-inline'>";
+        echo "<div class='col-med-6'>    ";
+        echo "<input type='hidden' name='action' class='form-control' value='editUser'>";
+        echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='form-inline'>";
+        echo "<div class='col-med-6'>    ";
+        echo "<input type='hidden' name='id' class='form-control' value='{$userId}'>";
+        echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='form-inline'>";
+        echo "<label for='user_role' class='col-sm-1 control-label'>Role:</label>";
+        echo "<div class='col-med-6'>";
+        echo "<select name='user_role' class='form-control'>";
+        if($user_role == 'admin') {
+            echo "<option value='admin' selected>Admin</option>";
+            echo "<option value='customer'>Customer</option>";
+        } else {
+            echo "<option value='admin'>Admin</option>";
+            echo "<option value='customer' selected>Customer</option>";
+        }
+    
+        echo "</select>";
+        echo "</div>";
+        echo "</div>";
+    
+        echo "<div class='col-med-6'>";
+        echo "<br>";
+        echo "<input type='submit' class='btn btn-primary' value='Save Changes'>";
+        echo "</div>";
+        echo "</form>";
+    
+        echo "<form action='userAdmin.php' method='post' class='form-horizontal col-lg-4'>";
+        echo "<div class='form-group'>";
+        echo "<div class='col-med-6'>    ";
+        echo "<input type='hidden' name='action' class='form-control' value='cancelChanges'>";
+        echo "</div>";
+        echo "</div>";
+        echo "<input type='submit' class='btn btn-danger' value='Cancel Changes'>";
+        echo "</form>";
 }
 
 
