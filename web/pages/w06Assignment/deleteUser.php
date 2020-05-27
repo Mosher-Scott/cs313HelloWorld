@@ -4,13 +4,28 @@
   @require_once('../../common/header.php');
   @require_once('../../model/user-model.php');
 
+  // TODO: Add validation so only admins can view the page.  Create a method & if returns true, allow user to see page
+  $message = '';
+
   $emptyFields = false;
   $recordsUpdated = 0;
+
   if(!isset($_GET['action'])) {
     $_GET['action'] = '';
   }
 
-  
+  if(isset($_GET['action']) && $_GET['action'] == 'delete') {
+    $id = $_GET['id'];
+
+    $id = validateInput($id);
+
+    $rowsChanged = deleteUser($id);
+
+    if ($rowsChanged == 1) {
+      $message = "Successfully deleted user from the system.";
+    }
+  }
+
   // Get the userID and get data for it
   if(isset($_GET['userId'])) {
 
@@ -19,20 +34,15 @@
 
     $id = validateInput($id);
 
-    // If it isn't a delete GET request
-    if($_GET['action'] != 'delete') {
-      // Get user info
-      $userInfo = getSingleUserDetails($id);
+    $userInfo = getSingleUserDetails($id);
+
+    if(empty($userInfo)) {
+      $message = 'Sorry, no users found';
+    } else {
+      $message = "Are you sure you want to delete this user? This is permanent.";
     }
 
-    if(isset($_GET['action']) && $_GET['action'] == 'delete') {
-      $id = $_GET['userId'];
-
-      $id = validateInput($id);
-
-      deleteUser($id);
-    }
-
+    
 
   }
 
@@ -53,23 +63,24 @@
 
     <section>
       <div class="container">
-      <h3 class='text-danger'>Are you sure you want to delete this user? This is permanent.</h3>
+      <h3 class='text-danger'><?php echo $message; ?></h3>
           <?php 
 
-          if(!isset($userInfo)) {
-              echo "<h4>Sorry, no users found</h4>";
+          if(!isset($userInfo) || empty($userInfo) && $_GET['action'] != 'delete') {
+              echo "<h4></h4>";
               
           } else {
 
-          if ($recordsUpdated == 1) {
-            echo "<h3 class='text-danger'>Successfully deleted details for user ID {$id}</h3>";
-
-          }
             deleteUserTable($userInfo);
+            echo "<a href='deleteUser.php?action=delete&id={$id}' class='btn btn-danger'>Delete User</a>";
+            echo "<a href='userAdmin.php' class='btn btn-primary btn-sm'>Cancel</a>";
           }
+          userAdminPageButton();
+
+          
           ?>
-          <a href='deleteUser.php?action=delete?id=<?php echo $id;?>' class='btn btn-danger'>Delete User</a>
-          <a href='userAdmin.php' class='btn btn-primary btn-sm'>Cancel</a>
+
+         
 
       </div>
   </section>

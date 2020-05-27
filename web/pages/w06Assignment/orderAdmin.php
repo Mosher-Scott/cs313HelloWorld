@@ -7,25 +7,31 @@
     @require_once('../../model/products-model.php');
     @require_once('../../model/orders-model.php');
 
+    
     // If the user isn't logged in, then send them back to the login page.
-    // if(!$_SESSION['loggedIn']) {
+    if(!isset($_SESSION['loggedIn'])) {
+      header('Location: login.php');
+    }
 
-    // }
+    // If they are logged in go to the next step
+    if($_SESSION['loggedIn'] && isset($_SESSION['userInfo'][0]['user_role'])) {
 
-    // If they are logged in, continue 
-    if($_SESSION['loggedIn']) {
-      // Get all the orders
-      $orders = getAllOrders();
+      // If their role is an admin, display the page
+      if($_SESSION['userInfo'][0]['user_role'] == 'admin') {
+        // Get all the orders
+        $orders = getAllOrders();
 
-      //  debugArray($orders);
-  
-      // Post requests for search forms
-      if(isset($_POST['action'])) {
-        if($_POST['action'] == 'searchByFirstName') {
-  
-          $name = validateInput($_POST['nameToFind']);
-  
-          $orders = findOrdersByFirstName($name);
+        //  debugArray($orders);
+
+        // Post requests for search forms
+        if(isset($_POST['action'])) {
+          if($_POST['action'] == 'searchByFirstName') {
+
+            $name = validateInput($_POST['nameToFind']);
+
+            $orders = findOrdersByFirstName($name);
+          }
+      
         }
       }
     }
@@ -42,6 +48,12 @@
         <h1>Order Admin</h1>
         <div class="bluebar">
         </div>
+
+        <?php
+          if(!$_SESSION['loggedIn']) {
+            echo "<h5>You do not have the rights to this page</h5>";
+          } else {
+        ?>
         <div id="searches">
           <h5>Search</h5>
           <?php searchByFirstName();?>
@@ -63,6 +75,8 @@
              } ?>
         </div> 
       </div>
+
+            <?php }; ?>
 
 
     

@@ -53,6 +53,11 @@ if(isset($_POST) && isset($_POST['action']) == "productSearch") {
 }
 
 ?>
+
+
+<nav class='rounded-corners'>
+  <?php require_once('../../common/nav.php'); ?>
+</nav>
   <main class="rounded-corners">
     <section>
       <div>

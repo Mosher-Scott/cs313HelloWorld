@@ -1,11 +1,11 @@
 <?php
-  session_start();
 
   $pageTitle = "Login";
   @require_once('../../common/header.php');
   @require_once('../../model/user-model.php');
 
   $missingFields = false;
+  
 
   // First check if it is a post request
   if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,18 +26,10 @@
       
       // Now check if their passwords match
       if ($password == $passwordFromDb[0]['password']) {
-        // This flag will 
-        $_SESSION['loggedIn'] = true;
-
-        $userInfo = getSingleUserDetailsByEmail($userEmail);
-
-        //debugArray($userInfo);
-
-        // Store user data to be used in the future
-        $_SESSION['userInfo'] = $userInfo;
         
-       // debugArray($_SESSION);
-
+        // Run the method to log the user in
+        loginUser($userEmail);
+        
         // Now send the user to the Admin page
         header('Location: orderAdmin.php');
       }
