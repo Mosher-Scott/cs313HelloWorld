@@ -77,7 +77,7 @@
                 <tr>
                 <th scope="row">7</th>
                 <td>W06 Team Activity</td>
-                <td><a href="<?php echo urlPath('pages/w06Team-Assignment/scripture2.php') ?>">Link</a></td>
+                <td><a href="<?php echo urlPath('pages/w06Team-Assignment/scriptures2.php') ?>">Link</a></td>
                 <td></td>
                 </tr>
             </tbody>
