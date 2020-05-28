@@ -74,6 +74,13 @@
                 <td><a href="<?php echo urlPath('pages/w05Assignment/products.php') ?>">Link</a></td>
                 <td></td>
                 </tr>
+
+                <tr>
+                <th scope="row">7</th>
+                <td>W06 Team Activity</td>
+                <td><a href="<?php echo urlPath('pages/W06Team-Assignment/scripture2.php') ?>">Link</a></td>
+                <td></td>
+                </tr>
             </tbody>
         </table>
     </section>
