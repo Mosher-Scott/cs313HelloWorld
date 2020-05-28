@@ -1,10 +1,10 @@
 <?php
 // Fill in the blanks, or add in your own DB connection method within this function.  Now you only need to call the same function on any page.  If the database credentials change, instead of changing it on all 3 pages, you only need to change it right here.  Any function that uses this will then be able to connect with the updated information.
-function dbConnection() {
-    $host = "";
-    $db_name = "";
-    $user = "";
-    $password = "";
+function dbConnection2() {
+    $host = "ec2-18-233-32-61.compute-1.amazonaws.com";
+    $db_name = "d3h9884il9ijro";
+    $user = "ukrrsviyqnkmor";
+    $password = "d1294a18dbc2a6656d417615b810c6285bd0c3fc477873b4a9d84737425d0082";
     $port = 5432;
 
     $dsn = "pgsql:host=$host;dbname=$db_name;user=$user;port=$port;password=$password";
@@ -31,7 +31,7 @@ function dbConnection() {
 
     // Get all books
     function getAllBooks() {
-        $db=dbConnection();    
+        $db=dbConnection2();    
         $stmt = $db->prepare('SELECT * FROM scriptures');
         // $name= "%{$name}%";
         $stmt->execute();
@@ -41,7 +41,7 @@ function dbConnection() {
 
     // Query the DB for all books with that name
     function searchQuery($name) {
-        $db=dbConnection();    
+        $db=dbConnection2();    
         $stmt = $db->prepare('SELECT * FROM scriptures WHERE book = :name');
         // $name= "%{$name}%";
         $stmt->bindValue(':name', $name, PDO::PARAM_STR);
@@ -52,7 +52,7 @@ function dbConnection() {
 
     // Query for getting all information for a specified book
     function displayQuery($id) {
-        $db=dbConnection();    
+        $db=dbConnection2();    
         $stmt = $db->prepare('SELECT * FROM scriptures WHERE id = :id');
         //$name= '$name';
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
@@ -63,7 +63,7 @@ function dbConnection() {
 
     function getTopics() {
         // Create a connection object from the connection function
-        $db = dbConnection();
+        $db = dbConnection2();
         // The SQL statement to be used with the database 
         $sql = 'SELECT topic, id FROM topics ORDER BY topic ASC'; 
         // The next line creates the prepared statement using the db connection      
@@ -111,7 +111,7 @@ function dbConnection() {
     function getScriptures() {
         try
         {
-            $db = dbConnection();
+            $db = dbConnection2();
             // For this example, we are going to make a call to the DB to get the scriptures
             // and then for each one, make a separate call to get its topics.
             // This could be done with a single query (and then more processing of the resultset
@@ -164,7 +164,7 @@ function dbConnection() {
         try
         {
             // Add the Scripture
-            $db = dbConnection();
+            $db = dbConnection2();
             // We do this by preparing the query with placeholder values
             $query = 'INSERT INTO public.scriptures(book, chapter, verse, content) VALUES(:book, :chapter, :verse, :content)';
             $statement = $db->prepare($query);
@@ -216,7 +216,7 @@ function dbConnection() {
         
         try {
             // Add the Scripture
-            $db = dbConnection();
+            $db = dbConnection2();
             // We do this by preparing the query with placeholder values
             $query = 'INSERT INTO public.topics(topic) VALUES(:name)';
             $statement = $db->prepare($query);
