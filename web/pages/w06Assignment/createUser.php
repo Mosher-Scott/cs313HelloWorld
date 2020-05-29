@@ -4,6 +4,9 @@
   @require_once('../../common/header.php');
   @require_once('../../model/user-model.php');
 
+  $isAdmin = checkIfAdminUser();
+
+  if($isAdmin){
   $emptyFields = false;
   $recordsUpdated = 0;
 
@@ -73,6 +76,7 @@
     }
   }
   
+}
   // debugArray($allUsers);
 ?>
 
@@ -80,6 +84,7 @@
   <?php require_once('../../common/nav.php'); ?>
 </nav>
   <main class="rounded-corners">
+  <?php if($isAdmin) { ?>
     <section>
       <div>
         <h1>Edit User Information</h1>
@@ -107,15 +112,13 @@
             createNewUser($userInfo);
           }
           userAdminPageButton();
-          }
-
-          
+          }        
           ?>
-          
-
       </div>
   </section>
-
+<?php } else {
+notAdminMessage();
+}; ?> 
 </main>
 
 <?php 

@@ -133,10 +133,10 @@ INSERT INTO public.order_item(order_id, product_id, quantity, price) VALUES('
 INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('1','18','1234567890','Scott Mosher','0222');
 INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('2','127.96','1234567890','Scott Mosher','0425');
 INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('3','41.96','1940506738','Shane Trusko','0221');
-INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('4','86.98','10496715234','Sara Mosher','0622');
-INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('5','101.96','10496715234','Sara Mosher','0622');
-INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('6','38.99','47899742389','Adam Mosher','0924');
-INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('7','223.94','47899742389','Adam Mosher','0924');
+INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('4','86.98','1049671523','Sara Mosher','0622');
+INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('5','101.96','1049671523','Sara Mosher','0622');
+INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('6','38.99','1789974238','Adam Mosher','0924');
+INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('7','223.94','178997008','Adam Mosher','0924');
 INSERT INTO public.payment(order_id, payment_amount, card_number, card_person_name, card_expiration) VALUES('8','7.98','1275793637','Adam Mosher','1123');
 
 /* Misc queries */

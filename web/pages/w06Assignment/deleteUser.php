@@ -4,7 +4,12 @@
   @require_once('../../common/header.php');
   @require_once('../../model/user-model.php');
 
-  // TODO: Add validation so only admins can view the page.  Create a method & if returns true, allow user to see page
+  // If the user is not an admin, don't let them see the page
+  $isAdmin = checkIfAdminUser();
+
+  if($isAdmin){
+
+ 
   $message = '';
 
   $emptyFields = false;
@@ -41,10 +46,9 @@
     } else {
       $message = "Are you sure you want to delete this user? This is permanent.";
     }
-
-    
-
   }
+
+}
 
   // debugArray($allUsers);
 ?>
@@ -52,7 +56,9 @@
   <?php require_once('../../common/nav.php'); ?>
 </nav>
 
+
   <main class="rounded-corners">
+  <?php if($isAdmin) { ?>
     <section>
       <div>
         <h1>Delete User</h1>
@@ -67,7 +73,7 @@
           <?php 
 
           if(!isset($userInfo) || empty($userInfo) && $_GET['action'] != 'delete') {
-              echo "<h4></h4>";
+              echo "<h3>Sorry, user not found</h3>";
               
           } else {
 
@@ -76,15 +82,13 @@
             echo "<a href='userAdmin.php' class='btn btn-primary btn-sm'>Cancel</a>";
           }
           userAdminPageButton();
-
-          
           ?>
-
-         
-
       </div>
   </section>
 
+  <?php } else {
+  notAdminMessage();
+}; ?>
 </main>
 
 <?php 

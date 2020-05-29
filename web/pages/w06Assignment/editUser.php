@@ -4,21 +4,24 @@
   @require_once('../../common/header.php');
   @require_once('../../model/user-model.php');
 
+  $isAdmin = checkIfAdminUser();
+
   $emptyFields = false;
   $recordsUpdated = 0;
+
+  if($isAdmin) {
+    // Get the userID and get data for it
+    if(isset($_GET['userId'])) {
+
+      // Get the user details
+      $id = $_GET['userId'];
+
+      $id = validateInput($id);
+
+      // Get user info
+      $userInfo = getSingleUserDetails($id);
+    }
   
-  // Get the userID and get data for it
-  if(isset($_GET['userId'])) {
-
-    // Get the user details
-    $id = $_GET['userId'];
-
-    $id = validateInput($id);
-
-    // Get user info
-    $userInfo = getSingleUserDetails($id);
-
-  }
 
   // If it is a post request, and the post variable action is set to editUser
   if(isset($_POST) && isset($_POST['action']) == 'editUser') {
@@ -67,10 +70,15 @@
       }
     }
   }
+}
   
   // debugArray($allUsers);
 ?>
+  <nav class='rounded-corners'>
+  <?php require_once('../../common/nav.php'); ?>
+  </nav>
   <main class="rounded-corners">
+  <?php if($isAdmin) { ?>
     <section>
       <div>
         <h1>Edit User Information</h1>
@@ -100,11 +108,12 @@
           }
           userAdminPageButton();
           ?>
-          
-
       </div>
   </section>
 
+  <?php } else {
+  notAdminMessage();
+}; ?> 
 </main>
 
 <?php 

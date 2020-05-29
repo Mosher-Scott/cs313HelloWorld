@@ -33,6 +33,24 @@
         $_SESSION['userInfo'] = $userInfo;
     }
 
+    // Checks if the user is logged in as an admin. 
+    function checkIfAdminUser() {
+         // If the user is not an admin, don't let them see the page
+
+    if(!isset($_SESSION['userInfo']) || $_SESSION['userInfo'][0]['user_role'] == 'customer') {
+
+       return false;
+      } else { return true;}
+    } 
+
+    // Message to display if the user is not an admin user
+    function notAdminMessage() {
+        echo "<div class='container'>";
+        echo "<h3> You must have administrative privleges to view this page.</h3>";
+
+        loginPageButton();
+    }
+
 /****** Page Building Functions *******/
     // Builds the webpage used for displaying products on the page
     function buildProductDisplay($products) {
@@ -435,6 +453,13 @@
 
 /****** Buttons *******/ 
 
+    // Back Button
+    function backButton() {
+        echo "<form>";
+        echo "<input type='button' class='btn btn-primary' value='Back' onclick='history.back()'>";
+        echo "</form>";
+    }
+
     // Products Link Button
     function productsPageLink() {
         echo "<a href='products.php' class='btn btn-primary'>&#8592; Back</a>";
@@ -475,6 +500,11 @@
     // Button for going to the user admin page
     function userAdminPageButton() {
         echo "<a href='userAdmin.php' class='btn btn-primary btn-sm'>User Admin Page</a>";
+    }
+
+    // Button to the login page
+    function loginPageButton() {
+        echo "<a href='login.php' class='btn btn-primary btn-sm'>Login Page</a>";
     }
 
 
@@ -565,8 +595,54 @@ function createUserTable($users) {
         echo "<td>{$user['display_name']}</td>";
         echo "<td>{$user['user_role']}</td>";
 
+        echo "<td><a href='userDetails.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Details</a>";
         echo "<td><a href='editUser.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Edit</a>";
         echo "<td><a href='deleteUser.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Delete</a>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+}
+
+// Displays a table with information about the user.  This will be accessed by Admins
+function createUserDetailsTable($users) {
+    echo "<table class='table table-striped'>";
+   
+    // Setup table headers
+    echo "<tr>";
+    echo "<th scope='col'>ID</th>";
+    echo "<th scope='col'>First Name</th>";
+    echo "<th scope='col'>Last Name</th>";
+    echo "<th scope='col'>Address</th>";
+    echo "<th scope='col'>City</th>";
+    echo "<th scope='col'>State</th>";
+    echo "<th scope='col'>Zip</th>";
+    echo "<th scope='col'>Phone</th>";
+    echo "<th scope='col'>Email</th>";
+    echo "<th scope='col'>Display Name</th>";
+    echo "<th scope='col'>Role</th>";
+    //echo "<th scope='col'>Options</th>";
+    echo "</tr>";
+
+    // Now populate it with data
+    foreach ($users as $user) {
+
+        echo "<tr>";
+        echo "<td>{$user['id']}</td>";
+        echo "<td>{$user['first_name']}</td>";
+        echo "<td>{$user['last_name']}</td>";
+        echo "<td>{$user['billing_address']}</td>";
+        echo "<td>{$user['billing_city']}</td>";
+        echo "<td>{$user['billing_state']}</td>";
+        echo "<td>{$user['billing_zip']}</td>";
+        echo "<td>{$user['billing_phone']}</td>";
+        echo "<td>{$user['email']}</td>";
+        echo "<td>{$user['display_name']}</td>";
+        echo "<td>{$user['user_role']}</td>";
+
+        //echo "<td><a href='userDetails.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Details</a>";
+        //echo "<td><a href='editUser.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Edit</a>";
+        //echo "<td><a href='deleteUser.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Delete</a>";
         echo "</tr>";
     }
 
@@ -1002,7 +1078,7 @@ function createOrderDisplayTable($orders){
 
         $date = $str=substr($order['order_date'], 0, strrpos($order['order_date'], ' '));
         echo "<tr>";
-        echo "<td>{$order['id']}</td>";
+        echo "<td>{$order['order_id']}</td>";
         echo "<td>$date</td>";
         echo "<td>{$order['status']}</td>";
         echo "<td>{$order['method']}</td>";
@@ -1013,12 +1089,84 @@ function createOrderDisplayTable($orders){
         echo "<td>{$order['ship_state']}</td>";
         echo "<td>{$order['ship_zip']}</td>";
         echo "<td>{$order['email']}</td>";
-        echo "<td><a href='orderDetails.php?orderId={$order['id']}' class='btn btn-primary btn-sm'>Details</a>";
+        echo "<td><a href='orderDetails.php?orderId={$order['order_id']}' class='btn btn-primary btn-sm'>Details</a>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+}
+
+// Creates the table for displaying a single order pulled from the database
+function createOrderDisplayTableForSingleOrder($orders){
+    echo "<table class='table table-striped'>";
+   
+    // Setup table headers
+    echo "<tr>";
+    echo "<th scope='col'>Order ID</th>";
+    echo "<th scope='col'>Order Date</th>";
+    echo "<th scope='col'>Status</th>";
+    echo "<th scope='col'h>Ship Method</th>";
+    echo "<th scope='col'>First Name</th>";
+    echo "<th scope='col'>Last Name</th>";
+    echo "<th scope='col'>Address</th>";
+    echo "<th scope='col'>City</th>";
+    echo "<th scope='col'>State</th>";
+    echo "<th scope='col'>Zip</th>";
+    echo "<th scope='col'>Email</th>";
+    echo "</tr>";
+
+    // Now populate it with data
+    foreach ($orders as $order) {
+
+        $date = $str=substr($order['order_date'], 0, strrpos($order['order_date'], ' '));
+        echo "<tr>";
+        echo "<td>{$order['order_id']}</td>";
+        echo "<td>$date</td>";
+        echo "<td>{$order['status']}</td>";
+        echo "<td>{$order['method']}</td>";
+        echo "<td>{$order['first_name']}</td>";
+        echo "<td>{$order['last_name']}</td>";
+        echo "<td>{$order['ship_address']}</td>";
+        echo "<td>{$order['ship_city']}</td>";
+        echo "<td>{$order['ship_state']}</td>";
+        echo "<td>{$order['ship_zip']}</td>";
+        echo "<td>{$order['email']}</td>";
         echo "</tr>";
     }
 
     echo "</table>";
 
+}
+
+// Creates a table for displaying payment information
+function displayPaymentInformation($orders) {
+    echo "<table class='table table-striped'>";
+   
+    // Setup table headers
+    echo "<tr>";
+    echo "<th scope='col'>Payment ID</th>";
+    echo "<th scope='col'>Date</th>";
+    echo "<th scope='col'>Payment Amount</th>";
+    echo "<th scope='col'>Card Number</th>";
+    echo "<th scope='col'h>Card Expiration</th>";
+    echo "<th scope='col'>Cardholder Name</th>";
+
+    echo "</tr>";
+
+    foreach ($orders as $order) {
+
+        $date = $str=substr($order['payment_date'], 0, strrpos($order['payment_date'], ' '));
+        echo "<tr>";
+        echo "<td>{$order['id']}</td>";
+        echo "<td>$date</td>";
+        echo "<td>$ {$order['payment_amount']}</td>";
+        echo "<td>{$order['card_number']}</td>";
+        echo "<td>{$order['card_expiration']}</td>";
+        echo "<td>{$order['card_person_name']}</td>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
 }
 
 /*********  Misc Functions ***************/
