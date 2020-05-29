@@ -102,11 +102,14 @@
 
             if ($recordsUpdated == 1) {
               echo "<h3 class='text-danger'>Successfully updated details for user ID {$id}</h3>";
+              sleep(5);
 
+              // header('Location: userAdmin.php');
+              // die();
             }
             editUserForm($userInfo);
           }
-          userAdminPageButton();
+          backButton();
           ?>
       </div>
   </section>

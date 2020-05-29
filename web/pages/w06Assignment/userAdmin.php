@@ -27,6 +27,7 @@
         <h1>User Information</h1>
         <div class="bluebar">
         </div>
+        <a href='createUser.php' class='btn btn-primary'>Create New User</a>
       </div>
     </section>
 

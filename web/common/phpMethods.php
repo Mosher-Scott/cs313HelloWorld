@@ -33,6 +33,11 @@
         $_SESSION['userInfo'] = $userInfo;
     }
 
+        // Logout message 
+        function logUserOut() {
+            session_destroy();          
+        }
+
     // Checks if the user is logged in as an admin. 
     function checkIfAdminUser() {
          // If the user is not an admin, don't let them see the page
@@ -444,12 +449,7 @@
         echo "</form>";
     }
 
-    // Logout message 
-    function logUserOut() {
-        session_destroy();
-        $_SESSION['loggedIn'] = false;
-        
-    }
+
 
 /****** Buttons *******/ 
 

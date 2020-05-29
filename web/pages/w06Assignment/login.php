@@ -6,6 +6,11 @@
 
   $missingFields = false;
   
+  if(isset($_GET['action']) && $_GET['action'] == 'logOut') {
+    logUserOut();
+    header('Location: products.php');
+    //debugArray($_SESSION);
+  }
 
   // First check if it is a post request
   if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,17 +35,25 @@
         // Run the method to log the user in
         loginUser($userEmail);
         
-        // Now send the user to the Admin page
-        header('Location: orderAdmin.php');
+        // Now get user information to see which page they should be directed to
+        $userRole = getUserRoleWithEmail($userEmail);
+
+        echo $userRole;
+        if ($userRole = 'customer')
+          {
+            header('Location: products.php');
+            die();
+          } else {
+          // Now send the user to the Admin page
+         // header('Location: orderAdmin.php');
+          // die();
+          }
+          
+
       }
     }
   }
-  if(isset($_GET['action']) && $_GET['action'] == 'logOut') {
-    echo "You are logged out";
-    logUserOut();
-    header('Location: login.php');
-    //debugArray($_SESSION);
-  }
+  
 ?>
 
 <nav class='rounded-corners'>
