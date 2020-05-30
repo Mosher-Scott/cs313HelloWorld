@@ -98,7 +98,7 @@ function getUserRoleWithEmail($email) {
     }
 }
 
-// Checks to see if an email already exists in the database
+// Checks to see if an email address already exists in the database
 function checkExistingEmail($email) {
     try {
 
@@ -112,6 +112,26 @@ function checkExistingEmail($email) {
         $stmt -> closeCursor();
     
         return $users;
+    } catch (Exception $ex) {
+        return "error";
+    }
+}
+
+
+// Checks to see if an email address already exists in the database
+function getEmailCount($email) {
+    try {
+
+        $db = DbConnection();
+
+        $sql = 'SELECT COUNT(*) FROM public.user WHERE email = :email';
+        $stmt = $db -> prepare($sql);
+        $stmt-> bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt -> execute();
+        $count = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        $stmt -> closeCursor();
+    
+        return $count;
     } catch (Exception $ex) {
         return "error";
     }

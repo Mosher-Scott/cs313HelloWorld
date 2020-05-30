@@ -43,8 +43,6 @@ function getAllProductsInOrder($id) {
     }
 }
 
-
-
 // Searches for a product based on the ID
 function getSingleProduct($id) {
     $db = DbConnection();

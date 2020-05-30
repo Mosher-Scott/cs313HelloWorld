@@ -9,53 +9,6 @@
         return $data;
     }
 
-    // Validate email entry
-    function checkEmail($clientEmail) {
-        $valEmail = filter_var($clientEmail, FILTER_VALIDATE_EMAIL);
-        return $valEmail;
-    }
-
-    // Check if the password is valid form
-    function checkPassword($clientPassword) {
-        $pattern = '/^(?=.*[[:digit:]])(?=.*[[:punct:]])(?=.*[A-Z])(?=.*[a-z])([^\s]){8,}$/';
-        return preg_match($pattern, $clientPassword);
-    }
-
-    // TODO: Write method to check if username & password match.  Returns true or false
-
-    // Log the user in
-    function loginUser($userEmail) {
-        $_SESSION['loggedIn'] = true;
-
-        $userInfo = getSingleUserDetailsByEmail($userEmail);
-
-        // Store user data to be used in the future
-        $_SESSION['userInfo'] = $userInfo;
-    }
-
-        // Logout message 
-        function logUserOut() {
-            session_destroy();          
-        }
-
-    // Checks if the user is logged in as an admin. 
-    function checkIfAdminUser() {
-         // If the user is not an admin, don't let them see the page
-
-    if(!isset($_SESSION['userInfo']) || $_SESSION['userInfo'][0]['user_role'] == 'customer') {
-
-       return false;
-      } else { return true;}
-    } 
-
-    // Message to display if the user is not an admin user
-    function notAdminMessage() {
-        echo "<div class='container'>";
-        echo "<h3> You must have administrative privleges to view this page.</h3>";
-
-        loginPageButton();
-    }
-
 /****** Page Building Functions *******/
     // Builds the webpage used for displaying products on the page
     function buildProductDisplay($products) {
@@ -416,6 +369,7 @@
         echo "<ul id='menu'>";
         echo "<li class=' btn btn-primary'><a href='products.php'>Products</a></li>";
         echo "<li class=' btn btn-primary'><a href='cart.php'>Cart</a></li>";
+        echo "<li class=' btn btn-primary'><a href='productAdmin.php'>Manage Products</a></li>";
         echo "<li class=' btn btn-primary'><a href='orderAdmin.php'>Manage Orders</a></li>";
         echo "<li class=' btn btn-primary'><a href='userAdmin.php'>Manage Users</a></li>";
         if($_SESSION['loggedIn']) {
@@ -576,7 +530,7 @@ function createUserTable($users) {
     echo "<th scope='col'>Email</th>";
     echo "<th scope='col'>Display Name</th>";
     echo "<th scope='col'>Role</th>";
-    echo "<th scope='col'>Options</th>";
+    echo "<th scope='col' colspan='3'>Options</th>";
     echo "</tr>";
 
     // Now populate it with data
@@ -1048,6 +1002,86 @@ function userRegistration($firstName, $lastName, $email, $address, $city, $state
     echo "</div>";
     echo "<input type='submit' class='btn btn-danger' value='Cancel Changes'>";
     echo "</form>";
+}
+
+/*********  Product Display Functions ***************/
+
+// Creates a table showing the details from the products table
+function createProductsTable($products) {
+
+    //debugArray($products);
+    echo "<table class='table table-striped'>";
+   
+    // Setup table headers
+    echo "<tr>";
+    echo "<th scope='col'>ID</th>";
+    echo "<th scope='col'>Added Date</th>";
+    echo "<th scope='col'>Name</th>";
+    echo "<th scope='col'>Description</th>";
+    echo "<th scope='col'>Price</th>";
+    echo "<th scope='col'>Quantity</th>";
+    echo "<th scope='col'>Image Name</th>";
+    echo "<th scope='col' colspan='3'>Options</th>";
+    echo "</tr>";
+
+    // Now populate it with data
+    foreach ($products as $product) {
+        $date = $str=substr($product['created_date'], 0, strrpos($product['created_date'], ' '));
+        echo "<tr>";
+        echo "<td>{$product['id']}</td>";
+        echo "<td>{$date}</td>";
+        echo "<td>{$product['name']}</td>";
+        echo "<td>{$product['description']}</td>";
+        echo "<td>{$product['price']}</td>";
+        echo "<td>{$product['quantity']}</td>";
+        echo "<td>{$product['image_name']}</td>";
+
+        echo "<td><a href='productDetails.php?productId={$product['id']}' class='btn btn-primary btn-sm'>Details</a>";
+        echo "<td><a href='editproduct.php?productId={$product['id']}' class='btn btn-primary btn-sm'>Edit</a>";
+        echo "<td><a href='deleteproduct.php?productId={$product['id']}' class='btn btn-primary btn-sm'>Delete</a>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+}
+
+
+// Creates a table showing product information for a single product, with the ability to edit or delete it
+function createSingleProductTable($products) {
+
+    //debugArray($products);
+    echo "<table class='table table-striped'>";
+   
+    // Setup table headers
+    echo "<tr>";
+    echo "<th scope='col'>ID</th>";
+    echo "<th scope='col'>Added Date</th>";
+    echo "<th scope='col'>Name</th>";
+    echo "<th scope='col'>Description</th>";
+    echo "<th scope='col'>Price</th>";
+    echo "<th scope='col'>Quantity</th>";
+    echo "<th scope='col'>Image Name</th>";
+    echo "<th scope='col' colspan='2'>Options</th>";
+    echo "</tr>";
+
+    // Now populate it with data
+    foreach ($products as $product) {
+        $date = $str=substr($product['created_date'], 0, strrpos($product['created_date'], ' '));
+        echo "<tr>";
+        echo "<td>{$product['id']}</td>";
+        echo "<td>{$date}</td>";
+        echo "<td>{$product['name']}</td>";
+        echo "<td>{$product['description']}</td>";
+        echo "<td>{$product['price']}</td>";
+        echo "<td>{$product['quantity']}</td>";
+        echo "<td>{$product['image_name']}</td>";
+
+        echo "<td><a href='editproduct.php?productId={$product['id']}' class='btn btn-primary btn-sm'>Edit</a>";
+        echo "<td><a href='deleteproduct.php?productId={$product['id']}' class='btn btn-primary btn-sm'>Delete</a>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
 }
 
 
