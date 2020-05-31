@@ -1049,7 +1049,7 @@ function createProductsTable($products) {
 // Creates a table showing product information for a single product, with the ability to edit or delete it
 function createSingleProductTable($products) {
 
-    //debugArray($products);
+    debugArray($products);
     echo "<table class='table table-striped'>";
    
     // Setup table headers

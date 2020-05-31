@@ -43,6 +43,8 @@
     $userInfo = getSingleUserDetails($id);
   }
 
+  // TODO: Change this to just being username & password  Address & Info will be filled out during checkout
+
   // If it is a post request, and the post variable action is set to addUser
   if(isset($_POST) && isset($_POST['action']) == 'addUser') {
 

@@ -77,5 +77,11 @@ function searchByPartialProductName($text) {
     return $items;
 }
 
+// Update the database after a user edits a product
+function updateProduct($id, $name, $description, $price, $quantity, $imageName) {
+
+    // TODO: Complete this
+}
+
 
 ?>

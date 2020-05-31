@@ -1,132 +1,187 @@
-<?php session_start();
-#cart.php - A simple shopping cart with add to cart, and remove links
- //---------------------------
- //initialize sessions
+<?php
 
-//Define the products and cost
-$products = array("product A", "product B", "product C");
-$amounts = array("19.99", "10.99", "2.99");
+// Need to setup the page to receive the request and process it
+//  https://www.w3schools.com/js/tryit.asp?filename=tryjs_ajax_database
 
-$_SESSION['cart'] = array();
+// When trying this live, it won't be needed since it is already in the other file
+function DbConnection() {
+    $host = "ec2-54-236-169-55.compute-1.amazonaws.com";
+    $db_name = "d5392qgm4bnosd";
+    $user = "yyoehwuqwyqgnn";
+    $password = "6362c80a60d68d910405f108339ca094e8d5666a40bfd9646da4e23759c0f7c5";
+    $port = 5432;
 
-//Load up session
- if ( !isset($_SESSION["total"]) ) {
-   $_SESSION["total"] = 0;
-   for ($i=0; $i< count($products); $i++) {
-    $_SESSION["qty"][$i] = 0;
-   $_SESSION["amounts"][$i] = 0;
-  }
- }
+    $dsn = "pgsql:host=$host;dbname=$db_name;user=$user;port=$port;password=$password;sslmode=require";
 
- //---------------------------
- //Reset
- if ( isset($_GET['reset']) )
- {
- if ($_GET["reset"] == 'true')
-   {
-   unset($_SESSION["qty"]); //The quantity for each product
-   unset($_SESSION["amounts"]); //The amount from each product
-   unset($_SESSION["total"]); //The total cost
-   unset($_SESSION["cart"]); //Which item has been chosen
-   }
- }
+    $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
- //---------------------------
- //Add
- if ( isset($_GET["add"]) )
-   {
-   $i = $_GET["add"];
-   $qty = $_SESSION["qty"][$i] + 1;
-   $_SESSION["amounts"][$i] = $amounts[$i] * $qty;
-   $_SESSION["cart"][$i] = $i;
-   $_SESSION["qty"][$i] = $qty;
- }
+    try {
+        $db = new PDO($dsn);
+        return $db;
+    } catch (PDOException $e){
+        echo "Connection to the database failed";
 
-  //---------------------------
-  //Delete
-  if ( isset($_GET["delete"]) )
-   {
-   $i = $_GET["delete"];
-   $qty = $_SESSION["qty"][$i];
-   $qty--;
-   $_SESSION["qty"][$i] = $qty;
-   //remove item if quantity is zero
-   if ($qty == 0) {
-    $_SESSION["amounts"][$i] = 0;
-    unset($_SESSION["cart"][$i]);
-  }
- else
-  {
-   $_SESSION["amounts"][$i] = $amounts[$i] * $qty;
-  }
- }
- ?>
- <h2>List of All Products</h2>
- <table>
-   <tr>
-   <th>Product</th>
-   <th width="10px">&nbsp;</th>
-   <th>Amount</th>
-   <th width="10px">&nbsp;</th>
-   <th>Action</th>
-   </tr>
- <?php
- for ($i=0; $i< count($products); $i++) {
-   ?>
-   <tr>
-   <td><?php echo($products[$i]); ?></td>
-   <td width="10px">&nbsp;</td>
-   <td><?php echo($amounts[$i]); ?></td>
-   <td width="10px">&nbsp;</td>
-   <td><a href="?add=<?php echo($i); ?>">Add to cart</a></td>
-   </tr>
-   <?php
- }
- ?>
- <tr>
- <td colspan="5"></td>
- </tr>
- <tr>
- <td colspan="5"><a href="?reset=true">Reset Cart</a></td>
- </tr>
- </table>
- <?php
- if ( isset($_SESSION["cart"]) ) {
- ?>
- <br/><br/><br/>
- <h2>Cart</h2>
- <table>
- <tr>
- <th>Product</th>
- <th width="10px">&nbsp;</th>
- <th>Qty</th>
- <th width="10px">&nbsp;</th>
- <th>Amount</th>
- <th width="10px">&nbsp;</th>
- <th>Action</th>
- </tr>
- <?php
- $total = 0;
- foreach ( $_SESSION["cart"] as $i ) {
- ?>
- <tr>
- <td><?php echo( $products[$_SESSION["cart"][$i]] ); ?></td>
- <td width="10px">&nbsp;</td>
- <td><?php echo( $_SESSION["qty"][$i] ); ?></td>
- <td width="10px">&nbsp;</td>
- <td><?php echo( $_SESSION["amounts"][$i] ); ?></td>
- <td width="10px">&nbsp;</td>
- <td><a href="?delete=<?php echo($i); ?>">Delete from cart</a></td>
- </tr>
- <?php
- $total = $total + $_SESSION["amounts"][$i];
- }
- $_SESSION["total"] = $total;
- ?>
- <tr>
- <td colspan="7">Total : <?php echo($total); ?></td>
- </tr>
- </table>
- <?php
- }
- ?>
+        echo $e;
+    }
+}
+
+// Creates a dropdown with IDs
+function createIdForm($ids){
+    echo "<form action=''>";
+    echo "<select name='Ids' onchange='showCustomer(this.value)>";
+    echo "<option value=''>Choose ID</option>";
+    foreach($ids as $id) {
+        echo "<option value='{$id['id']}'>{$id['display_name']}</option>";
+    }
+    echo "</select>";
+
+    echo "</form>";
+}
+
+// Connects to DB and gets the ID of all users
+function getAllUserIdsAndDisplayName() {
+
+    try {
+
+        $db = DbConnection();
+
+        $sql = 'SELECT id, display_name FROM public.user';
+        $stmt = $db -> prepare($sql);
+        $stmt -> execute();
+    
+        $users = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        $stmt -> closeCursor();
+    
+        return $users;
+    } catch (Exception $ex) {
+        return "error";
+    }
+}
+
+// Gets all the user info for a single user
+function getSingleUserDetails($id) {
+
+    try {
+
+        $db = DbConnection();
+
+        $sql = 'SELECT id, first_name, last_name, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name, user_role FROM public.user WHERE id = :id';
+        $stmt = $db -> prepare($sql);
+        $stmt-> bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt -> execute();
+        $users = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        $stmt -> closeCursor();
+    
+        return $users;
+    } catch (Exception $ex) {
+        return "error";
+    }
+}
+
+function createUserDetailsTable($users) {
+    echo "<table class='table table-striped'>";
+   
+    // Setup table headers
+    echo "<tr>";
+    echo "<th scope='col'>ID</th>";
+    echo "<th scope='col'>First Name</th>";
+    echo "<th scope='col'>Last Name</th>";
+    echo "<th scope='col'>Address</th>";
+    echo "<th scope='col'>City</th>";
+    echo "<th scope='col'>State</th>";
+    echo "<th scope='col'>Zip</th>";
+    echo "<th scope='col'>Phone</th>";
+    echo "<th scope='col'>Email</th>";
+    echo "<th scope='col'>Display Name</th>";
+    echo "<th scope='col'>Role</th>";
+    //echo "<th scope='col'>Options</th>";
+    echo "</tr>";
+
+    // Now populate it with data
+    foreach ($users as $user) {
+
+        echo "<tr>";
+        echo "<td>{$user['id']}</td>";
+        echo "<td>{$user['first_name']}</td>";
+        echo "<td>{$user['last_name']}</td>";
+        echo "<td>{$user['billing_address']}</td>";
+        echo "<td>{$user['billing_city']}</td>";
+        echo "<td>{$user['billing_state']}</td>";
+        echo "<td>{$user['billing_zip']}</td>";
+        echo "<td>{$user['billing_phone']}</td>";
+        echo "<td>{$user['email']}</td>";
+        echo "<td>{$user['display_name']}</td>";
+        echo "<td>{$user['user_role']}</td>";
+
+        //echo "<td><a href='userDetails.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Details</a>";
+        //echo "<td><a href='editUser.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Edit</a>";
+        //echo "<td><a href='deleteUser.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Delete</a>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+}
+
+
+$idsAndDisplayNames = getAllUserIdsAndDisplayName();
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Test AJAX Calls">
+        <meta name="author" content="Scott Mosher">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+    
+        <title>Hello World</title>
+
+        <!-- The script that runs when a user changes the dropdown display name -->
+        <script>
+            function showCustomer(str)
+            {
+                // Create the variable to hold the request
+                var xhttp;
+
+                if(str == "") {
+                    document.getElementById("txtHint".innerHTML) = '';
+                    return;
+                }
+
+                // Now create the request
+                xhttp = new XMLHttpRequest();
+
+                // On state change, run this function
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // Response text will be changed to what is returned
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+                // Now this is how we're going to process the request, and where it will be processed
+                xhttp.open("GET", "getcustomer.php?q="+str, true);
+
+                // Send the request
+                xhttp.send();
+            }        
+ </script>
+    </head>
+
+<body>
+    <header>
+    </header>   
+    <main>
+        <section>
+            <h2>Please pick a display name</h2>
+            <?php createIdForm($idsAndDisplayNames); ?>
+        </section>
+        <hr>
+        <section  id="txtHint"> This is where results will be displayed
+        </section>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
