@@ -83,11 +83,14 @@ function getSingleUserDetails($id) {
     }
 }
 
-//  When the page is reqeusted as a GET request, do the following
+//  When the page is requested as a GET request, do the following
 
+    // First save the get value
     $id = $_GET['id'];
 
+    // Get the user details from the DB
     $userDetails = getSingleUserDetails($id);
 
+    // Now create the table with those details and return the resulting table back to the calling page
     createUserDetailsTable($userDetails);
 ?>

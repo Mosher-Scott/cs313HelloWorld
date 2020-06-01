@@ -25,9 +25,13 @@ function DbConnection() {
     }
 }
 
-// Creates a dropdown with IDs
+// Creates a dropdown with IDs from the database
 function createIdForm($ids){
+
+    // Our action is just a space because the form isn't actually doing the processing
     echo "<form action=' '>";
+
+    // Add an onchange argument.  Needs to be onchange="functionToRun(this.value)"
     echo "<select name='Ids' onchange='showCustomer(this.value)'>";
     echo "<option value=' '>Choose ID</option>";
     foreach($ids as $id) {
@@ -38,7 +42,7 @@ function createIdForm($ids){
     echo "</form>";
 }
 
-// Connects to DB and gets the ID of all users
+// Connects to DB and gets the ID and display name of all users to populate the dropdown list
 function getAllUserIdsAndDisplayName() {
 
     try {
@@ -58,7 +62,7 @@ function getAllUserIdsAndDisplayName() {
     }
 }
 
-
+// Save all the IDs and usernames to an array
 $idsAndDisplayNames = getAllUserIdsAndDisplayName();
 ?>
 
@@ -79,6 +83,7 @@ $idsAndDisplayNames = getAllUserIdsAndDisplayName();
                 // Create the variable to hold the request
                 var xhttp;
 
+                // If the variable is an empty space, nothing needs to happen
                 if(str == " ") {
                     document.getElementById("txtHint".innerHTML) = '';
                     return;
@@ -90,11 +95,12 @@ $idsAndDisplayNames = getAllUserIdsAndDisplayName();
                 // On state change, run this function
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
-                        // Response text will be changed to what is returned
+                        // Text in the txtHint element will be changed to what is returned
                         document.getElementById("txtHint").innerHTML = this.responseText;
                     }
                 };
                 // Now this is how we're going to process the request, and where it will be processed
+                // (TYPE of request, file to process it with and other needed details)
                 xhttp.open("GET", "getCustomer.php?id="+str, true);
 
                 // Send the request
@@ -109,7 +115,9 @@ $idsAndDisplayNames = getAllUserIdsAndDisplayName();
     <main>
         <section>
             <h2>Please pick a display name</h2>
-            <?php createIdForm($idsAndDisplayNames); ?>
+            <?php 
+            // Our dropdown list is being created
+            createIdForm($idsAndDisplayNames); ?>
         </section>
         <hr>
         <section  id="txtHint"> This is where results will be displayed
