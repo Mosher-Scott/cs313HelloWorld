@@ -27,9 +27,9 @@ function DbConnection() {
 
 // Creates a dropdown with IDs
 function createIdForm($ids){
-    echo "<form action=''>";
-    echo "<select name='Ids' onchange='showCustomer(this.value)>";
-    echo "<option value=''>Choose ID</option>";
+    echo "<form action=' '>";
+    echo "<select name='Ids' onchange='showCustomer(this.value)'>";
+    echo "<option value=' '>Choose ID</option>";
     foreach($ids as $id) {
         echo "<option value='{$id['id']}'>{$id['display_name']}</option>";
     }
@@ -58,74 +58,8 @@ function getAllUserIdsAndDisplayName() {
     }
 }
 
-// Gets all the user info for a single user
-function getSingleUserDetails($id) {
-
-    try {
-
-        $db = DbConnection();
-
-        $sql = 'SELECT id, first_name, last_name, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name, user_role FROM public.user WHERE id = :id';
-        $stmt = $db -> prepare($sql);
-        $stmt-> bindValue(':id', $id, PDO::PARAM_INT);
-        $stmt -> execute();
-        $users = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-        $stmt -> closeCursor();
-    
-        return $users;
-    } catch (Exception $ex) {
-        return "error";
-    }
-}
-
-function createUserDetailsTable($users) {
-    echo "<table class='table table-striped'>";
-   
-    // Setup table headers
-    echo "<tr>";
-    echo "<th scope='col'>ID</th>";
-    echo "<th scope='col'>First Name</th>";
-    echo "<th scope='col'>Last Name</th>";
-    echo "<th scope='col'>Address</th>";
-    echo "<th scope='col'>City</th>";
-    echo "<th scope='col'>State</th>";
-    echo "<th scope='col'>Zip</th>";
-    echo "<th scope='col'>Phone</th>";
-    echo "<th scope='col'>Email</th>";
-    echo "<th scope='col'>Display Name</th>";
-    echo "<th scope='col'>Role</th>";
-    //echo "<th scope='col'>Options</th>";
-    echo "</tr>";
-
-    // Now populate it with data
-    foreach ($users as $user) {
-
-        echo "<tr>";
-        echo "<td>{$user['id']}</td>";
-        echo "<td>{$user['first_name']}</td>";
-        echo "<td>{$user['last_name']}</td>";
-        echo "<td>{$user['billing_address']}</td>";
-        echo "<td>{$user['billing_city']}</td>";
-        echo "<td>{$user['billing_state']}</td>";
-        echo "<td>{$user['billing_zip']}</td>";
-        echo "<td>{$user['billing_phone']}</td>";
-        echo "<td>{$user['email']}</td>";
-        echo "<td>{$user['display_name']}</td>";
-        echo "<td>{$user['user_role']}</td>";
-
-        //echo "<td><a href='userDetails.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Details</a>";
-        //echo "<td><a href='editUser.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Edit</a>";
-        //echo "<td><a href='deleteUser.php?userId={$user['id']}' class='btn btn-primary btn-sm'>Delete</a>";
-        echo "</tr>";
-    }
-
-    echo "</table>";
-}
-
 
 $idsAndDisplayNames = getAllUserIdsAndDisplayName();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -145,7 +79,7 @@ $idsAndDisplayNames = getAllUserIdsAndDisplayName();
                 // Create the variable to hold the request
                 var xhttp;
 
-                if(str == "") {
+                if(str == " ") {
                     document.getElementById("txtHint".innerHTML) = '';
                     return;
                 }
@@ -161,7 +95,7 @@ $idsAndDisplayNames = getAllUserIdsAndDisplayName();
                     }
                 };
                 // Now this is how we're going to process the request, and where it will be processed
-                xhttp.open("GET", "getcustomer.php?q="+str, true);
+                xhttp.open("GET", "getCustomer.php?id="+str, true);
 
                 // Send the request
                 xhttp.send();
