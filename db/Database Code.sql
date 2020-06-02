@@ -11,7 +11,8 @@ CREATE TABLE public.user (
  billing_zip int NOT NULL,
  billing_phone varchar(15) NOT NULL,
  email varchar(80) NOT NULL,
- display_name varchar(100) NOT NULL
+ display_name varchar(100) NOT NULL,
+ user_role varchar(50) NOT NULL,
 );
 
 /* Create ship method table. Holds shipping methods & rates */
@@ -77,10 +78,10 @@ CREATE TABLE public.payment (
 
 /****************  Seed Data *******************/
 /* Seed user data */
-INSERT INTO public.user (first_name, last_name, password, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name) VALUES('Scott','Mosher','12345','100 I street','San Jose','CA','95119','408-123-4567','me@me.com','jorgemonkey');
-INSERT INTO public.user (first_name, last_name, password, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name) VALUES('Sara','Mosher','78945','105 Steve Ave','San Francisco','CA','89498','456-456-2123','sara@hermail.com','queenie1');
-INSERT INTO public.user (first_name, last_name, password, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name) VALUES('Shane','Truskolaski','a1s2d3','5418 N','Lehi','UT','84663','801-152-4576','shane@gdawg.com','mtbRider99');
-INSERT INTO public.user (first_name, last_name, password, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name) VALUES('Adam','Stevens','kingcool','8517 Attala Dr','Huntsville','AL','18594','654-145-6863','adam@alrocks.com','outdoorGuy15');
+INSERT INTO public.user (first_name, last_name, password, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name, user_role) VALUES('Scott','Mosher','12345','100 I street','San Jose','CA','95119','408-123-4567','me@me.com','jorgemonkey', 'admin');
+INSERT INTO public.user (first_name, last_name, password, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name, user_role) VALUES('Sara','Mosher','78945','105 Steve Ave','San Francisco','CA','89498','456-456-2123','sara@hermail.com','queenie1', 'customer');
+INSERT INTO public.user (first_name, last_name, password, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name, user_role) VALUES('Shane','Truskolaski','a1s2d3','5418 N','Lehi','UT','84663','801-152-4576','shane@gdawg.com','mtbRider99', 'customer');
+INSERT INTO public.user (first_name, last_name, password, billing_address, billing_city, billing_state, billing_zip, billing_phone, email, display_name, user_role) VALUES('Adam','Stevens','kingcool','8517 Attala Dr','Huntsville','AL','18594','654-145-6863','adam@alrocks.com','outdoorGuy15', 'admin');
 
 /* Seed Shipping Methods */
 INSERT INTO public.ship_method (method, rate) VALUES('First Class Mail', 2);

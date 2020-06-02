@@ -22,7 +22,7 @@ function DbConnection() {
     }
 }
 
-// Creates the table with the user details
+// Creates the table with the user details for displaying the results
 function createUserDetailsTable($users) {
     echo "<table class='table table-striped'>";
    

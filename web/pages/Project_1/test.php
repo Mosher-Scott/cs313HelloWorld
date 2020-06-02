@@ -32,7 +32,9 @@ function createIdForm($ids){
     echo "<form action=' '>";
 
     // Add an onchange argument.  Needs to be onchange="functionToRun(this.value)"
-    echo "<select name='Ids' onchange='showCustomer(this.value)'>";
+
+    // This time I modified showCustomer to take 3 arguments: 1. Value of the selected option, 2. ID of the element to display the text, 3. Page that will handle the request
+    echo "<select name='Ids' onchange='showCustomer(this.value, \"txtHint\", \"getCustomer.php\")'>";
     echo "<option value=' '>Choose ID</option>";
     foreach($ids as $id) {
         echo "<option value='{$id['id']}'>{$id['display_name']}</option>";
@@ -78,14 +80,18 @@ $idsAndDisplayNames = getAllUserIdsAndDisplayName();
 
         <!-- The script that runs when a user changes the dropdown display name -->
         <script>
-            function showCustomer(str)
+            function showCustomer(str, elementId, processingPage)
             {
+
+                // var elementId = "txtHint";
+                // var processingPage = "getCustomer.php"
+
                 // Create the variable to hold the request
                 var xhttp;
 
                 // If the variable is an empty space, nothing needs to happen
                 if(str == " ") {
-                    document.getElementById("txtHint".innerHTML) = '';
+                    document.getElementById(elementId.innerHTML) = '';
                     return;
                 }
 
@@ -96,12 +102,15 @@ $idsAndDisplayNames = getAllUserIdsAndDisplayName();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         // Text in the txtHint element will be changed to what is returned
-                        document.getElementById("txtHint").innerHTML = this.responseText;
+                        document.getElementById(elementId).innerHTML = this.responseText;
                     }
                 };
                 // Now this is how we're going to process the request, and where it will be processed
                 // (TYPE of request, file to process it with and other needed details)
-                xhttp.open("GET", "getCustomer.php?id="+str, true);
+                // xhttp.open("GET", "getCustomer.php?id="+str, true);
+
+                // Alternate using variables
+                xhttp.open("GET", `${processingPage}?id=${str}`, true);
 
                 // Send the request
                 xhttp.send();
