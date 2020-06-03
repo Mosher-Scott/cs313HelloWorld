@@ -1,89 +1,92 @@
 <?php
+   // session_start();
+    require_once('functions.php');
+    include_once('../../common/header.php');
+    include_once('../../common/nav.php');
 
-require_once('functions.php');
 
-$errors = false;
-$message = '';
-$successfulRegistration = false;
-$userName = '';
-// If its set, get the userName value of the get request
-if (isset($_GET['userName'])) {
-    $userName = validateInput($_GET['userName']);
-}
 
-// Check if the user had registered.  If it is change this to true, so a message will be displayed later.
-if (isset($_GET['registrationSuccessfull'])) {
-    $successfulRegistration = validateInput($_GET['registrationSuccessfull']);
-}
+  $errors = false;
+  $message = '';
+  $successfulRegistration = false;
+  $userName = '';
 
-// Handle POST requests
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // print_r($_POST);
+  // 
+  if(isset($_GET['action']) && $_GET['action'] == 'logOut') {
+      session_destroy();  
+  }
 
-    // Save POST data to variables
-    $userName = validateInput($_POST['userName']);
-    $password = validateInput($_POST['password']);
+  // If its set, get the userName value of the get request
+  if (isset($_GET['userName'])) {
+      $userName = validateInput($_GET['userName']);
+  }
 
-    // Now validate the password with what is in the database
-    $hashedPassword = getPasswordWithUserName($userName);
+  // Check if the user had registered.  If it is change this to true, so a message will be displayed later.
+  if (isset($_GET['registrationSuccessfull'])) {
+      $successfulRegistration = validateInput($_GET['registrationSuccessfull']);
+  }
 
-    // Verify the hashed password matches what the user inputted.  If they do, then send the user to the welcome page. If not, display a message
-    if (password_verify($password, $hashedPassword)) {
+  // Handle POST requests
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      // print_r($_POST);
 
-        header('Location: welcome.php');
-        die();
+      // Save POST data to variables
+      $userName = validateInput($_POST['userName']);
+      $password = validateInput($_POST['password']);
 
-    } else {
-        $errors = true;
-        $message = 'Sorry, your password is incorrect';
-    }
+      // Now validate the password with what is in the database
+      $hashedPassword = getPasswordWithUserName($userName);
 
-}
+      // Just get the password from the variable
+      $hashedPassword = $hashedPassword[0]['password'];
+
+      // Verify the hashed password matches what the user inputted.  If they do, then send the user to the welcome page. If not, display a message
+      if (password_verify($password, $hashedPassword)) {
+
+          $_SESSION['userName'] = $userName;
+          header('Location: welcome.php');
+          die();
+
+      } else {
+          $errors = true;
+          $message = 'Sorry, your password is incorrect';
+      }
+
+  }
 
 ?>
+  <main class="rounded-corners">
+    <section>
+      <div class="container">
+        <h2>Please Sign In</h2>
+        <div class="bluebar">
+        </div>
+      </div>
+    </section>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="W07 Team Assignment">
-        <meta name="author" content="Scott Mosher">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-
-        <!-- Need to include bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-        <title>W07 Team Assignment</title>
-
-        
-    </head>
-
-<body>
-    <header>
-    </header>   
-    <main>
-        <section>
-            <h2>Please Sign In</h2>
-
-            <?php 
-                // If registration was successful, display a message.  If the user is just accessing this page on its own, we don't want them to see this message
-                if ($successfulRegistration) {
-                    echo "<h3>Registration successful</h3>";
-                }
+    <section>
+    <div class="container">
+    <?php 
+      // If registration was successful, display a message.  If the user is just accessing this page on its own, we don't want them to see this message
+      if ($successfulRegistration) {
+          echo "<h3>Registration successful</h3>";
+      }
 
 
-                // Display the form so the user can log in
-                signUpForm('logInRequest', $userName); 
-                if($errors) {
-                    echo $message;
-                }
-            ?>
+      // Display the form so the user can log in
+     // signUpForm('logInRequest', $userName); 
+      if($errors) {
+          echo $message;
+      }
 
-        </section>
-        <hr>
+      signUpFormDoublePassword('hi');
+    ?>
+      <p>Don't have an account? <a href="signUp.php">sign up</a></p>
+    </div>
+  </section>
 
-    </main>
-    <footer>
-    </footer>
-</body>
-</html>
+</main>
+
+<?php 
+  @include_once('../../common/footer.php');
+?>

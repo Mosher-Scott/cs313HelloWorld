@@ -1,4 +1,4 @@
-// The script that runs when a user changes the dropdown display name -->
+// The script that runs when a user changes the password -->
 
 function checkPassword()
 {

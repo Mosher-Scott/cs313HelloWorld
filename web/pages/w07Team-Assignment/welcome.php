@@ -1,78 +1,36 @@
 <?php
-session_start();
+  require_once('functions.php');
+  include_once('../../common/header.php');
+  include_once('../../common/nav.php');
 
-require_once('functions.php');
+  $userName = '';
 
-$errors = false;
-$successfulRegistration = false;
-$message = '';
-$userName = '';
-// If its set, get the userName value of the get request
-if (isset($_GET['userName'])) {
-    $userName = validateInput($_GET['userName']);
-}
-
-if (isset($_GET['registrationSuccessfull'])) {
-    $successfulRegistration = validateInput($_GET['registrationSuccessfull']);
-}
-
-// Handle POST requests
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    print_r($_POST);
-
-    // Save POST data to variables
-    $userName = validateInput($_POST['userName']);
-    $password = validateInput($_POST['password']);
-
-    // Now validate the password with what is in the database
-    $hashedPassword = getPasswordWithUserName($userName);
-
-    // Verify the hashed password matches what the user inputted.  If they do, then send the user to the welcome page. If not, display a message
-    if (password_verify($password, $hashedPassword)) {
-        
-        // Save username to a session variable
-        $_SESSION['userName'] = $userName;
-
-    } else {
-        $errors = true;
-        $message = 'Sorry, your password is incorrect';
-    }
-}
+// Check is username is set or not
+  if(isset($_SESSION['userName'])) {
+      $userName = $_SESSION['userName'];
+  }
 
 ?>
+  <main class="rounded-corners">
+    <section>
+      <div class="container-fluid">
+        <h2>Welcome!</h2>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="W07 Team Assignment">
-        <meta name="author" content="Scott Mosher">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <?php 
+        if(isset($_SESSION['userName'])) {
+            echo "Welcome {$_SESSION['userName']}";
+            logOutButton();
+        } else{
+            //echo "Welcome, but you need to log in.";
+            header('Location: signIn.php');
+        }
+          
+          
+        ?>
+      </div>   
+    </section>
+  </main>
 
-        <!-- Need to include bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-        <title>W07 Team Assignment</title>
-
-        
-    </head>
-
-<body>
-    <header>
-    </header>   
-    <main>
-        <section>
-            <h2>Welcome!</h2>
-
-            <?php 
-                echo "Welcome {$SESSION_['userName']}";
-            ?>
-
-        </section>
-        <hr>
-
-    </main>
-    <footer>
-    </footer>
-</body>
-</html>
+<?php 
+  @include_once('common/footer.php');
+?>

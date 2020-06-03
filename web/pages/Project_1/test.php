@@ -96,10 +96,10 @@ $idsAndDisplayNames = getAllUserIdsAndDisplayName();
                 }
 
                 // Now create the request
-                xhttp = new XMLHttpRequest();
+                hithere = new XMLHttpRequest();
 
                 // On state change, run this function
-                xhttp.onreadystatechange = function() {
+                hithere.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         // Text in the txtHint element will be changed to what is returned
                         document.getElementById(elementId).innerHTML = this.responseText;
@@ -107,13 +107,13 @@ $idsAndDisplayNames = getAllUserIdsAndDisplayName();
                 };
                 // Now this is how we're going to process the request, and where it will be processed
                 // (TYPE of request, file to process it with and other needed details)
-                // xhttp.open("GET", "getCustomer.php?id="+str, true);
+                hithere.open("GET", "getCustomer.php?id="+str, true);
 
                 // Alternate using variables
-                xhttp.open("GET", `${processingPage}?id=${str}`, true);
+                //xhttp.open("GET", `${processingPage}?id=${str}`, true);
 
                 // Send the request
-                xhttp.send();
+                hithere.send();
             }        
  </script>
     </head>
