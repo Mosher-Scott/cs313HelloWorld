@@ -31,7 +31,7 @@
       $passwordFromDb = getPasswordWithEmail($userEmail);
       
       // Now check if their passwords match
-      if ($password == $passwordFromDb[0]['password']) {
+      if (password_verify($password, $passwordFromDb[0]['password'])) {
         
         // Run the method to log the user in
         loginUser($userEmail);

@@ -94,6 +94,13 @@
                 <td><a href="<?php echo urlPath('pages/w07Team-Assignment/signUp.php') ?>">Link</a></td>
                 <td></td>
                 </tr>
+
+                <tr>
+                <th scope="row">12</th>
+                <td>Project 1</td>
+                <td><a href="<?php echo urlPath('pages/Project_1/login.php') ?>">Link</a></td>
+                <td></td>
+                </tr>
             </tbody>
         </table>
     </section>
