@@ -12,7 +12,7 @@ var count = 0;
 
 // Use a function to print the results
 function printRequestResults() {
-    for (var i = 0; i <= count; i++) {
+    for (var i = 0; i <= 3; i++) {
 
         if (responses[i] == undefined) {
             console.log("");

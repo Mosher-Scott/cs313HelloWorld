@@ -22,17 +22,19 @@ function getUnixTime(time) {
 http.createServer(function (request, response) {
     // Check the request
     if (request.method === 'GET') {
-        // Set the response head
-        response.writeHead(200, {'content-type': 'application/json'});
+
+        // Set the response head to html.  Will want to move this somewhere else                    . 
+        response.writeHead(200, {'content-type': 'text/html'});
         // set the URL to parse the object
         url = url.parse(request.url, true);
 
         // End the response by creating a JSON file based on the values returned from either function
-        response.end(JSON.stringify(parsedQuery(url)))
+        response.end(JSON.stringify(onRequest(url)))
     } 
     // If it can't find the URL, then send a 405 back
     else {
-        response.writeHead(405);
+        response.writeHead(404, {'content-type': 'text/html'});
+        response.write("<h2>Sorry, page not found</h2>");
         response.end();
     }
 }).listen(+portToUse, function() {
@@ -40,7 +42,7 @@ http.createServer(function (request, response) {
 });
     
 
-var parsedQuery = function(urlToParse) {
+var onRequest = function(urlToParse) {
     switch(urlToParse.pathname) {
         // If the url is for parsing the time
         case '/api/parsetime':
