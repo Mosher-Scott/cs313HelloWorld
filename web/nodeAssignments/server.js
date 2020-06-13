@@ -1,8 +1,8 @@
 var http = require('http');
 var url = require('url');
+var fs = require('fs');
 
 var portToUse = 8888;
-
 
 // Parses the time into an object with hour, min, and sec properties
 var parseTimeValues = function(timeToParse) {
@@ -26,8 +26,39 @@ var getData = function() {
     }
 }
 
+// Serve index.php file
+var indexFile = function (url) {
+    console.log("reached indexFile");
+    fs.readFile("index.php", function(err, data) {
+        console.log(__dirname + url);
+        if(err) {
+            return "<h1>File not found</h1>";
+        } else {
+            console.log(data);
+            return data;
+        }
+    }) 
+}
+
+// Serve index.php file
+var index = function () {
+    console.log("reached testFile");
+    var page = __dirname + url.pathname;
+    fs.readFile(page, function (error, pgResp) {
+        if (error) {
+            response.writeHead(404);
+            response.write('Page not found');
+        } else {
+            response.writeHead(200, { 'Content-Type': 'text/html' });
+            response.write(pgResp);
+        }
+         
+        response.end();
+    });
+}
+
 // Home
-var homeTest = function() {
+var homePage = function() {
     return "<h1>Welcome To the Home Page</h1>";
 }
 
@@ -44,9 +75,41 @@ http.createServer(function (request, response) {
             case "/home":
                 console.log("home requested");
                 response.writeHead(200, {'content-type': 'text/html'});
-                // response.write(homeTest());
                  response.end(onRequest(url));
                  break;
+
+            case "/index.php":
+                var page = __dirname + url.pathname;
+                fs.readFile(page, function (error, pgResp) {
+                    if (error) {
+                        response.writeHead(404);
+                        response.write('Page not found');
+                    } else {
+                        response.writeHead(200, { 'Content-Type': 'text/html' });
+                        response.write(pgResp);
+                    }
+                     
+                    response.end();
+                });
+
+                break;
+
+            // Testing serving static file
+            case "/test.html":
+                var page = __dirname + url.pathname;
+                fs.readFile(page, function (error, pgResp) {
+                    if (error) {
+                        response.writeHead(404);
+                        response.write('Page not found');
+                    } else {
+                        response.writeHead(200, { 'Content-Type': 'text/html' });
+                        response.write(pgResp);
+                    }
+                     
+                    response.end();
+                });
+                break;
+
             case "/getData":
                 console.log("getData page requested");
                 response.writeHead(200, {'content-type': 'application/json'});
@@ -59,7 +122,7 @@ http.createServer(function (request, response) {
                 response.writeHead(404, {'content-type': 'text/html'});
                 response.write("<h2>Sorry, page not found</h2>");
                 response.end();
-        } // end switch
+        } // end switch statement
     } // End of if statement
 
 }).listen(+portToUse, function() {
@@ -69,11 +132,14 @@ http.createServer(function (request, response) {
 
 var onRequest = function(urlToParse) {
     switch(urlToParse.pathname) {
-        // If the url is for parsing the time
         case '/home':
-            return homeTest();
+            return homePage();
+        case '/index.php':
+            return index();
         case '/getData':
             return getData();
+        case '/test.html':
+            return testFile();
     } // end of switch statement
 } // end of function
 
