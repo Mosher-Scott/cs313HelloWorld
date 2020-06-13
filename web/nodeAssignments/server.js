@@ -134,12 +134,8 @@ var onRequest = function(urlToParse) {
     switch(urlToParse.pathname) {
         case '/home':
             return homePage();
-        case '/index.php':
-            return index();
         case '/getData':
             return getData();
-        case '/test.html':
-            return testFile();
     } // end of switch statement
 } // end of function
 
